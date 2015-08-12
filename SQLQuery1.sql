@@ -114,7 +114,7 @@ INSERT INTO pictures(url , albumId, userId ) VALUES ('#',2,2);
 INSERT INTO pictures(url , albumId, userId ) VALUES ('#',4,3);
 
 
-INSERT INTO comments(comment ,postId, userId ) VALUES ('cool',1,1);
+INSERT INTO comments(comment , postId, userId ) VALUES ('cool',1,1);
 INSERT INTO comments(comment , albumId, userId ) VALUES ('great',3,1);
 INSERT INTO comments(comment , albumId, userId ) VALUES ('excellent',2,2);
 INSERT INTO comments(comment , pictureId, userId ) VALUES ('ideally',4,4);
