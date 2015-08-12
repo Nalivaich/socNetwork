@@ -1,0 +1,117 @@
+
+CREATE table users(idUser integer primary key not null identity (1, 1),
+				    name nvarchar(35) not null,
+				    surName nvarchar(35) not null,
+					alias nvarchar(35) not null,
+				    email nvarchar(50) not null unique,
+					phoneNumber nvarchar(25) null,
+					adress nvarchar(100)  null );
+
+CREATE table roles(roleName  nvarchar(35) primary key not null );
+
+CREATE table userRole(id  integer primary key not null identity (1, 1),
+					roleName nvarchar(35) not null,
+					idUser integer not null,
+							  foreign key (idUser) references users (idUser),
+							  foreign key (roleName) references roles (roleName));
+
+CREATE table posts(idPost integer primary key not null identity (1, 1),
+				    name nvarchar(35) not null,
+				    idUser integer not null,
+							  foreign key (idUser) references users (idUser));
+
+CREATE table albums(idAlbum integer primary key not null identity (1, 1),
+				    name nvarchar(35) not null,
+					private bit not null,
+				    idUser integer not null,
+							  foreign key (idUser) references users (idUser));
+
+CREATE table pictures(idPicture integer primary key not null identity (1, 1),
+				    url nvarchar(100) not null,
+					idPost integer null,
+				    idAlbum integer not null,
+					idUser integer not null,
+							  foreign key (idPost) references posts (idPost),
+							  foreign key (idAlbum) references albums (idAlbum),
+							  foreign key (idUser) references users (idUser));
+
+CREATE table comments(idComment integer primary key not null identity (1, 1),
+				    comment nvarchar(1000) not null,
+					idPost integer null,
+				    idAlbum integer null,
+					idPicture integer null,
+					idUser integer not null,
+							  foreign key (idPost) references posts (idPost),
+							  foreign key (idAlbum) references albums (idAlbum),
+							  foreign key (idPicture) references pictures (idPicture),
+							  foreign key (idUser) references users (idUser));
+
+
+drop table comments
+drop table pictures
+drop table albums
+drop table posts
+drop table userRole
+drop table roles
+drop table users
+
+
+INSERT INTO users(name ,surName ,alias ,email ,phoneNumber ,adress) VALUES ('Anton','Ivanov','gigs','Ivanov23@gmail.com','2252525','sovetskaia 22/9');
+INSERT INTO users(name ,surName ,alias ,email ,phoneNumber ,adress) VALUES ('Kirill','Pirogov','sub_zero','Pirogov43@mail.ru','2262626','pervomaiskaia 11/3');
+INSERT INTO users(name ,surName ,alias ,email ,phoneNumber ,adress) VALUES ('Genadiy','Bublilov','redFruit','Bublilov44@yandex.com','2277227','dneprovskaia 15/6');
+INSERT INTO users(name ,surName ,alias ,email ,phoneNumber ,adress) VALUES ('Igor','Stepochkin','bigBang','Stepochkin33@silverDog.com','2282828','zabskaia 19/8');
+INSERT INTO users(name ,surName ,alias ,email ,phoneNumber ,adress) VALUES ('Ivan','Mednik','alive','Mednik3030@wildWest.kz','2292929','neftianikov 23/32');
+
+INSERT INTO roles(roleName ) VALUES ('user');
+INSERT INTO roles(roleName ) VALUES ('admin');
+INSERT INTO roles(roleName ) VALUES ('operator');
+INSERT INTO roles(roleName ) VALUES ('moderator');
+INSERT INTO roles(roleName ) VALUES ('owner');
+
+INSERT INTO userRole(roleName ,idUser ) VALUES ('user',1);
+INSERT INTO userRole(roleName ,idUser ) VALUES ('admin',2);
+INSERT INTO userRole(roleName ,idUser ) VALUES ('user',2);
+INSERT INTO userRole(roleName ,idUser ) VALUES ('user',3);
+INSERT INTO userRole(roleName ,idUser ) VALUES ('user',4);
+INSERT INTO userRole(roleName ,idUser ) VALUES ('user',5);
+INSERT INTO userRole(roleName ,idUser ) VALUES ('moderator',5);
+
+INSERT INTO posts(name ,idUser ) VALUES ('I walk in forest',1);
+INSERT INTO posts(name ,idUser ) VALUES ('My favourite birthday moments',2);
+INSERT INTO posts(name ,idUser ) VALUES ('Heroes party',2);
+INSERT INTO posts(name ,idUser ) VALUES ('picnic on the roof',3);
+INSERT INTO posts(name ,idUser ) VALUES ('Great campaign',4);
+INSERT INTO posts(name ,idUser ) VALUES ('sword fighting',5);
+INSERT INTO posts(name ,idUser ) VALUES ('all my 23 cats',5);
+
+INSERT INTO albums(name ,private, idUser ) VALUES ('I and my family',0,1);
+INSERT INTO albums(name ,private, idUser ) VALUES ('2008 year',1,2);
+INSERT INTO albums(name ,private, idUser ) VALUES ('last summer',0,2);
+INSERT INTO albums(name ,private, idUser ) VALUES ('best moments',0,3);
+INSERT INTO albums(name ,private, idUser ) VALUES ('my animals',0,4);
+INSERT INTO albums(name ,private, idUser ) VALUES ('I ride on horseback.',0,5);
+INSERT INTO albums(name ,private ,idUser ) VALUES ('fireshow',0,5);
+
+INSERT INTO pictures(url ,idPost, idAlbum, idUser ) VALUES ('#',1,1,1);
+INSERT INTO pictures(url ,idPost, idAlbum, idUser ) VALUES ('#',2,3,1);
+INSERT INTO pictures(url ,idPost, idAlbum, idUser ) VALUES ('#',3,2,2);
+INSERT INTO pictures(url ,idPost, idAlbum, idUser ) VALUES ('#',4,5,4);
+INSERT INTO pictures(url ,idPost, idAlbum, idUser ) VALUES ('#',5,4,3);
+INSERT INTO pictures(url , idAlbum, idUser ) VALUES ('#',6,5);
+INSERT INTO pictures(url , idAlbum, idUser ) VALUES ('#',1,1);
+INSERT INTO pictures(url , idAlbum, idUser ) VALUES ('#',2,2);
+INSERT INTO pictures(url , idAlbum, idUser ) VALUES ('#',2,2);
+INSERT INTO pictures(url , idAlbum, idUser ) VALUES ('#',4,3);
+
+
+INSERT INTO comments(comment ,idPost, idUser ) VALUES ('cool',1,1);
+INSERT INTO comments(comment , idAlbum, idUser ) VALUES ('great',3,1);
+INSERT INTO comments(comment , idAlbum, idUser ) VALUES ('excellent',2,2);
+INSERT INTO comments(comment , idPicture, idUser ) VALUES ('ideally',4,4);
+INSERT INTO comments(comment , idPicture, idUser ) VALUES ('fine',5,3);
+INSERT INTO comments(comment , idAlbum, idUser ) VALUES ('perfectly',6,5);
+INSERT INTO comments(comment , idAlbum, idUser ) VALUES ('very nice',1,1);
+INSERT INTO comments(comment , idPicture, idUser ) VALUES ('so good',8,2);
+INSERT INTO comments(comment , idPost, idUser ) VALUES ('u r the best',2,2);
+INSERT INTO comments(comment , idPost, idUser ) VALUES ('amazing',4,3);
+
