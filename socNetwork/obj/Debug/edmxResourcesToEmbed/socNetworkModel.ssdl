@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="socNetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="albums">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="likes" Type="int" />
+    <Property Name="private" Type="bit" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comment" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="postId" Type="int" />
+    <Property Name="albumId" Type="int" />
+    <Property Name="pictureId" Type="int" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pictures">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urlStandart" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="urlMedium" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="urlSmall" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="likes" Type="int" />
+    <Property Name="postId" Type="int" />
+    <Property Name="albumId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="posts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="likes" Type="int" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="roleName" />
+    </Key>
+    <Property Name="roleName" Type="nvarchar" MaxLength="35" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="userRole">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="surName" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="alias" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phoneNumber" Type="nvarchar" MaxLength="25" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" />
+    <Property Name="avaUrl" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="isRemoved" Type="bit" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__albums__userId__5CD6CB2B">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="albums" Type="Self.albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="albums">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__albumI__68487DD7">
+    <End Role="albums" Type="Self.albums" Multiplicity="0..1" />
+    <End Role="comments" Type="Self.comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="albums">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__pictur__693CA210">
+    <End Role="pictures" Type="Self.pictures" Multiplicity="0..1" />
+    <End Role="comments" Type="Self.comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pictures">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="pictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__postId__6754599E">
+    <End Role="posts" Type="Self.posts" Multiplicity="0..1" />
+    <End Role="comments" Type="Self.comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="posts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="postId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__userId__6A30C649">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="comments" Type="Self.comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pictures__albumI__619B8048">
+    <End Role="albums" Type="Self.albums" Multiplicity="1" />
+    <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="albums">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pictures">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pictures__postId__60A75C0F">
+    <End Role="posts" Type="Self.posts" Multiplicity="0..1" />
+    <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="posts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pictures">
+        <PropertyRef Name="postId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pictures__userId__628FA481">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pictures">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__posts__userId__571DF1D5">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="posts" Type="Self.posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="posts">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userRole__roleNa__5165187F">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="userRole" Type="Self.userRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="roleName" />
+      </Principal>
+      <Dependent Role="userRole">
+        <PropertyRef Name="roleName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userRole__userId__5070F446">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="userRole" Type="Self.userRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="userRole">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="socNetworkModelStoreContainer">
+    <EntitySet Name="albums" EntityType="Self.albums" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comments" EntityType="Self.comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pictures" EntityType="Self.pictures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userRole" EntityType="Self.userRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__albums__userId__5CD6CB2B" Association="Self.FK__albums__userId__5CD6CB2B">
+      <End Role="users" EntitySet="users" />
+      <End Role="albums" EntitySet="albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__albumI__68487DD7" Association="Self.FK__comments__albumI__68487DD7">
+      <End Role="albums" EntitySet="albums" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__pictur__693CA210" Association="Self.FK__comments__pictur__693CA210">
+      <End Role="pictures" EntitySet="pictures" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__postId__6754599E" Association="Self.FK__comments__postId__6754599E">
+      <End Role="posts" EntitySet="posts" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__userId__6A30C649" Association="Self.FK__comments__userId__6A30C649">
+      <End Role="users" EntitySet="users" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pictures__albumI__619B8048" Association="Self.FK__pictures__albumI__619B8048">
+      <End Role="albums" EntitySet="albums" />
+      <End Role="pictures" EntitySet="pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pictures__postId__60A75C0F" Association="Self.FK__pictures__postId__60A75C0F">
+      <End Role="posts" EntitySet="posts" />
+      <End Role="pictures" EntitySet="pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pictures__userId__628FA481" Association="Self.FK__pictures__userId__628FA481">
+      <End Role="users" EntitySet="users" />
+      <End Role="pictures" EntitySet="pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__posts__userId__571DF1D5" Association="Self.FK__posts__userId__571DF1D5">
+      <End Role="users" EntitySet="users" />
+      <End Role="posts" EntitySet="posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userRole__roleNa__5165187F" Association="Self.FK__userRole__roleNa__5165187F">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="userRole" EntitySet="userRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userRole__userId__5070F446" Association="Self.FK__userRole__userId__5070F446">
+      <End Role="users" EntitySet="users" />
+      <End Role="userRole" EntitySet="userRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
