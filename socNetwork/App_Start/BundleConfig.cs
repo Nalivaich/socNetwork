@@ -29,7 +29,8 @@ namespace socNetwork
 
             bundles.Add(new StyleBundle("~/angularApp/js").Include(
                       "~/Content/app/controllers/firstController.js",
-                      "~/Content/app/controllers/secondController.js"));
+                      "~/Content/app/controllers/secondController.js",
+                      "~/Content/app/controllers/thirtdController.js"));
         }
     }
 }

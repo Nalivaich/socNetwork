@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0;
+    font: normal small-caps 20px/22px Arial Lucida sans-serif;
+}
+.logo {
+}
+
+.logo-image{
+    cursor: pointer;
+}
+
+
+.generalMenu {
+    //background-color: thistle;
+    background-color: #9acfea;
+    font: normal small-caps 22px/22px Impact fantasy;
+}
+.generalMenu ul{
+    margin: 0;
+}
+.header-list{
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 75px;
+    margin: 0 10px;
+}
+
+.link-list:hover
+{
+    background-color:#FFF;
+    cursor: pointer;
+
+}
+.link-list a {
+    box-sizing: content-box;
+    padding: 50% 0;
+}
+
+.link-list a:hover {
+    text-decoration: none;
+    list-style: none;
+}
+
+.link-list a:visited {
+    text-decoration: none;
+    list-style: none;
+}
+
+
+.link-list:visited
+{
+    text-decoration: none;
+    list-style: none;
+}
+.personalRoomHeaders {
+    text-align: center;
+}
+.personalRoomRows{
+    margin-bottom: 10px;
+}
+
+.footer {
+    height: 1200px;
+    background-image: url("../images/footerTexture.jpg" );
+    background-position: left bottom;
+    background-repeat: repeat-x;
+}
+

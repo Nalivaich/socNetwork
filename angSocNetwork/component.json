@@ -1,0 +1,27 @@
+{
+  "name": "socNetwork",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "angular": "1.4.3",
+    "bootstrap": "3.3.5",
+    "ui-bootstrap": "0.13.1",
+    "angular-bootstrap": "0.1.0",
+    "angular-complete": "1.0.4",
+    "angular-ui-router": "0.2.15",
+    "angular-ui": "0.4.0",
+    "lodash": "1.0.0-rc.3",
+    "angular-animate": "~1.4.4"
+  },
+  "authors": [
+    "vitali.nalivaiko <nalivaich93@gmail.ru>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

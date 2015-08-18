@@ -1,0 +1,25 @@
+
+<div ng-controller="PersonalRoomController">
+    <div class="container col-sm-offset-2 col-sm-8" style="border-width: 2px" >
+        <div class="row col-sm-offset-3 col-sm-6 personalRoomHeaders personalRoomRows" >
+            <h2>This is your personal room</h2>
+            <h3>you can:</h3>
+        </div>
+        <div class="row col-sm-offset-2 col-sm-10 personalRoomRows">
+            <button type="button" class="btn btn-danger" value="Photos">View Photos</button>
+            <span>View and manage your photos</span>
+        </div>
+        <div class="row col-sm-offset-3 col-sm-9 personalRoomRows">
+            <button type="button" class="btn btn-warning" value="Manage Albums">Manage Albums</button>
+            <span>Managing existing albums</span>
+        </div>
+        <div class="row col-sm-offset-4 col-sm-8 personalRoomRows">
+            <button type="button" class="btn btn-success" value="New Album" ui-sref="NewAlbum">New Album</button>
+            <span>Create & configure new Album</span>
+        </div>
+        <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
+            <button type="button" class="btn btn-primary" value="Back"  ui-sref="index.Publications">Back</button>
+            <button type="button" class="btn btn-info" value="Apply">Apply</button>
+        </div>
+    </div>
+</div>
