@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a875090eb713489e8f3b67ab2800f48b" Name="Diagram1">
+        <EntityTypeShape EntityType="socNetworkModel.album" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.comment" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.picture" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.post" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.role" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.userRole" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="socNetworkModel.user" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="socNetworkModel.FK__albums__userId__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__comments__albumI__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__pictures__albumI__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__comments__pictur__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__comments__postId__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__comments__userId__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__pictures__postId__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__pictures__userId__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__posts__userId__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__userRole__roleNa__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="socNetworkModel.FK__userRole__userId__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

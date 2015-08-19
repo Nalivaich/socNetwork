@@ -53,3 +53,14 @@ D:\Applications\socNetwork\socNetwork\bin\Microsoft.Owin.Security.MicrosoftAccou
 D:\Applications\socNetwork\socNetwork\obj\Debug\socNetwork.csprojResolveAssemblyReference.cache
 D:\Applications\socNetwork\socNetwork\obj\Debug\socNetwork.dll
 D:\Applications\socNetwork\socNetwork\obj\Debug\socNetwork.pdb
+D:\Applications\socNetwork\socNetwork\bin\Ninject.dll
+D:\Applications\socNetwork\socNetwork\bin\Ninject.Web.Common.dll
+D:\Applications\socNetwork\socNetwork\bin\Ninject.Web.Mvc.dll
+D:\Applications\socNetwork\socNetwork\bin\WebActivatorEx.dll
+D:\Applications\socNetwork\socNetwork\bin\Ninject.xml
+D:\Applications\socNetwork\socNetwork\bin\Ninject.Web.Common.xml
+D:\Applications\socNetwork\socNetwork\bin\Ninject.Web.Mvc.xml
+D:\Applications\socNetwork\socNetwork\bin\Entities.dll
+D:\Applications\socNetwork\socNetwork\bin\Entities.pdb
+D:\Applications\socNetwork\socNetwork\bin\EFDataProvider.dll
+D:\Applications\socNetwork\socNetwork\bin\EFDataProvider.pdb
