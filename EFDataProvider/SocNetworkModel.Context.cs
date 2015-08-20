@@ -15,6 +15,11 @@ namespace EFDataProvider
     
     public partial class socNetworkEntities : DbContext
     {
+        public socNetworkEntities(string ConnectionString)
+            : base(ConnectionString)
+        {
+
+        }
         public socNetworkEntities()
             : base("name=socNetworkEntities")
         {

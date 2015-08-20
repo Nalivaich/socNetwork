@@ -1,0 +1,16 @@
+D:\Applications\socNetwork\Common\bin\Debug\Common.dll
+D:\Applications\socNetwork\Common\bin\Debug\Common.pdb
+D:\Applications\socNetwork\Common\obj\Debug\Common.dll
+D:\Applications\socNetwork\Common\obj\Debug\Common.pdb
+D:\Applications\socNetwork\Common\bin\Debug\Ninject.dll
+D:\Applications\socNetwork\Common\bin\Debug\Ninject.xml
+D:\Applications\socNetwork\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\Applications\socNetwork\Common\bin\Debug\EFDataProvider.dll
+D:\Applications\socNetwork\Common\bin\Debug\EntityFramework.dll
+D:\Applications\socNetwork\Common\bin\Debug\EFDataProvider.pdb
+D:\Applications\socNetwork\Common\bin\Debug\EntityFramework.xml
+D:\Applications\socNetwork\Common\bin\Debug\Common.dll.config
+D:\Applications\socNetwork\Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\Applications\socNetwork\Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\Applications\socNetwork\Common\bin\Debug\AutoMapper.dll
+D:\Applications\socNetwork\Common\bin\Debug\AutoMapper.xml

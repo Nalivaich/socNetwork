@@ -1,0 +1,11 @@
+D:\Applications\socNetwork\Entities\bin\Debug\Entities.dll
+D:\Applications\socNetwork\Entities\bin\Debug\Entities.pdb
+D:\Applications\socNetwork\Entities\bin\Debug\EFDataProvider.dll
+D:\Applications\socNetwork\Entities\bin\Debug\Ninject.dll
+D:\Applications\socNetwork\Entities\bin\Debug\EntityFramework.dll
+D:\Applications\socNetwork\Entities\bin\Debug\EFDataProvider.pdb
+D:\Applications\socNetwork\Entities\bin\Debug\Ninject.xml
+D:\Applications\socNetwork\Entities\bin\Debug\EntityFramework.xml
+D:\Applications\socNetwork\Entities\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\Applications\socNetwork\Entities\obj\Debug\Entities.dll
+D:\Applications\socNetwork\Entities\obj\Debug\Entities.pdb

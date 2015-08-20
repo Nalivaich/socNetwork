@@ -7,3 +7,5 @@ D:\Applications\socNetwork\Entities\bin\Debug\EFDataProvider.dll
 D:\Applications\socNetwork\Entities\bin\Debug\EntityFramework.dll
 D:\Applications\socNetwork\Entities\bin\Debug\EFDataProvider.pdb
 D:\Applications\socNetwork\Entities\bin\Debug\EntityFramework.xml
+D:\Applications\socNetwork\Entities\bin\Debug\Ninject.dll
+D:\Applications\socNetwork\Entities\bin\Debug\Ninject.xml

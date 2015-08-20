@@ -1,10 +1,14 @@
-D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.csprojResolveAssemblyReference.cache
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EFDataProvider.dll.config
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EFDataProvider.dll
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EFDataProvider.pdb
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EntityFramework.dll
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EntityFramework.SqlServer.dll
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\Ninject.dll
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EntityFramework.xml
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\EntityFramework.SqlServer.xml
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\Ninject.xml
 D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.dll
 D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.pdb
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\AutoMapper.dll
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\AutoMapper.xml
+D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.csprojResolveAssemblyReference.cache
