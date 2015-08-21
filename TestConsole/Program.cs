@@ -16,12 +16,12 @@ namespace TestConsole
         {
 
             Console.WriteLine(55);
-            var tt = new UserService().GetAll();
+            var tt = new PostService().GetComments(1);
             //Console.Write(tt.GetAll());
             var pp = new EFUnitOfWork();
             foreach(var item in tt)
             {
-                Console.Write(item.name);
+                Console.Write(item.comment);
             }
             var array = pp.Users.GetAll();
             Console.WriteLine(pp.Posts.Get(2).name);

@@ -59,6 +59,7 @@
     <Compile Include="DTO\CommentDTO.cs" />
     <Compile Include="DTO\PictureDTO.cs" />
     <Compile Include="DTO\PostDTO.cs" />
+    <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="EF\SocNetworcContext.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />

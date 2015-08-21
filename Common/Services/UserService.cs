@@ -16,51 +16,118 @@ namespace Common.Services
 {
     public class UserService : IUserService
     {
-        private dynamic users;
+        private EFUnitOfWork Database; 
 
         public UserService()
         {
-            //var eFUnitOfWorkObject = new EFUnitOfWork();
-            users = new EFUnitOfWork().Users;
+            Database = new EFUnitOfWork();
         }
 
         public UserDTO Get(int id)
         {
-           
-            var user = users.Get(id);
+            var user = Database.Users.Get(id);
+
             if (user == null)
-                throw new ValidationException("User not found","");
+            {
+                throw new ValidationException("User not found", "");
+            }
             Mapper.CreateMap<user, UserDTO>();
+
             return Mapper.Map<user, UserDTO>(user);
         }
 
         public IEnumerable<UserDTO> GetAll()
         {
-            var DBUsers = users.GetAll();
-            //List<UserDTO> userList;
+            var DBUsers = Database.Users.GetAll();
+
+            if (DBUsers == null)
+            {
+                throw new ValidationException("Users not found", "");
+            }
             Mapper.CreateMap<user, UserDTO>();
-            return Mapper.Map<DbSet<user>, List<UserDTO>>(DBUsers);
+
+            return Mapper.Map<IEnumerable<user>, List<UserDTO>>(DBUsers);
         }
-        public IEnumerable<PostDTO> GetUserPosts()
+        public IEnumerable<PostDTO> GetUserPosts(int userId)
         {
-            return new List<PostDTO>();
+            var user = Database.Users.Get(userId);
+
+            if (user == null)
+            {
+                throw new ValidationException("User not found", "");
+            }
+
+            return user.posts.Select(u => new PostDTO
+            {
+                id = u.id,
+                name = u.name,
+                created = u.created,
+                modified = u.modified,
+                likes = u.likes
+            }).ToList();
+                
         }
-        public IEnumerable<AlbumDTO> GetUserAlbums()
+        public IEnumerable<AlbumDTO> GetUserAlbums(int userId)
         {
-            return new List<AlbumDTO>();
+            var user = Database.Users.Get(userId);
+
+            if (user == null)
+            {
+                throw new ValidationException("User not found", "");
+            }
+
+            return user.albums.Select(u => new AlbumDTO
+            {
+                id = u.id,
+                name = u.name,
+                created = u.created,
+                modified = u.modified,
+                likes = u.likes,
+                @private = u.@private
+            }).ToList();
         }
-        public IEnumerable<PictureDTO> GetUserPhotos()
+        public IEnumerable<PictureDTO> GetUserPhotos(int userId)
         {
-            return new List<PictureDTO>();
+            var user = Database.Users.Get(userId);
+
+            if (user == null)
+            {
+                throw new ValidationException("User not found", "");
+            }
+
+            return user.pictures.Select(u => new PictureDTO
+            {
+                id = u.id,
+                urlStandart = u.urlStandart,
+                urlMedium = u.urlMedium,
+                urlSmall = u.urlSmall,
+                likes = u.likes,
+                postId = u.postId,
+                albumId = u.albumId
+            }).ToList();
         }
-        public IEnumerable<string> GetUserRoles(int id)
+        public IEnumerable<RoleDTO> GetUserRoles(int userId)
         {
-            return new List<string>();
+            var user = Database.Users.Get(userId);
+
+            if (user == null)
+            {
+                throw new ValidationException("User not found", "");
+            }
+
+            return user.userRoles.Select(u => new RoleDTO
+            {
+                roleName = u.roleName,
+                id = u.userId
+            }).ToList().Where(u => u.id == userId);
         }
         
         public void Create(UserDTO item)
         {
-
+            Mapper.CreateMap<UserDTO, user>();
+ 
+            Database.Users.Create(Mapper.Map<UserDTO, user>(item));
+            Database.Save();
         }
         public void Update(UserDTO item)
         {
@@ -68,9 +135,16 @@ namespace Common.Services
         }
         public void Delete(int id)
         {
-
+            Database.Users.Delete(id);
+            Database.Save();
         }
-        IUnitOfWork Database { get; set; }
+
+        public void Dispose()
+        {
+            Database.Dispose();
+        }
+
+
  
         /*
         public OrderService(IUnitOfWork uow)
@@ -107,8 +181,7 @@ namespace Common.Services
  
         public PhoneDTO GetPhone(int? id)
         {
-            if (id == null)
-                throw new ValidationException("Не установлено id телефона","");
+
             var phone = Database.Phones.Get(id.Value);
             if (phone == null)
                 throw new ValidationException("Телефон не найден","");
@@ -116,10 +189,6 @@ namespace Common.Services
             Mapper.CreateMap<Phone, PhoneDTO>();
             return Mapper.Map<Phone, PhoneDTO>(phone);
         }*/
- 
-        public void Dispose()
-        {
-            Database.Dispose();
-        }
+
     }
 }

@@ -11,4 +11,3 @@ D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.dll
 D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.pdb
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\AutoMapper.dll
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\AutoMapper.xml
-D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.csprojResolveAssemblyReference.cache

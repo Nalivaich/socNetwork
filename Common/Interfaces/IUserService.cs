@@ -13,10 +13,10 @@ namespace Common.Interfaces
     {
         UserDTO Get(int id);
         IEnumerable<UserDTO> GetAll();
-        IEnumerable<PostDTO> GetUserPosts();
-        IEnumerable<AlbumDTO> GetUserAlbums();
-        IEnumerable<PictureDTO> GetUserPhotos();
-        IEnumerable<string> GetUserRoles(int id);
+        IEnumerable<PostDTO> GetUserPosts(int userId);
+        IEnumerable<AlbumDTO> GetUserAlbums(int userId);
+        IEnumerable<PictureDTO> GetUserPhotos(int userId);
+        IEnumerable<RoleDTO> GetUserRoles(int userId);
         void Create(UserDTO item);
         void Update(UserDTO item);
         void Delete(int id);
