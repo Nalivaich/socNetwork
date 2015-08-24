@@ -1,0 +1,151 @@
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\socNetworkWebApi.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\socNetworkWebApi.pdb
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Antlr3.Runtime.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\EntityFramework.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Microsoft.Data.Edm.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Microsoft.Data.OData.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Newtonsoft.Json.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Spatial.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Helpers.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.OData.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.Tracing.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Mvc.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Optimization.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Providers.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Razor.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\WebGrease.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\EntityFramework.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Newtonsoft.Json.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Helpers.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Mvc.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Razor.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.Tracing.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Web.Http.OData.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Microsoft.Data.Edm.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Microsoft.Data.OData.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\System.Spatial.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\de\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\es\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\fr\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\it\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ja\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ko\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\ru\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\obj\Debug\socNetworkWebApi.csprojResolveAssemblyReference.cache
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\obj\Debug\socNetworkWebApi.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\obj\Debug\socNetworkWebApi.pdb
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\AutoMapper.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\EntityFramework.SqlServer.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Ninject.dll
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\AutoMapper.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\EntityFramework.SqlServer.xml
+C:\Users\Администратор\Desktop\Final project\socNetwork\socNetworkWebApi\bin\Ninject.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\socNetworkWebApi.dll.config
+D:\Applications\socNetwork\socNetworkWebApi\bin\socNetworkWebApi.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\socNetworkWebApi.pdb
+D:\Applications\socNetwork\socNetworkWebApi\bin\Antlr3.Runtime.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\AutoMapper.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\EntityFramework.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\EntityFramework.SqlServer.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Microsoft.Data.Edm.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Microsoft.Data.OData.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Microsoft.Web.Infrastructure.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Newtonsoft.Json.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Ninject.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Spatial.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Helpers.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.OData.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.Tracing.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Mvc.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Optimization.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Providers.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Razor.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Deployment.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Razor.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\WebGrease.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\AutoMapper.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\EntityFramework.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\EntityFramework.SqlServer.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\Ninject.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\Newtonsoft.Json.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Helpers.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Mvc.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Razor.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Deployment.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.WebPages.Razor.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.Tracing.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.OData.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\Microsoft.Data.Edm.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\Microsoft.Data.OData.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Spatial.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\de\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\es\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\it\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\de\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\es\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\fr\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\it\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ja\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ko\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\ru\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\zh-Hans\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\zh-Hant\System.Spatial.resources.dll
+D:\Applications\socNetwork\socNetworkWebApi\obj\Debug\socNetworkWebApi.csprojResolveAssemblyReference.cache
+D:\Applications\socNetwork\socNetworkWebApi\obj\Debug\socNetworkWebApi.dll
+D:\Applications\socNetwork\socNetworkWebApi\obj\Debug\socNetworkWebApi.pdb
+D:\Applications\socNetwork\socNetworkWebApi\bin\Common.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\EFDataProvider.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\Common.pdb
+D:\Applications\socNetwork\socNetworkWebApi\bin\EFDataProvider.pdb

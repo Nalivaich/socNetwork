@@ -14,7 +14,8 @@ using AutoMapper;
 
 namespace Common.Services
 {
-    public class PostService
+    public class PostService : IPostService
+
     {
         private EFUnitOfWork Database;
 
@@ -74,7 +75,7 @@ namespace Common.Services
             Database.Posts.Create(Mapper.Map<PostDTO, post>(item));
             Database.Save();
         }
-        public void Update(UserDTO item)
+        public void Update(PostDTO item)
         {
 
         }

@@ -1,0 +1,8 @@
+<ul ng-repeat="item in usersRepository " >
+    <li class="  row col-md-12 col-md-offset-0 text-success myCursor listDecoration animated bounceInUp" ng-click="findFullName(item.id)"  ng-class="$odd ? 'odd' : 'even'">
+        <p><span class="glyphicon glyphicon-user"></span></p>
+        <p>User: <span ng-bind="item.fullName()"></span></p>
+        <p>User ID:  <span ng-bind="item.id"></span></p>
+        <p>Status: Online</p>
+    </li>
+</ul>

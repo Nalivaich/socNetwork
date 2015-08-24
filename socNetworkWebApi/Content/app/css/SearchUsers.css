@@ -1,0 +1,18 @@
+﻿body {
+}
+.search-user-block{
+}
+
+.user-list{
+    text-decoration:none;
+    list-style:none;
+    cursor:pointer;
+}
+
+.inline-block {
+    display:inline-block;
+    padding: 15px;
+}
+.search-header{
+    text-align:center;
+}

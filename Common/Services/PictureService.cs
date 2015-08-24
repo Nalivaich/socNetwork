@@ -14,7 +14,7 @@ using AutoMapper;
 
 namespace Common.Services
 {
-    public class PictureService
+    public class PictureService : IPictureService
     {
         private EFUnitOfWork Database;
 
@@ -74,7 +74,7 @@ namespace Common.Services
             Database.Pictures.Create(Mapper.Map<PictureDTO, picture>(item));
             Database.Save();
         }
-        public void Update(UserDTO item)
+        public void Update(PictureDTO item)
         {
 
         }

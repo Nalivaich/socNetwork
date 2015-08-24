@@ -14,7 +14,7 @@ using AutoMapper;
 
 namespace Common.Services
 {
-    public class AlbumService
+    public class AlbumService : IAlbumService
     {
         private EFUnitOfWork Database;
 
@@ -74,9 +74,9 @@ namespace Common.Services
             Database.Albums.Create(Mapper.Map<AlbumDTO, album>(item));
             Database.Save();
         }
-        public void Update(UserDTO item)
+        public void Update(AlbumDTO item)
         {
-
+           
         }
 
         public void Delete(int id)

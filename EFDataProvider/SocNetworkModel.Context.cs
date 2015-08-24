@@ -24,7 +24,7 @@ namespace EFDataProvider
             : base("name=socNetworkEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -14,7 +14,7 @@ namespace Common.Interfaces
     {
         PictureDTO Get(int id);
         IEnumerable<PictureDTO> GetAll();
-        IEnumerable<CommentDTO> GetComments();
+        IEnumerable<CommentDTO> GetComments(int id);
         void Create(PictureDTO item);
         void Update(PictureDTO item);
         void Delete(int id);

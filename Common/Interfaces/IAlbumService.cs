@@ -14,7 +14,7 @@ namespace Common.Interfaces
     {
         AlbumDTO Get(int id);
         IEnumerable<AlbumDTO> GetAll();
-        IEnumerable<CommentDTO> GetComments();
+        IEnumerable<CommentDTO> GetComments(int id);
         void Create(AlbumDTO item);
         void Update(AlbumDTO item);
         void Delete(int id);

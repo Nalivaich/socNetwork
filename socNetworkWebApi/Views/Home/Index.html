@@ -1,0 +1,22 @@
+
+<div id="body" ng-app="socNetworkModule">
+    <div ng-controller="AppController">
+        <div class="container col-sm-offset-2 col-sm-8">
+
+            <div ng-controller="HeaderController">
+                <div class="row generalMenu">
+                    <div class="col-sm-3 logo logo-image" ui-sref="index.Publications">
+                        <img src="~/Content/app/images/LogoWhite.png">
+                    </div>
+                    <div class="slide-animate" ng-include="headerBlock.url" ng-model="template" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="span12 ui-view-container">
+                <div ui-view="contentView"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

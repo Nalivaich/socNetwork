@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{E589A866-41D9-44DA-86D5-AC8F002158AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "socNetworkWebApi", "socNetworkWebApi\socNetworkWebApi.csproj", "{6BCC9448-E05F-4FB9-9AEC-FA918DA35284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{E589A866-41D9-44DA-86D5-AC8F002158AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E589A866-41D9-44DA-86D5-AC8F002158AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E589A866-41D9-44DA-86D5-AC8F002158AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCC9448-E05F-4FB9-9AEC-FA918DA35284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCC9448-E05F-4FB9-9AEC-FA918DA35284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCC9448-E05F-4FB9-9AEC-FA918DA35284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCC9448-E05F-4FB9-9AEC-FA918DA35284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

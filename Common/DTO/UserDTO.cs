@@ -10,10 +10,15 @@ namespace Common.DTO
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string surName { get; set; }
+        public string alias { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+        public string phoneNumber { get; set; }
+        public string address { get; set; }
+        public string avaUrl { get; set; }
+        public bool isRemoved { get; set; }
         public System.DateTime created { get; set; }
         public Nullable<System.DateTime> modified { get; set; }
-        public Nullable<int> likes { get; set; }
-        public bool @private { get; set; }
-        public int userId { get; set; }
     }
 }

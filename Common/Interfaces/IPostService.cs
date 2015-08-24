@@ -14,7 +14,7 @@ namespace Common.Interfaces
     {
         PostDTO Get(int id);
         IEnumerable<PostDTO> GetAll();
-        IEnumerable<CommentDTO> GetComments();
+        IEnumerable<CommentDTO> GetComments(int id);
         void Create(PostDTO item);
         void Update(PostDTO item);
         void Delete(int id);
