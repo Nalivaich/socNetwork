@@ -26,15 +26,16 @@ namespace socNetworkWebApi.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/album/5
-        public string Get(int id)
+        public AlbumDTO Get(int id)
         {
-            return "value";
+            AlbumDTO album = _albumSvc.Get(id);
+            return album;
         }
 
-        // POST api/album
-        public void Post([FromBody]string value)
+        public IEnumerable<AlbumDTO> Post()
         {
+            IEnumerable<AlbumDTO> albumList = _albumSvc.GetAll();
+            return albumList;
         }
 
         // PUT api/album/5

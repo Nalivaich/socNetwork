@@ -2,7 +2,7 @@
  * Created by vitali.nalivaika on 06.08.2015.
  */
 
-socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout', 'userService',  function($scope, $location,  $timeout, userService) {
+socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout', 'UserService', function ($scope, $location, $timeout, UserService) {
     var self = $scope;
 
     var pp = $("#autorisation");
@@ -22,7 +22,7 @@ socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout
             $location.path('/greeting');
         }, 900);
 
-        userService.add({
+        UserService.add({
             name: self.currentUserName,
             password: self.currentUserPassword
         }, function (newObject) {

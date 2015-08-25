@@ -149,3 +149,9 @@ D:\Applications\socNetwork\socNetworkWebApi\bin\Common.dll
 D:\Applications\socNetwork\socNetworkWebApi\bin\EFDataProvider.dll
 D:\Applications\socNetwork\socNetworkWebApi\bin\Common.pdb
 D:\Applications\socNetwork\socNetworkWebApi\bin\EFDataProvider.pdb
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Net.Http.Formatting.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.WebHost.dll
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Net.Http.Formatting.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.xml
+D:\Applications\socNetwork\socNetworkWebApi\bin\System.Web.Http.WebHost.xml

@@ -13,6 +13,16 @@ namespace socNetworkWebApi.Areas.HelpPage
     /// </summary>
     public class XmlDocumentationProvider : IDocumentationProvider
     {
+        public virtual string GetDocumentation(HttpControllerDescriptor controllerDescriptor)
+        {
+            return "";
+        }
+
+        public virtual string GetResponseDocumentation(HttpActionDescriptor actionDescriptor)
+        {
+            return "";
+        }
+
         private XPathNavigator _documentNavigator;
         private const string MethodExpression = "/doc/members/member[@name='M:{0}']";
         private const string ParameterExpression = "param[@name='{0}']";

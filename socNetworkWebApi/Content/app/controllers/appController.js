@@ -2,7 +2,7 @@
  * Created by vitali.nalivaika on 05.08.2015.
  */
 
-socNetworkModule.controller('AppController', ['$scope', 'userService', "$http", '$resource', function ($scope, userService, $http, $resource) {
+socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', function ($scope, $http, $resource) {
     var self = $scope;
 
     /*$http.get('api/values/5').
@@ -46,8 +46,9 @@ socNetworkModule.controller('AppController', ['$scope', 'userService', "$http", 
      };
 
 
+    self.currentUser = { name: '', password: '' };
 
-
+    self.currentUserId = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!! change value, defauly 0
     self.usersRepository = [];
     self.roomsRepository = [];
     self.messagesRepository = [];
@@ -55,7 +56,6 @@ socNetworkModule.controller('AppController', ['$scope', 'userService', "$http", 
     self.currentUser = {};
     self.currentUserName = 'Guest';
     self.currentUserPassword = '';
-    self.currentUserId = 0;
     self.currentMessage = '';
     self.currentRoomId = '';
     self.privateFlag = false;
@@ -63,9 +63,18 @@ socNetworkModule.controller('AppController', ['$scope', 'userService', "$http", 
     self.activeRoomFlag = false;
     self.roomCreaterFlag = false;
     self.authorizationFlag = false;
-    self.addOrRemove  = false;
+    self.addOrRemove = false;
+    self.currentAlbum = 0;
 
+    self.changeCurrentAlbum = function (newValue) {
+        self.currentAlbum = newValue;
+    };
 
+    self.changeCurrentUserId = function (newValue) {
+        self.currentUserId = newValue;
+    };
+
+    
     self.addNewUser = function(object) {
         self.usersRepository.push(object);
         $scope.$apply();
@@ -94,9 +103,6 @@ socNetworkModule.controller('AppController', ['$scope', 'userService', "$http", 
     };
     self.SetCurrentRoomId = function(newValue) {
         self.currentRoomId = newValue;
-    };
-    self.SetCurrentUserId = function(newValue) {
-        self.currentUserId = newValue;
     };
 
     self.SetCurrentMessage = function(newValue) {

@@ -4,7 +4,7 @@
  */
 
 
-socNetworkModule.controller('CreateAlbumController', ['$scope', '$location', '$timeout', 'userService',  function($scope, $location,  $timeout, userService) {
+socNetworkModule.controller('CreateAlbumController', ['$scope', '$location', '$timeout', 'UserService', function ($scope, $location, $timeout, UserService) {
     var self = $scope;
 
     self.templates =

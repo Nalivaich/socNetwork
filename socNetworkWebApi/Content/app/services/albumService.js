@@ -2,7 +2,7 @@
  * Created by vitali.nalivaika on 21.08.2015.
  */
 
-socNetworkModule.service('AlbumService' ,[ function() {
+socNetworkModule.service('AlbumService', ['$http', '$resource', function ($http, $resource) {
 
     var self = this;
     self.albums = [];

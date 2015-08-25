@@ -1,0 +1,22 @@
+﻿body {
+}
+
+
+.album-list{
+    text-decoration:none;
+    list-style:none;
+    cursor:pointer;
+}
+
+.inline-block {
+    display:inline-block;
+    padding: 15px;
+}
+
+.block-header{
+    text-align:center;
+}
+.content-list{
+    padding: 5px;
+}
+

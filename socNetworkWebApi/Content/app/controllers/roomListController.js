@@ -2,7 +2,7 @@
  * Created by vitali.nalivaika on 05.08.2015.
  */
 
-socNetworkModule.controller('RoomListController', ['$scope', '$modal', '$log', 'userService', function($scope, $modal, $log, userService) {
+socNetworkModule.controller('RoomListController', ['$scope', '$modal', '$log', 'UserService', function ($scope, $modal, $log, UserService) {
     var self = $scope;
 
     self.templates =
@@ -80,7 +80,7 @@ socNetworkModule.controller('RoomListController', ['$scope', '$modal', '$log', '
     };
 
     self.addUserRoom = function(userId, roomId, nextFunction) {
-        userService.addUserRoom({
+        UserService.addUserRoom({
             userIndex: userId
         }, {
             roomIndex: roomId

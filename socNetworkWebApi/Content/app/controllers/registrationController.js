@@ -2,26 +2,16 @@
  * Created by vitali.nalivaika on 18.08.2015.
  */
 
-socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$timeout', 'userService',  function($scope, $location,  $timeout, userService) {
+socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$timeout', 'UserService', function ($scope, $location, $timeout, UserService) {
     var self = $scope;
+    self.newUser = {firstName:'', surName: '', pseudonym: '', email: '', password: '', confirmPassword: ''};
 
-    var pp = $("#autorisation");
-
-    self.signUp = function(object, form) {
-        if(!form.$valid){
+    self.signUp = function (object, form) {
+        if (!form.$valid) {
             return false;
         }
-
-        var elem = $('#autorisation');
-        elem.removeClass('bounceInLeft');
-        elem.addClass('bounceOutRight');
-        self.SetCurrentUserName(object.name);
-        self.SetCurrentUserPass(object.password);
-        self.SetAuthorizationFlag(true);
-        $timeout(function() {
-            $location.path('/greeting');
-        }, 900);
-
+        alert(object);
+        console.log(object);
         userService.add({
             name: self.currentUserName,
             password: self.currentUserPassword
@@ -36,8 +26,9 @@ socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$
         });
     };
 
-    self.Register = function(index) {
-        self.changeHeaderTemplate(index);
+    self.Register = function (newUserObject, index) {
+        console.log(newUserObject);
+        //self.changeHeaderTemplate(index);
 
     }
 

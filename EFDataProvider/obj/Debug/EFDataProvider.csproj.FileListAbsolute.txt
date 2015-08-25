@@ -11,4 +11,12 @@ D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.dll
 D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.pdb
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\AutoMapper.dll
 D:\Applications\socNetwork\EFDataProvider\bin\Debug\AutoMapper.xml
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\Newtonsoft.Json.dll
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\System.Net.Http.Formatting.dll
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\System.Web.Http.dll
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\System.Web.Http.WebHost.dll
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\Newtonsoft.Json.xml
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\System.Net.Http.Formatting.xml
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\System.Web.Http.xml
+D:\Applications\socNetwork\EFDataProvider\bin\Debug\System.Web.Http.WebHost.xml
 D:\Applications\socNetwork\EFDataProvider\obj\Debug\EFDataProvider.csprojResolveAssemblyReference.cache

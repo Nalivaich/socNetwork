@@ -2,7 +2,7 @@
  * Created by vitali.nalivaika on 05.08.2015.
  */
 
-socNetworkModule.controller('UserListController', ['$scope', 'userService', function($scope, userService) {
+socNetworkModule.controller('UserListController', ['$scope', 'UserService', function ($scope, UserService) {
     var self = $scope;
     self.templates =
         [ { name: 'template1.html', url: 'app/templates/userList.html'},

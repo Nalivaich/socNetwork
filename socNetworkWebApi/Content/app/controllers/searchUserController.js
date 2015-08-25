@@ -2,21 +2,20 @@
  * Created by vitali.nalivaika on 19.08.2015.
  */
 
-socNetworkModule.controller('SearchUserController', ['$scope', '$location', '$timeout', 'userService', function ($scope, $location, $timeout, userService) {
+socNetworkModule.controller('SearchUserController', ['$scope', '$location', '$timeout', 'UserService', function ($scope, $location, $timeout, UserService) {
     var self = $scope;
     self.users = [];
     var pp = $("#autorisation");
 
 
-    userService.getAll(function(result){
+    UserService.getAll(function (result) {
         self.users = result;
-        }
-        , function(){
+        }, function() {
         });
 
     self.getUser = function (item) {
         alert(item.id)
-        userService.getById(item.id, function (result) {
+        UserService.getById(item.id, function (result) {
         }, function () {
         })
     };

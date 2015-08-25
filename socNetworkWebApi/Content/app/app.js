@@ -43,7 +43,7 @@ var isOnGitHub = window.location.hostname === 'blueimp.github.io',
     url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : 'server/php/';
 
 
-var socNetworkModule = angular.module('socNetworkModule', ["ui.router", "ngAnimate", 'blueimp.fileupload', 'ngResource'])
+var socNetworkModule = angular.module('socNetworkModule', ["ui.router", "ngAnimate", 'blueimp.fileupload', 'ngResource', 'ui.bootstrap'])
     .config([
         '$httpProvider', 'fileUploadProvider',
         function ($httpProvider, fileUploadProvider) {
@@ -209,6 +209,17 @@ socNetworkModule.config(  function($stateProvider,$urlRouterProvider){
                 }
             }
         })
+    .state('ManageAlbum', {
+        url: "/ManageAlbum",
+        views: {
+            "contentView": {
+                templateUrl: "../Static/ManageAlbum.html"
+            },
+            "viewB": {
+                template: "route2.viewB"
+            }
+        }
+    })
 });
 
 
