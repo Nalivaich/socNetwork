@@ -1,0 +1,17 @@
+﻿body {
+}
+
+.reg-block{
+    padding:50px 0;
+}
+
+.reg-header{
+    float:right; 
+    font-size: 80%;
+    position: relative; 
+    top:-10px;
+}
+
+.reg-footer{
+    padding-bottom:25px;
+}

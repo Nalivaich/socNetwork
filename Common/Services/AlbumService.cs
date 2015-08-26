@@ -63,7 +63,8 @@ namespace Common.Services
                 modified = u.modified,
                 postId = u.postId,
                 pictureId = u.pictureId,
-                albumId = u.albumId
+                albumId = u.albumId,
+                userId = u.userId
             }).ToList();
         }
 

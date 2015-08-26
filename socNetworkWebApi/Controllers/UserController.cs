@@ -83,12 +83,8 @@ namespace socNetworkWebApi.Controllers
         [HttpPost]
         public UserDTO Add(UserDTO newUser)
         {
-           // newUser.id = _userSvc.GetMaxId() + 1;
             newUser.created = DateTime.Now;
-
             _userSvc.Create(newUser);
-            
-            //find current max id and set newUser maxId++
             return newUser;
         }
 

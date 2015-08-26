@@ -6,32 +6,55 @@ socNetworkModule.service('AlbumService', ['$http', '$resource', function ($http,
 
     var self = this;
     self.albums = [];
-    self.src = $resource('api/album/:id:cmd',
-          { id: "@id", cmd: "@cmd" }, //parameters default
-          {
-              ListTodos: { method: "GET", params: {} },
-              GetTodo: { method: "GET", params: { id: 0 } },
-              CreateTodo: { method: "POST", params: { content: "", order: 0, done: false }, isArray: true },
-              CreateTodo1: { method: "POST", params: { id: 0 } },
-              UpdateTodo: { method: "PATCH", params: { /*...*/ } },
-              DeleteTodo: { method: "DELETE", params: { id: 0 } },
-              ResetTodos: { method: "GET", params: { cmd: "reset" } }
-          });
+    self.albumsSrc = $resource('api/albums',
+      {  }, //parameters default
+      {
+          ListTodos: { method: "GET", isArray: true },
+          CreateTodo: { method: "POST" },
+          UpdateTodo: { method: "PATCH", params: { /*...*/ } },
+          DeleteTodo: { method: "DELETE" },
+      });
+
+
+    self.albumSrc = $resource('api/albums/:id',
+      { id: "@id" }, //parameters default
+      {
+          GetTodo: { method: "GET" },
+          CreateTodo: { method: "POST", isArray: true },
+          UpdateTodo: { method: "PATCH", params: { /*...*/ } },
+          DeleteTodo: { method: "DELETE" },
+          ResetTodos: { method: "GET" }
+      });
+
+
+    self.albumGistsSrc = $resource('api/albums/:id/:gist',
+      { id: "@id", gist: "@gist" }, //parameters default
+      {
+          ListTodos: { method: "GET", isArray: true },
+          CreateTodo: { method: "POST", isArray: true },
+          UpdateTodo: { method: "PATCH", params: { /*...*/ } },
+          DeleteTodo: { method: "DELETE", params: { someId: 0 } },
+          ResetTodos: { method: "GET" }
+      });
 
 
     self.getAll = function (onSuccess, onError) {
-        self.src.CreateTodo({}, function (result) {
+        self.albumsSrc.ListTodos({}, function (result) {
             self.albums = result;
             onSuccess(self.albums);
         });
     }
 
     self.getById = function (id, onSuccess, onError) {
-        self.src.GetTodo({ id: id }, function (result) {
+        self.albumSrc.GetTodo({ id: id }, function (result) {
             onSuccess(result);
-            alert(result.name);
         });
+    }
 
+    self.getComments = function (id, onSuccess, onError) {
+        self.albumGistsSrc.ListTodos({ id: id, gist: "comments" }, function (result) {
+            onSuccess(result);
+        });
     }
 
 }]);

@@ -206,10 +206,14 @@
     <Content Include="Content\app\controllers\roomListController.js" />
     <Content Include="Content\app\controllers\searchUserController.js" />
     <Content Include="Content\app\controllers\userListController.js" />
+    <Content Include="Content\app\controllers\viewAlbumController.js" />
     <Content Include="Content\app\css\animate.css" />
+    <Content Include="Content\app\css\fromIS.css" />
     <Content Include="Content\app\css\PeronalRoom.css" />
+    <Content Include="Content\app\css\registration.css" />
     <Content Include="Content\app\css\SearchUsers.css" />
     <Content Include="Content\app\css\style.css" />
+    <Content Include="Content\app\directives\chechValidate.js" />
     <Content Include="Content\app\directives\showFullname.js" />
     <Content Include="Content\app\directives\showRoom.js" />
     <Content Include="Content\app\filters\usersInRoomFilter.js" />
@@ -2000,7 +2004,9 @@
     <Content Include="Static\SearchUsers.html" />
     <Content Include="Static\Upload.html" />
     <Content Include="Static\uploadImage.html" />
+    <Content Include="Static\userAlbumsDialog.html" />
     <Content Include="Static\userList.html" />
+    <Content Include="Static\ViewAlbum.html" />
     <Content Include="Views\Common\Content.html" />
     <Content Include="Views\Common\ManageAlbum.html" />
     <Content Include="Views\Common\NewAlbum.html" />

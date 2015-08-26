@@ -1,0 +1,23 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+    <h3 class="modal-title text-primary">This public albums created by {{selectedUser.name}} {{selectedUser.surName}}</h3>
+</div>
+<div class="modal-body">
+    <div class="panel panel-success">
+        <div class="ava-image inline-block glyphicon glyphicon-user">
+            <img />
+        </div>
+        <div class="inline-block">
+            <span>{{selectedUser.name}} {{selectedUser.surName}}</span>
+        </div>
+    </div>
+    <p class="block-header text-success">Please select an album to view: </p>
+    <ul ng-repeat="album in selectedUserAlbums " class="myCursor ">
+        <li ui-sref="ViewAlbum" class="album-list panel panel-info text-success">
+            <p ng-click="choseAlbum(album.id)" class="alignClass content-list" ng-bind="album.name"></p>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" ng-click="cancel()">Close</button>
+</div>

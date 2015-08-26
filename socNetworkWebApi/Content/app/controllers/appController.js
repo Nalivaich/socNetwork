@@ -64,10 +64,10 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
     self.roomCreaterFlag = false;
     self.authorizationFlag = false;
     self.addOrRemove = false;
-    self.currentAlbum = 0;
+    self.currentAlbumId = 0;
 
-    self.changeCurrentAlbum = function (newValue) {
-        self.currentAlbum = newValue;
+    self.changeCurrentAlbumId = function (newValue) {
+        self.currentAlbumId = newValue;
     };
 
     self.changeCurrentUserId = function (newValue) {

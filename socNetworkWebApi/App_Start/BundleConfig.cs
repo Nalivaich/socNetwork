@@ -86,7 +86,9 @@ namespace socNetworkWebApi
                         "~/Content/app/controllers/personalRoomController.js",
                         "~/Content/app/controllers/registrationController.js",
                         "~/Content/app/controllers/searchUserController.js",
-                        "~/Content/app/controllers/userListController.js"));
+                        "~/Content/app/controllers/userListController.js",
+                        "~/Content/app/controllers/viewAlbumController.js"
+                        ));
         }
 
 

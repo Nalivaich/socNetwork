@@ -1,43 +1,7 @@
-/// <reference path="../../Views/Common/SearchUsers.html" />
-/// <reference path="../../Views/Common/SearchUsers.html" />
+
 /**
  * Created by vitali.nalivaika on 05.08.2015.
  */
-
-/*var socNetworkModule = angular.module('socNetworkModule', ["ui.router"]);
-socNetworkModule.config(function($stateProvider, $urlRouterProvider){
-
-    // For any unmatched url, send to /route1
-    $urlRouterProvider.otherwise("/route1");
-
-    $stateProvider
-        .state('route1', {
-            url: "/route1",
-            templateUrl: "route1.html"
-        })
-        .state('route1.list', {
-            url: "/list",
-            templateUrl: "route1.list.html",
-            controller: function($scope){
-                $scope.items = ["A", "List", "Of", "Items"];
-            }
-        })
-
-        .state('route2', {
-            url: "/route2",
-            templateUrl: "route2.html"
-        })
-        .state('route2.list', {
-            url: "/list",
-            templateUrl: "route2.list.html",
-            controller: function($scope){
-                $scope.things = ["A", "Set", "Of", "Things"];
-            }
-        })
-});*/
-
-
-
 
 var isOnGitHub = window.location.hostname === 'blueimp.github.io',
     url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : 'server/php/';
@@ -209,17 +173,28 @@ socNetworkModule.config(  function($stateProvider,$urlRouterProvider){
                 }
             }
         })
-    .state('ManageAlbum', {
-        url: "/ManageAlbum",
-        views: {
-            "contentView": {
-                templateUrl: "../Static/ManageAlbum.html"
-            },
-            "viewB": {
-                template: "route2.viewB"
+        .state('ManageAlbum', {
+            url: "/ManageAlbum",
+            views: {
+                "contentView": {
+                    templateUrl: "../Static/ManageAlbum.html"
+                },
+                "viewB": {
+                    template: "route2.viewB"
+                }
             }
-        }
-    })
+        })
+        .state('ViewAlbum', {
+            url: "/ViewAlbum",
+            views: {
+                "contentView": {
+                    templateUrl: "../Static/ViewAlbum.html"
+                },
+                "viewB": {
+                    template: "route2.viewB"
+                }
+            }
+        })
 });
 
 

@@ -71,3 +71,10 @@ body{
 .panelIndent{
     margin-top: 10px;
 }
+
+.like-block{
+    float:right;
+}
+.display-like-content{
+    display:inline-block;
+}

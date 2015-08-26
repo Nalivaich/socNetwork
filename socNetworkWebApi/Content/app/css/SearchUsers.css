@@ -16,3 +16,10 @@
 .block-header{
     text-align:center;
 }
+
+.send-button{
+    float:left;
+}
+.comment-content{
+    padding:5px;
+}

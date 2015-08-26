@@ -6,7 +6,6 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
 
     var self = this;
     self.users = [];
-    self.userid = 10;
 
     self.usersSrc = $resource('api/users/:action/:id/',
       { id: "@id", action: "@action" }, //parameters default

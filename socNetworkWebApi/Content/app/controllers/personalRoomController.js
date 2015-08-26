@@ -31,7 +31,7 @@ socNetworkModule.controller('PersonalRoomController', ['$scope', '$location', '$
 
         self.choseAlbum = function (id) {
             modalInstance.dismiss('cancel');
-            self.changeCurrentAlbum(id);
+            self.changeCurrentAlbumId(id);
         }
     };
 

@@ -5,13 +5,15 @@
 socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$timeout', 'UserService', function ($scope, $location, $timeout, UserService) {
     var self = $scope;
     self.newUser = {firstName:'', surName: '', pseudonym: '', email: '', password: '', confirmPassword: ''};
+    self.validForm = false;
 
     self.signUp = function (object, form, index) {
         if (!form.$valid) {
             return false;
         }
+        
+        self.validForm = true;
 
-        var dt = new Date();
         UserService.add({
             name: object.firstName,
             surName: object.surName,
@@ -22,7 +24,6 @@ socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$
             address: '',
             avaUrl: "#",
             isRemoved: 0,
-            created: dt.getDate(),
             modified: 0
         }, function (newObject) {
             /*var newUser = UserModel(newObject);
@@ -31,9 +32,19 @@ socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$
             self.SetAuthorizationFlag(true);
             self.changeHeaderTemplate(index);
             return true;*/
+            self.validForm = false;
         }, function () {
             console.log('can\'t add user');
         });
     };
 
+
+    $scope.validate = function (form) {
+        if (!form.$valid) {
+            console.log(false);
+            return false;
+        }
+        console.log(true);
+        return true;
+    }
 }]);
