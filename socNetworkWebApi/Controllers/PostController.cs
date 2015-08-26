@@ -22,21 +22,28 @@ namespace socNetworkWebApi.Controllers
         }
 
 
-        // GET api/post
-        public IEnumerable<string> Get()
+        [Route("api/posts")]
+        [HttpGet]
+        public IEnumerable<PostDTO> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<PostDTO> postList = _postSvc.GetAll();
+            return postList;
         }
 
-        // GET api/post/5
-        public string Get(int id)
+        [Route("api/posts/{id}")]
+        [HttpGet]
+        public PostDTO GetById(int id)
         {
-            return "value";
+            PostDTO post = _postSvc.Get(id);
+            return post;
         }
 
-        // POST api/post
-        public void Post([FromBody]string value)
+        [Route("api/posts/{id}/comments")]
+        [HttpGet]
+        public IEnumerable<CommentDTO> GetComments(int id)
         {
+            IEnumerable<CommentDTO> commentList = _postSvc.GetComments(id);
+            return commentList;
         }
 
         // PUT api/post/5

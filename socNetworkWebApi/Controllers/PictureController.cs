@@ -21,21 +21,30 @@ namespace socNetworkWebApi.Controllers
         {
             _pictureSvc = pictureSvc;
         }
-        // GET api/picture
-        public IEnumerable<string> Get()
+
+        [Route("api/pictures")]
+        [HttpGet]
+        public IEnumerable<PictureDTO> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<PictureDTO> picturetList = _pictureSvc.GetAll();
+            // In this case we must return all pictures files (not references!).
+            return picturetList;
         }
 
-        // GET api/picture/5
-        public string Get(int id)
+        [Route("api/pictures/{id}")]
+        [HttpGet]
+        public PictureDTO GetById(int id)
         {
-            return "value";
+            PictureDTO picture = _pictureSvc.Get(id);
+            return picture;
         }
 
-        // POST api/picture
-        public void Post([FromBody]string value)
+        [Route("api/pictures/{id}/comments")]
+        [HttpGet]
+        public IEnumerable<CommentDTO> GetComments(int id)
         {
+            IEnumerable<CommentDTO> pictureList = _pictureSvc.GetComments(id);
+            return pictureList;
         }
 
         // PUT api/picture/5

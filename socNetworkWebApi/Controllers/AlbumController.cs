@@ -20,22 +20,28 @@ namespace socNetworkWebApi.Controllers
             _albumSvc = albumSvc;
         }
 
-        // GET api/album
-        public IEnumerable<string> Get()
+        [Route("api/albums")]
+        [HttpGet]
+        public IEnumerable<AlbumDTO> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<AlbumDTO> albumList = _albumSvc.GetAll();
+            return albumList;
         }
 
-        public AlbumDTO Get(int id)
+        [Route("api/albums/{id}")]
+        [HttpGet]
+        public AlbumDTO GetById(int id)
         {
             AlbumDTO album = _albumSvc.Get(id);
             return album;
         }
 
-        public IEnumerable<AlbumDTO> Post()
+        [Route("api/albums/{id}/comments")]
+        [HttpGet]
+        public IEnumerable<CommentDTO> GetComments(int id)
         {
-            IEnumerable<AlbumDTO> albumList = _albumSvc.GetAll();
-            return albumList;
+            IEnumerable<CommentDTO> commentList = _albumSvc.GetComments(id);
+            return commentList;
         }
 
         // PUT api/album/5

@@ -20,56 +20,86 @@ namespace socNetworkWebApi.Controllers
         {
             _userSvc = userSvc;
         }
-        // GET api/user
-        /*public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }*/
 
-        // GET api/user/5
+        [Route("api/users")]
         [HttpGet]
-        public UserDTO Get(int id)
-        {
-            UserDTO user = _userSvc.Get(id);
-            return user;
-        }
-        [HttpPost]
-        public IEnumerable<UserDTO> Post([FromBody]string value)
+        public IEnumerable<UserDTO> GetAll()
         {
             IEnumerable<UserDTO> userList = _userSvc.GetAll();
             return userList;
         }
-        
-        public class userTable
+
+        [Route("api/users/{id}")]
+        [HttpGet]
+        public UserDTO GetById(int id)
         {
-            public int id { get; set; }
-            public string post { get; set; }
-            public string album { get; set; }
-            public string picture { get; set; }
+            UserDTO user = _userSvc.Get(id);
+            return user;
         }
 
+        [Route("api/users/{id}/posts")]
+        [HttpGet]
+        public IEnumerable<PostDTO> GetPosts(int id)
+        {
+            IEnumerable<PostDTO> userList = _userSvc.GetUserPosts(id);
+            return userList;
+        }
 
-        //[Route("customers/{customerId}/orders")]
+        [Route("api/users/{id}/albums")]
+        [HttpGet]
+        public IEnumerable<AlbumDTO> GetAlbums(int id)
+        {
+            IEnumerable<AlbumDTO> albumList = _userSvc.GetUserAlbums(id);
+            return albumList;
+        }
+
+        [Route("api/users/{id}/pictures")]
+        [HttpGet]
+        public IEnumerable<PictureDTO> GetPictures(int id)
+        {
+            IEnumerable<PictureDTO> pictureList = _userSvc.GetUserPhotos(id);
+            return pictureList;
+        }
+
+        [Route("api/users/{id}/posts/{postId}")]
+        public string GetPostById(int id, int postId)
+        {
+            return "";
+        }
+
+        [Route("api/users/{id}/albums{albumId}")]
+        public string GetAlbumById(int id, int albumId)
+        {
+            return "";
+        }
+
+        [Route("api/users/{id}/pictures/{pictureId}")]
+        public string GetPictureById(int id, int pictureId)
+        {
+            return "";
+        }
+
+        [Route("api/users/add")]
         [HttpPost]
-        public Object users(int id, [FromBody] userTable obj)
+        public UserDTO Add(UserDTO newUser)
         {
-            if(obj.post != null)
-            {
-                IEnumerable<PostDTO> userList = _userSvc.GetUserPosts(obj.id);
-                return userList;
-            }
-            if (obj.album != null)
-            {
-                IEnumerable<AlbumDTO> albumList = _userSvc.GetUserAlbums(obj.id);
-                return albumList;
-            }
-            if (obj.picture != null)
-            {
-                IEnumerable<PictureDTO> pictureList = _userSvc.GetUserPhotos(obj.id);
-                return pictureList;
-            }
-            return 0;
+           // newUser.id = _userSvc.GetMaxId() + 1;
+            newUser.created = DateTime.Now;
+
+            _userSvc.Create(newUser);
+            
+            //find current max id and set newUser maxId++
+            return newUser;
         }
+
+        [Route("api/users/delete/{id}")]
+        [HttpPost]
+        public void Add(int id)
+        {
+            _userSvc.Delete(id);
+             // we can change isRemoved flag simply & don`t remove user from DB
+        }
+
 
         /*[HttpPost]
         public string users(int id, [FromBody] userTable obj)

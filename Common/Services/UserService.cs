@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using EFDataProvider;
@@ -120,6 +121,13 @@ namespace Common.Services
                 roleName = u.roleName,
                 id = u.userId
             }).ToList().Where(u => u.id == userId);
+        }
+
+        public int GetMaxId()
+        {
+            var DBUsers = Database.Users.GetAll();
+            var allId = DBUsers.Select(u => u.id).ToList();
+            return allId.Max();
         }
         
         public void Create(UserDTO item)

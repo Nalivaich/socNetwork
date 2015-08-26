@@ -6,30 +6,34 @@ socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$
     var self = $scope;
     self.newUser = {firstName:'', surName: '', pseudonym: '', email: '', password: '', confirmPassword: ''};
 
-    self.signUp = function (object, form) {
+    self.signUp = function (object, form, index) {
         if (!form.$valid) {
             return false;
         }
-        alert(object);
-        console.log(object);
-        userService.add({
-            name: self.currentUserName,
-            password: self.currentUserPassword
+
+        var dt = new Date();
+        UserService.add({
+            name: object.firstName,
+            surName: object.surName,
+            alias: object.pseudonym,
+            password: object.password,
+            email: object.email,
+            phoneNumber: 0,
+            address: '',
+            avaUrl: "#",
+            isRemoved: 0,
+            created: dt.getDate(),
+            modified: 0
         }, function (newObject) {
-            var newUser = UserModel(newObject);
+            /*var newUser = UserModel(newObject);
             self.addNewUser(newUser);
             self.SetCurrentUserId(newUser.id);
             self.SetAuthorizationFlag(true);
-            return true;
+            self.changeHeaderTemplate(index);
+            return true;*/
         }, function () {
             console.log('can\'t add user');
         });
     };
-
-    self.Register = function (newUserObject, index) {
-        console.log(newUserObject);
-        //self.changeHeaderTemplate(index);
-
-    }
 
 }]);
