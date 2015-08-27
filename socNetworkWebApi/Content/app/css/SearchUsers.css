@@ -23,3 +23,7 @@
 .comment-content{
     padding:5px;
 }
+.list-group{
+    list-style:none;
+    text-decoration:none;
+}

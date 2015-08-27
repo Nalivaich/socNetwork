@@ -6,7 +6,7 @@
     <p class="block-header text-success">Please select an album to edit: </p>
     <ul ng-repeat="album in albums " class="myCursor ">
         <li ui-sref="ManageAlbum" class="album-list panel panel-info text-success">
-            <p ng-click="choseAlbum(album.id)" class="alignClass content-list" ng-bind="album.name"></p>
+            <p ng-click="choseAlbum(album)" class="alignClass content-list" ng-bind="album.name"></p>
         </li>
     </ul>
 </div>

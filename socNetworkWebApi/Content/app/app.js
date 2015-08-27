@@ -4,7 +4,7 @@
  */
 
 var isOnGitHub = window.location.hostname === 'blueimp.github.io',
-    url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : 'server/php/';
+    url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : 'api/pictures';
 
 
 var socNetworkModule = angular.module('socNetworkModule', ["ui.router", "ngAnimate", 'blueimp.fileupload', 'ngResource', 'ui.bootstrap'])
@@ -34,9 +34,16 @@ var socNetworkModule = angular.module('socNetworkModule', ["ui.router", "ngAnima
         '$scope', '$http', '$filter', '$window',
         function ($scope, $http) {
             $scope.options = {
-                url: url
+                url: 'api/pictures'
             };
-            if (!isOnGitHub) {
+            
+            $scope.changeUrl = function (object) {
+
+                $scope.options = {
+                    url: 'api/users/' + object.userId + '/' + object.gist + '/' + object.gistId + '/pictures/' + object.action
+                };
+            }
+            /*if (!isOnGitHub) {
                 $scope.loadingFiles = true;
                 $http.get(url)
                     .then(
@@ -48,7 +55,10 @@ var socNetworkModule = angular.module('socNetworkModule', ["ui.router", "ngAnima
                         $scope.loadingFiles = false;
                     }
                 );
-            }
+            }*/
+
+
+
         }
     ])
 

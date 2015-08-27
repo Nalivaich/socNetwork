@@ -65,6 +65,25 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
     self.authorizationFlag = false;
     self.addOrRemove = false;
     self.currentAlbumId = 0;
+    self.currentGist = '';
+    self.currentAction = 'add';
+    self.currentAlbum;
+
+    self.changeParams = function (object) {
+        self.currentAction = object.action;
+        self.currentGist = object.gist;
+    }
+
+    self.ChangeCurrentAlbum = function (newObj) {
+        self.currentAlbum = newObj;
+    }
+
+    self.ChangeCurrentGist = function (newValue) {
+        self.currentGist = newValue;
+    }
+    self.ChangeCurrentAction = function (newValue) {
+        self.currentAction = newValue;
+    }
 
     self.changeCurrentAlbumId = function (newValue) {
         self.currentAlbumId = newValue;

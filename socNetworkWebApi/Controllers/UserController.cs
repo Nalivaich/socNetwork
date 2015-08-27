@@ -8,6 +8,9 @@ using Common;
 using Common.Interfaces;
 using Common.Services;
 using Common.DTO;
+using System.Web;
+using System.Security.AccessControl;
+using System.IO;
 
 namespace socNetworkWebApi.Controllers
 {
@@ -27,6 +30,14 @@ namespace socNetworkWebApi.Controllers
         {
             IEnumerable<UserDTO> userList = _userSvc.GetAll();
             return userList;
+        }
+
+        [Route("api/users1/{str}")]
+        [HttpPost]
+        public string GetAll1(string str)
+        {
+            
+            return "";
         }
 
         [Route("api/users/{id}")]
@@ -97,6 +108,51 @@ namespace socNetworkWebApi.Controllers
         }
 
 
+        
+        [Route("api/users/{id}/albums/{albumId}/pictures/add")]
+        [HttpPost]
+        
+        public HttpResponseMessage LoadPostPictures(int id, int albumId)
+        {
+            UserDTO user = _userSvc.Get(id);
+
+            //AddDirectorySecurity("~/temp", "/", FileSystemRights.WriteData, AccessControlType.Allow);
+
+
+            string folderName = "~/temp/" + user.email;
+            string pathString = System.IO.Path.Combine(folderName, "Standart");
+            string pathString2 = System.IO.Path.Combine(folderName, "Medium");
+            string pathString3 = System.IO.Path.Combine(folderName, "Small");
+            System.IO.Directory.CreateDirectory(folderName);
+
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0)
+            {
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    var filePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email +  postedFile.FileName);
+                    postedFile.SaveAs(filePath);
+                    // NOTE: To store in memory use postedFile.InputStream
+                }
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Route("api/users/{id}/posts/{postId}/pictures/add")]
+        [HttpPost]
+        public void LoadAlbumPictures(int id, int postId)
+        {
+            //_userSvc.Delete(id);
+            // we can change isRemoved flag simply & don`t remove user from DB
+        }
+
+
         /*[HttpPost]
         public string users(int id, [FromBody] userTable obj)
         {
@@ -121,6 +177,15 @@ namespace socNetworkWebApi.Controllers
         // DELETE api/user/5
         public void Delete(int id)
         {
+        }
+
+
+        public static void AddDirectorySecurity(string FileName, string Account, FileSystemRights Rights, AccessControlType ControlType)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(FileName);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            dSecurity.AddAccessRule(new FileSystemAccessRule(Account,Rights,ControlType));
+            dInfo.SetAccessControl(dSecurity);
         }
     }
 }

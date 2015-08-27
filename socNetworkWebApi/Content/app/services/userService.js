@@ -16,7 +16,6 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
           DeleteTodo: { method: "DELETE" },
       });
 
-
     self.userSrc = $resource('api/users/:id',
       { id: "@id"}, //parameters default
       {
@@ -86,6 +85,12 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
             onSuccess(result);
         });
     }
+
+   /* self.addAlbum = function (object, onSuccess, onError) {
+        self.usersSrc.CreateTodo(object, function (result) {
+            onSuccess(result);
+        });
+    }*/
 
 
 

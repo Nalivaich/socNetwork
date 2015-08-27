@@ -1,4 +1,4 @@
-<div ng-controller="CreateAlbumController">
+<div ng-controller="CreatePostController">
     <div class="container col-sm-offset-2 col-sm-8 panel panel-info panelIndent" >
         <div class="row panel-heading">
         <div class=" col-sm-offset-3 col-sm-6 personalRoomHeaders personalRoomRows " >
@@ -19,7 +19,8 @@
         </div>
         <div class="row panel-footer">
             <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
-                <button type="button" class="btn btn-info" value="Create">Create Post</button>
+                <button type="button" class="btn btn-info" value="Cansel" ng-click="restore()">Cansel</button>
+                <button type="button" class="btn btn-info" value="Create" ng-click="create()">Create Post</button>
             </div>
         </div>
     </div>

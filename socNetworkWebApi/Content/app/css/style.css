@@ -54,7 +54,7 @@ body{
     text-decoration: none;
     list-style: none;
 }
-.personalRoomHeaders {
+.content-position,.personalRoomHeaders {
     text-align: center;
 }
 .personalRoomRows{

@@ -2,25 +2,31 @@
     <div class="container col-sm-offset-2 col-sm-8 panel panel-info panelIndent" >
         <div class="row panel-heading">
             <div class="col-sm-offset-3 col-sm-6 personalRoomHeaders personalRoomRows" >
-                <h2>Here you can change or remove the selected album</h2>
+                <h2>Here you can change or remove the selected album & add new pictures</h2>
             </div>
         </div>
         <div class="row panel-body">
             <div class="row personalRoomRows col-sm-6">
                 <label for="usr">Album Name:</label>
-                <input type="text" class="form-control" id="usr">
+                <input type="text" class="form-control" id="usr" ng-model="currentAlbum.name">
             </div>
             <div class="row personalRoomRows col-sm-12">
                 <div class="checkbox">
-                    <label><input type="checkbox" value="">Make a private album</label>
+                    <label><input type="checkbox" value="" ng-model="currentAlbum.private" ng-true-value="true" ng-false-value="false">Make a private album</label>
+                </div>
+            </div>
+            <div class="row col-sm-12 personalRoomRows">
+                <h3>Choose pictures to add in your new album</h3>
+                <div class="slide-animate" ng-include="Upload.url" ng-model="template">
                 </div>
             </div>
         </div>
         <div class="row panel-footer">
             <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
+                <button type="button" class="btn btn-success" value="Apply" ng-click="updateAlbum(currentAlbum)">Apply Changes</button>
                 <button type="button" class="btn btn-primary" value="Back"  ui-sref="PersonalRoom">Back</button>
                 <button type="button" class="btn btn-primary" value="Home"  ui-sref="index.Publications">Home</button>
-                <button type="button" class="btn btn-info" value="Remove">Remove Album</button>
+                <button type="button" class="btn btn-danger" value="Remove" ng-click="removeAlbum(currentAlbum.id)">Remove Album</button>
             </div>
         </div>
     </div>

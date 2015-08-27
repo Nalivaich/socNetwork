@@ -6,13 +6,13 @@ socNetworkModule.service('AlbumService', ['$http', '$resource', function ($http,
 
     var self = this;
     self.albums = [];
-    self.albumsSrc = $resource('api/albums',
+    self.albumsSrc = $resource('api/albums/:action/:id/',
       {  }, //parameters default
       {
           ListTodos: { method: "GET", isArray: true },
-          CreateTodo: { method: "POST" },
-          UpdateTodo: { method: "PATCH", params: { /*...*/ } },
-          DeleteTodo: { method: "DELETE" },
+          CreateTodo: { method: "POST", params: { action: "add" } },
+          UpdateTodo: { method: "PATCH", params: {action:"update" } },
+          DeleteTodo: { method: "DELETE",params: {action:"delete"} },
       });
 
 
@@ -53,6 +53,25 @@ socNetworkModule.service('AlbumService', ['$http', '$resource', function ($http,
 
     self.getComments = function (id, onSuccess, onError) {
         self.albumGistsSrc.ListTodos({ id: id, gist: "comments" }, function (result) {
+            onSuccess(result);
+        });
+    }
+
+    self.createAlbum = function (newObj, onSuccess, onError) {
+        console.log(newObj);
+        self.albumsSrc.CreateTodo(newObj, function (result) {
+            onSuccess(result);
+        });
+    }
+
+    self.updateAlbum = function (newObj, onSuccess, onError) {
+        self.albumsSrc.UpdateTodo(newObj, function (result) {
+            onSuccess(result);
+        });
+    }
+
+    self.removeAlbum = function (id, onSuccess, onError) {
+        self.albumsSrc.DeleteTodo({id:id}, function (result) {
             onSuccess(result);
         });
     }

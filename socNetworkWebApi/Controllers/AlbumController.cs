@@ -8,6 +8,7 @@ using Common;
 using Common.Interfaces;
 using Common.Services;
 using Common.DTO;
+using System.Web;
 
 namespace socNetworkWebApi.Controllers
 {
@@ -44,14 +45,62 @@ namespace socNetworkWebApi.Controllers
             return commentList;
         }
 
+        [Route("api/albums/{id}/pictures/add")]
+        [HttpPost]
+        public HttpResponseMessage AddPictures(int id)
+        {
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0)
+            {
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    var filePath = HttpContext.Current.Server.MapPath("~/DownloadResource/" + postedFile.FileName);
+                    postedFile.SaveAs(filePath);
+                    // NOTE: To store in memory use postedFile.InputStream
+                }
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            else
+            {
+                //HttpContext.Current.Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden; //or make this
+                /*
+                HttpContext.Current.Response.Status = "403 Forbidden";
+                HttpContext.Current.Response.StatusCode = 403;
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+                */
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Route("api/albums/add")]
+        [HttpPost]
+        public void GetComments(AlbumDTO newObj)
+        {
+            newObj.created = DateTime.Now;
+            newObj.modified = DateTime.Now;
+            _albumSvc.Create(newObj);
+        }
+
         // PUT api/album/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/album/5
-        public void Delete(int id)
+        [Route("api/albums/update")]
+        [HttpPatch]
+        public void DeleteAlbum(AlbumDTO newObj)
         {
+            // change not nullable fields only
+        }
+
+
+        [Route("api/albums/delete/{id}")]
+        [HttpDelete]
+        public void PutAlbum(int id)
+        {
+            _albumSvc.Delete(id);
         }
     }
 }

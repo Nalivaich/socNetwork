@@ -198,6 +198,7 @@
     <Content Include="Content\app\controllers\appController.js" />
     <Content Include="Content\app\controllers\chatController.js" />
     <Content Include="Content\app\controllers\createAlbumController.js" />
+    <Content Include="Content\app\controllers\createPostController.js" />
     <Content Include="Content\app\controllers\headerController.js" />
     <Content Include="Content\app\controllers\logInController.js" />
     <Content Include="Content\app\controllers\manageAlbumController.js" />
@@ -899,6 +900,8 @@
     <Content Include="Content\bower_components\uploadImages\css\jquery.fileupload-ui.css" />
     <Content Include="Content\bower_components\uploadImages\css\jquery.fileupload.css" />
     <Content Include="Content\bower_components\uploadImages\css\style.css" />
+    <Content Include="Content\bower_components\uploadImages\img\loading.gif" />
+    <Content Include="Content\bower_components\uploadImages\img\progressbar.gif" />
     <Content Include="Content\bower_components\uploadImages\js\app.js" />
     <Content Include="Content\bower_components\uploadImages\js\canvas-to-blob.js" />
     <Content Include="Content\bower_components\uploadImages\js\jquery.blueimp-gallery.js" />
@@ -1991,6 +1994,7 @@
     <Content Include="Static\addUserDialog.html" />
     <Content Include="Static\autorizedHeader.html" />
     <Content Include="Static\Content.html" />
+    <Content Include="Static\infoDialog.html" />
     <Content Include="Static\LogIn.html" />
     <Content Include="Static\ManageAlbum.html" />
     <Content Include="Static\NewAlbum.html" />
@@ -2049,7 +2053,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DownloadResource\" />
     <Folder Include="Models\" />
+    <Folder Include="Temp\" />
     <Folder Include="Views\Sign\" />
   </ItemGroup>
   <ItemGroup>

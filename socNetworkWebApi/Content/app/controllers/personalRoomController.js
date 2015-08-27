@@ -13,6 +13,7 @@ socNetworkModule.controller('PersonalRoomController', ['$scope', '$location', '$
     });
 
     self.open = function (size) {
+        self.ChangeCurrentGist('album');
         var modalInstance = $modal.open({
             animation: true,
             templateUrl: '../Static/albumsListDialog.html',
@@ -29,9 +30,10 @@ socNetworkModule.controller('PersonalRoomController', ['$scope', '$location', '$
             modalInstance.dismiss('cancel');
         };
 
-        self.choseAlbum = function (id) {
+        self.choseAlbum = function (album) {      
+            self.ChangeCurrentAlbum(album);
+            self.changeCurrentAlbumId(album.id);
             modalInstance.dismiss('cancel');
-            self.changeCurrentAlbumId(id);
         }
     };
 
