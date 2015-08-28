@@ -37,15 +37,16 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
           ResetTodos: { method: "GET"}
       });
 
-    self.userGistSrc = $resource('api/users/:id/:gist/:gistId',
+    self.userGistSrc = $resource('api/users/:id/:gist/:gistId/:secGist/:action',
       { id: "@id", gist: "@gist", gistID: "@gistId" }, //parameters default
       {
           GetTodo: { method: "GET" },
           CreateTodo: { method: "POST", isArray: true },
           UpdateTodo: { method: "PATCH", params: { /*...*/ } },
-          DeleteTodo: { method: "DELETE", params: { someId: 0 } },
+          DeleteTodo: { method: "DELETE", params: { action: "rollback" , secGist: "pictures"} },
           ResetTodos: { method: "GET" }
       });
+
     
 
     self.getAll = function(onSuccess, onError ) {
@@ -82,6 +83,12 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
 
     self.add = function (object, onSuccess, onError) {
         self.usersSrc.CreateTodo(object, function (result) {
+            onSuccess(result);
+        });
+    }
+
+    self.rollbackChanges = function (object, onSuccess, onError) {
+        self.userGistSrc.DeleteTodo({ id: object.userId, gist: object.gist, gistId: object.gistId }, function (result) {
             onSuccess(result);
         });
     }

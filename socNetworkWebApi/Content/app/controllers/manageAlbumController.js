@@ -3,7 +3,7 @@
  */
 
 
-socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$timeout', 'AlbumService', function ($scope, $location, $timeout, AlbumService) {
+socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$timeout', 'AlbumService', 'UserService', function ($scope, $location, $timeout, AlbumService, UserService) {
     var self = $scope;
 
     self.UrlPartsObject = {
@@ -29,6 +29,12 @@ socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$t
 
     self.removeAlbum = function (albumId) {
         AlbumService.removeAlbum(albumId, function (result) {
+        }, function () {
+        })
+    }
+
+    self.rollbackChanges = function () {
+        UserService.rollbackChanges(self.UrlPartsObject, function (result) {
         }, function () {
         })
     }

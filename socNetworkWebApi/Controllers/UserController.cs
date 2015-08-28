@@ -11,6 +11,8 @@ using Common.DTO;
 using System.Web;
 using System.Security.AccessControl;
 using System.IO;
+using System.Drawing;
+using socNetworkWebApi.Environment.DataProvider;
 
 namespace socNetworkWebApi.Controllers
 {
@@ -111,30 +113,71 @@ namespace socNetworkWebApi.Controllers
         
         [Route("api/users/{id}/albums/{albumId}/pictures/add")]
         [HttpPost]
-        
         public HttpResponseMessage LoadPostPictures(int id, int albumId)
         {
             UserDTO user = _userSvc.Get(id);
+            string rootPath = HttpContext.Current.Request.MapPath("~/Temp/");
+            string userDirectoryPath = Path.Combine(rootPath, user.email);
 
-            //AddDirectorySecurity("~/temp", "/", FileSystemRights.WriteData, AccessControlType.Allow);
+            if (!Directory.Exists(userDirectoryPath))
+            {
 
+                string standartImageDirectoryPath = Path.Combine(userDirectoryPath, "Standart");
+                string mediumImageDirectoryPath = Path.Combine(userDirectoryPath, "Medium");
+                string smallImageDirectoryPath = Path.Combine(userDirectoryPath, "Small");
+                Directory.CreateDirectory(userDirectoryPath);
+                Directory.CreateDirectory(standartImageDirectoryPath);
+                Directory.CreateDirectory(mediumImageDirectoryPath);
+                Directory.CreateDirectory(smallImageDirectoryPath);
+            }
 
-            string folderName = "~/temp/" + user.email;
-            string pathString = System.IO.Path.Combine(folderName, "Standart");
-            string pathString2 = System.IO.Path.Combine(folderName, "Medium");
-            string pathString3 = System.IO.Path.Combine(folderName, "Small");
-            System.IO.Directory.CreateDirectory(folderName);
-
+            
             var httpRequest = HttpContext.Current.Request;
+            
             if (httpRequest.Files.Count > 0)
             {
                 foreach (string file in httpRequest.Files)
                 {
+                    /*BitmapImage bi = new BitmapImage();
+                    bi.BeginInit();
+
+                    bi.CacheOption = BitmapCacheOption.OnLoad;
+                    bi.UriSource = new Uri(GetPicture(txtBarcode.Text), UriKind.RelativeOrAbsolute);
+
+                    // End initialization.
+                    bi.EndInit();
+                    image1.Source = bi;*/
+
                     var postedFile = httpRequest.Files[file];
-                    var filePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email +  postedFile.FileName);
-                    postedFile.SaveAs(filePath);
-                    // NOTE: To store in memory use postedFile.InputStream
+                    var standartImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Standart/" +   postedFile.FileName);
+                    var mediumImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Medium/" + postedFile.FileName);
+                    var smallImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Small/" + postedFile.FileName);
+                    postedFile.SaveAs(standartImagePath);
+                    PictureProvider.SaveMiniatureImage(standartImagePath, mediumImagePath, 200);
+                    PictureProvider.SaveMiniatureImage(standartImagePath, smallImagePath, 100);
+
                 }
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Route("api/users/{id}/albums/{albumId}/pictures/rollback")]
+        [HttpDelete]
+        public HttpResponseMessage DeleteTemporaryFolders(int id)
+        {
+            UserDTO user = _userSvc.Get(id);
+            string rootPath = HttpContext.Current.Request.MapPath("~/Temp/");
+            string userDirectoryPath = Path.Combine(rootPath, user.email);
+
+            if (Directory.Exists(userDirectoryPath))
+            {
+                var dir = new DirectoryInfo(userDirectoryPath);
+                dir.Delete(true);
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
@@ -177,15 +220,6 @@ namespace socNetworkWebApi.Controllers
         // DELETE api/user/5
         public void Delete(int id)
         {
-        }
-
-
-        public static void AddDirectorySecurity(string FileName, string Account, FileSystemRights Rights, AccessControlType ControlType)
-        {
-            DirectoryInfo dInfo = new DirectoryInfo(FileName);
-            DirectorySecurity dSecurity = dInfo.GetAccessControl();
-            dSecurity.AddAccessRule(new FileSystemAccessRule(Account,Rights,ControlType));
-            dInfo.SetAccessControl(dSecurity);
         }
     }
 }
