@@ -1,4 +1,4 @@
-﻿socNetworkModule.controller('CreatePostController', ['$scope', '$location', '$timeout', 'AlbumService', '$modal', function ($scope, $location, $timeout, AlbumService, $modal) {
+﻿socNetworkModule.controller('CreatePostController', ['$scope', '$location', '$timeout', 'AlbumService', 'UserService', '$modal', function ($scope, $location, $timeout, AlbumService, UserService, $modal) {
     var self = $scope;
     self.newPost = {
         name: '',
@@ -6,9 +6,7 @@
         likes: 0
     }
     self.UrlPartsObject = {
-        gist: 'posts',
         userId: self.currentUserId,
-        gistId: 0,
         action: 'add'
     }
     self.templates =
@@ -44,8 +42,10 @@
 
     }
 
-    self.restore = function () {
-
+    self.rollbackChanges = function () {
+        UserService.rollbackChanges(self.currentUserId, function (result) {
+        }, function () {
+        })
     }
 
 

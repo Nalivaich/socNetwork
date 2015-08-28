@@ -40,7 +40,7 @@ var socNetworkModule = angular.module('socNetworkModule', ["ui.router", "ngAnima
             $scope.changeUrl = function (object) {
 
                 $scope.options = {
-                    url: 'api/users/' + object.userId + '/' + object.gist + '/' + object.gistId + '/pictures/' + object.action
+                    url: 'api/users/' + object.userId + '/pictures/' + object.action
                 };
             }
             /*if (!isOnGitHub) {

@@ -7,9 +7,7 @@ socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$t
     var self = $scope;
 
     self.UrlPartsObject = {
-        gist: 'albums',
         userId: self.currentUserId,
-        gistId: self.currentAlbumId,
         action: 'add'
     }
 
@@ -34,7 +32,7 @@ socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$t
     }
 
     self.rollbackChanges = function () {
-        UserService.rollbackChanges(self.UrlPartsObject, function (result) {
+        UserService.rollbackChanges(self.currentUserId, function (result) {
         }, function () {
         })
     }

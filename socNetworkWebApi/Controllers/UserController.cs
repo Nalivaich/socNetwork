@@ -111,9 +111,9 @@ namespace socNetworkWebApi.Controllers
 
 
         
-        [Route("api/users/{id}/albums/{albumId}/pictures/add")]
+        [Route("api/users/{id}/pictures/add")]
         [HttpPost]
-        public HttpResponseMessage LoadPostPictures(int id, int albumId)
+        public HttpResponseMessage LoadPostPictures(int id)
         {
             UserDTO user = _userSvc.Get(id);
             string rootPath = HttpContext.Current.Request.MapPath("~/Temp/");
@@ -138,16 +138,6 @@ namespace socNetworkWebApi.Controllers
             {
                 foreach (string file in httpRequest.Files)
                 {
-                    /*BitmapImage bi = new BitmapImage();
-                    bi.BeginInit();
-
-                    bi.CacheOption = BitmapCacheOption.OnLoad;
-                    bi.UriSource = new Uri(GetPicture(txtBarcode.Text), UriKind.RelativeOrAbsolute);
-
-                    // End initialization.
-                    bi.EndInit();
-                    image1.Source = bi;*/
-
                     var postedFile = httpRequest.Files[file];
                     var standartImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Standart/" +   postedFile.FileName);
                     var mediumImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Medium/" + postedFile.FileName);
@@ -166,7 +156,7 @@ namespace socNetworkWebApi.Controllers
             }
         }
 
-        [Route("api/users/{id}/albums/{albumId}/pictures/rollback")]
+        [Route("api/users/{id}/pictures/rollback")]
         [HttpDelete]
         public HttpResponseMessage DeleteTemporaryFolders(int id)
         {
