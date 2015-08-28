@@ -11,7 +11,7 @@ socNetworkModule.service('AlbumService', ['$http', '$resource', function ($http,
       {
           ListTodos: { method: "GET", isArray: true },
           CreateTodo: { method: "POST", params: { action: "add" } },
-          UpdateTodo: { method: "PATCH", params: {action:"update" } },
+          UpdateTodo: { method: "PATCH", params: {action:"manage" } },
           DeleteTodo: { method: "DELETE",params: {action:"delete"} },
       });
 

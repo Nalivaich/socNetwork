@@ -42,6 +42,4 @@ socNetworkModule.controller('CreateAlbumController', ['$scope', '$location', '$t
         })
     }
 
-
-
 }]);

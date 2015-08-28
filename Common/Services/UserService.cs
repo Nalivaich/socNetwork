@@ -64,7 +64,8 @@ namespace Common.Services
                 name = u.name,
                 created = u.created,
                 modified = u.modified,
-                likes = u.likes
+                likes = u.likes,
+                userId = u.userId
             }).ToList();
                 
         }
@@ -84,7 +85,8 @@ namespace Common.Services
                 created = u.created,
                 modified = u.modified,
                 likes = u.likes,
-                @private = u.@private
+                @private = u.@private,
+                userId = u.userId
             }).ToList();
         }
         public IEnumerable<PictureDTO> GetUserPhotos(int userId)
@@ -104,7 +106,8 @@ namespace Common.Services
                 urlSmall = u.urlSmall,
                 likes = u.likes,
                 postId = u.postId,
-                albumId = u.albumId
+                albumId = u.albumId,
+                userId = u.userId
             }).ToList();
         }
         public IEnumerable<RoleDTO> GetUserRoles(int userId)

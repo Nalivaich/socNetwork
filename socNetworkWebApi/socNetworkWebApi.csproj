@@ -2055,8 +2055,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DownloadResource\" />
     <Folder Include="Models\" />
+    <Folder Include="Pictures\" />
     <Folder Include="Temp\" />
     <Folder Include="Views\Sign\" />
   </ItemGroup>

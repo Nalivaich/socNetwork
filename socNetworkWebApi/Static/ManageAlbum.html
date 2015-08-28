@@ -23,10 +23,10 @@
         </div>
         <div class="row panel-footer">
             <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
-                <button type="button" class="btn btn-success" value="Apply" ng-click="updateAlbum(currentAlbum)">Apply Changes</button>
+                <button type="button" class="btn btn-success" value="Apply" ui-sref="PersonalRoom" ng-click="updateAlbum(currentAlbum)">Apply Changes</button>
                 <button type="button" class="btn btn-primary" value="Back"  ui-sref="PersonalRoom" ng-click="rollbackChanges()">Back</button>
                 <button type="button" class="btn btn-primary" value="Home"  ui-sref="index.Publications" ng-click="rollbackChanges()">Home</button>
-                <button type="button" class="btn btn-danger" value="Remove" ng-click="removeAlbum(currentAlbum.id)">Remove Album</button>
+                <button type="button" class="btn btn-danger" value="Remove" ui-sref="PersonalRoom" ng-click="removeAlbum(currentAlbum.id)">Remove Album</button>
             </div>
         </div>
     </div>

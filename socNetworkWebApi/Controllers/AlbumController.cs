@@ -83,6 +83,16 @@ namespace socNetworkWebApi.Controllers
             _albumSvc.Create(newObj);
         }
 
+        [Route("api/albums/manage")]
+        [HttpPatch]
+        public void ManageAlbum(AlbumDTO album)
+        {
+            //string str = json.name;
+            //JObject jObject = JObject.Parse((String)json);
+            //_userSvc.Delete(id);
+            // we can change isRemoved flag simply & don`t remove user from DB
+        }
+
         // PUT api/album/5
         public void Put(int id, [FromBody]string value)
         {

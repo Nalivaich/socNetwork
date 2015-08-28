@@ -11,7 +11,7 @@
             <input type="text" class="form-control" id="usr" ng-model="search.$">
         </div>
         <div class="row col-sm-12 col-md-12">
-            <ul ng-repeat="item in users | filter: search">
+            <ul ng-repeat="item in users | filter: search" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
                 <li ng-click="getUser('md', item)" class="user-list">
                     <div class="panel panel-success">
                         <div class="ava-image inline-block glyphicon glyphicon-user">

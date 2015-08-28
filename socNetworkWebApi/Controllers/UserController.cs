@@ -13,6 +13,9 @@ using System.Security.AccessControl;
 using System.IO;
 using System.Drawing;
 using socNetworkWebApi.Environment.DataProvider;
+using Newtonsoft.Json.Linq;
+using AutoMapper;
+using System.Web.Helpers;
 
 namespace socNetworkWebApi.Controllers
 {
@@ -32,14 +35,6 @@ namespace socNetworkWebApi.Controllers
         {
             IEnumerable<UserDTO> userList = _userSvc.GetAll();
             return userList;
-        }
-
-        [Route("api/users1/{str}")]
-        [HttpPost]
-        public string GetAll1(string str)
-        {
-            
-            return "";
         }
 
         [Route("api/users/{id}")]
@@ -145,7 +140,6 @@ namespace socNetworkWebApi.Controllers
                     postedFile.SaveAs(standartImagePath);
                     PictureProvider.SaveMiniatureImage(standartImagePath, mediumImagePath, 200);
                     PictureProvider.SaveMiniatureImage(standartImagePath, smallImagePath, 100);
-
                 }
 
                 return Request.CreateResponse(HttpStatusCode.Created);
@@ -186,6 +180,23 @@ namespace socNetworkWebApi.Controllers
         }
 
 
+        [Route("api/users/{id}/albums/{albumId}/manage")]
+        [HttpPatch]
+        public void CreatePost(int id, int albumId, Object json)
+        {
+            //string str = json.name;
+            //JObject jObject = JObject.Parse((String)json);
+            //_userSvc.Delete(id);
+            // we can change isRemoved flag simply & don`t remove user from DB
+        }
+
+        [Route("api/users/{id}/posts/create")]
+        [HttpPatch]
+        public void ManagingAlbum(int id, int postId)
+        {
+            //_userSvc.Delete(id);
+            // we can change isRemoved flag simply & don`t remove user from DB
+        }
         /*[HttpPost]
         public string users(int id, [FromBody] userTable obj)
         {

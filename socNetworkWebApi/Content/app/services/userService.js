@@ -37,12 +37,12 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
           ResetTodos: { method: "GET"}
       });
 
-    self.userGistSrc = $resource('api/users/:id/:gist/:gistId/:action',
-      { id: "@id", gist: "@gist", gistID: "@gistId" }, //parameters default
+    self.userGistSrc = $resource('api/users/:id/:gist/:gistId/:action/:object',
+      { id: "@id", gist: "@gist", gistId: "@gistId" }, //parameters default
       {
           GetTodo: { method: "GET" },
           CreateTodo: { method: "POST", isArray: true },
-          UpdateTodo: { method: "PATCH", params: { /*...*/ } },
+          UpdateAlbum: { method: "PATCH", params: { gist: "albums", action: "manage" } },
           DeleteTodo: { method: "DELETE", params: { action: "rollback", gist: "pictures" } },
           ResetTodos: { method: "GET" }
       });
@@ -93,6 +93,13 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
         });
     }
 
+    /*self.updateAlbum = function (object, onSuccess, onError) {
+        console.log(object);
+        self.userGistSrc.UpdateAlbum({ id: 2, gistId: 3, object: object, }, function (result) {
+            onSuccess(result);
+        });
+    }*/
+
    /* self.addAlbum = function (object, onSuccess, onError) {
         self.usersSrc.CreateTodo(object, function (result) {
             onSuccess(result);
@@ -102,17 +109,3 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
 
 
 }]);
-
-
-
-/*self.src = $resource('api/user/:someId/:cmd',
-      { id: "@someId", cmd: "@cmd" }, //parameters default
-      {
-          ListTodos: { method: "GET", params: {} },
-          GetTodo: { method: "GET", params: { someId: 0 } },
-          CreateTodo: { method: "POST", params: { }, isArray: true },
-          CreateTodo1: { method: "POST", params: { }, isArray: true  },
-          UpdateTodo: { method: "PATCH", params: {} },
-          DeleteTodo: { method: "DELETE", params: { someId: 0 } },
-          ResetTodos: { method: "GET", params: { cmd: "reset" } }
-      });*/

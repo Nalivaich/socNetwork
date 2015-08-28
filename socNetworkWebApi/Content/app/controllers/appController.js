@@ -4,36 +4,6 @@
 
 socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', function ($scope, $http, $resource) {
     var self = $scope;
-
-    /*$http.get('api/values/5').
-      then(function (response) {
-      }, function (response) {
-      });*/
-
-    var src = $resource('api/values/:id:cmd',
-              { id: "@id", cmd: "@cmd" }, //parameters default
-              {
-                  ListTodos: { method: "GET", params: {} },
-                  GetTodo: { method: "GET", params: { id: 0 } },
-                  CreateTodo: { method: "POST", params: { content: "", order: 0, done: false  }, isArray: true },
-                  UpdateTodo: { method: "PATCH", params: { /*...*/ } },
-                  DeleteTodo: { method: "DELETE", params: { id: 0 } },
-                  ResetTodos: { method: "GET", params: { cmd: "reset" } }
-              });
-
-    console.log('before ' + $scope.ss);
-
-    $scope.res;
-    var pp = src.CreateTodo({}, function (result) {
-        $scope.res = result;
-        console.log($scope.res[0].email);
-    });
-
-    
-    /*$scope.phone = src.GetTodo({ phoneId:100500 }, function (phone) {
-  
-    });*/
-    console.log(pp);
     self.headerBlock = '';
 
     self.templates =
@@ -48,7 +18,7 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
 
     self.currentUser = { name: '', password: '' };
 
-    self.currentUserId = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!! change value, defauly 0
+    self.currentUserId = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!! change value, default 0 , = current user id
     self.usersRepository = [];
     self.roomsRepository = [];
     self.messagesRepository = [];
