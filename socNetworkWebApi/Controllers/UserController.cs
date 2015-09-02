@@ -16,13 +16,40 @@ using socNetworkWebApi.Environment.DataProvider;
 using Newtonsoft.Json.Linq;
 using AutoMapper;
 using System.Web.Helpers;
+using ExtensionMethods;
+using Newtonsoft.Json;
+using System.Web.Http.Results;
 
 namespace socNetworkWebApi.Controllers
 {
-    public class UserController : ApiController 
+    public class FilesUploadResult
+    {
+        [JsonProperty("files")]
+        public List<FileUploadResult> Files { get; set; }
+    }
+
+    [JsonObject]
+    public class FileUploadResult
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("newName")]
+        public string NewName { get; set; }
+        [JsonProperty("size")]
+        public int Size { get; set; }
+        [JsonProperty("url")]
+        public string Url { get; set; }
+        [JsonProperty("thumbnailUrl")]
+        public string ThumbnailUrl { get; set; }
+        [JsonProperty("deleteUrl")]
+        public string DeleteUrl { get; set; }
+        [JsonProperty("deleteType")]
+        public string DeleteType { get; set; }
+    }
+    public class UserController : ApiController
     {
 
-        private IUserService  _userSvc;
+        private IUserService _userSvc;
 
         public UserController(IUserService userSvc)
         {
@@ -101,19 +128,20 @@ namespace socNetworkWebApi.Controllers
         public void Add(int id)
         {
             _userSvc.Delete(id);
-             // we can change isRemoved flag simply & don`t remove user from DB
+            // we can change isRemoved flag simply & don`t remove user from DB
+
         }
 
 
-        
+
         [Route("api/users/{id}/pictures/add")]
         [HttpPost]
-        public HttpResponseMessage LoadPostPictures(int id)
+        public FilesUploadResult LoadPostPictures(int id)
         {
+            List<string> result = new List<string>();
             UserDTO user = _userSvc.Get(id);
             string rootPath = HttpContext.Current.Request.MapPath("~/Temp/");
             string userDirectoryPath = Path.Combine(rootPath, user.email);
-
             if (!Directory.Exists(userDirectoryPath))
             {
 
@@ -126,27 +154,73 @@ namespace socNetworkWebApi.Controllers
                 Directory.CreateDirectory(smallImageDirectoryPath);
             }
 
-            
             var httpRequest = HttpContext.Current.Request;
-            
+
             if (httpRequest.Files.Count > 0)
             {
+                FilesUploadResult res = new FilesUploadResult { };
                 foreach (string file in httpRequest.Files)
                 {
+
                     var postedFile = httpRequest.Files[file];
-                    var standartImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Standart/" +   postedFile.FileName);
-                    var mediumImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Medium/" + postedFile.FileName);
-                    var smallImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Small/" + postedFile.FileName);
+                    result.Add(Convert.ToString(Guid.NewGuid() + Path.GetExtension(postedFile.FileName)));
+                    var standartImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Standart/" + result.Last());
+                    var mediumImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Medium/" + result.Last());
+                    var smallImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Small/" + result.Last());
                     postedFile.SaveAs(standartImagePath);
                     PictureProvider.SaveMiniatureImage(standartImagePath, mediumImagePath, 200);
                     PictureProvider.SaveMiniatureImage(standartImagePath, smallImagePath, 100);
-                }
+                    res.Files = new List<FileUploadResult>
+                        {
+                            new FileUploadResult {
+                                Name = postedFile.FileName,
+                                Size = postedFile.ContentLength,
+                                Url = "/temp/" + user.email + "/Standart/" + result.Last(),
+                                DeleteUrl = "http://test",
+                                DeleteType = "DELETE",
+                                ThumbnailUrl = "/temp/" + user.email + "/Medium/" + result.Last(),
+                                NewName = result.Last()
+                            }
+                        };
 
-                return Request.CreateResponse(HttpStatusCode.Created);
+                }
+                //return result;
+                return res;
+
+                //List<FileUploadResult> images = new List<FileUploadResult>{
+                //  new FileUploadResult{name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "" , deleteUrl = "",deleteType = ""}
+                //  };
+                //var jsonUser = images.ToJSON(); //= JsonConvert.SerializeObject(new FileUploadResult { name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "", deleteUrl = "", deleteType = "" });
+                ////return jsonUser;
+                ////return Json(new Responce { name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "", deleteUrl = "", deleteType = "" });
+
+                //return Request.CreateResponse(HttpStatusCode.Created, jsonUser);
+                //return images.ToJSON(); 
+                /*       {"files": [
+                              {
+                                "name": "picture1.jpg",
+                                "size": 902604,
+                                "url": "http:\/\/example.org\/files\/picture1.jpg",
+                                "thumbnailUrl": "http:\/\/example.org\/files\/thumbnail\/picture1.jpg",
+                                "deleteUrl": "http:\/\/example.org\/files\/picture1.jpg",
+                                "deleteType": "DELETE"
+                              },
+                              {
+                                "name": "picture2.jpg",
+                                "size": 841946,
+                                "url": "http:\/\/example.org\/files\/picture2.jpg",
+                                "thumbnailUrl": "http:\/\/example.org\/files\/thumbnail\/picture2.jpg",
+                                "deleteUrl": "http:\/\/example.org\/files\/picture2.jpg",
+                                "deleteType": "DELETE"
+                              }
+                            ]}*/
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                throw new Exception();
+                //return Json(new Responce { name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "", deleteUrl = "", deleteType = "" });
+                //return result;
+                //return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 

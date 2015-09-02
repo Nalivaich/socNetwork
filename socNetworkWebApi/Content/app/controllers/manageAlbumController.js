@@ -6,6 +6,21 @@
 socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$timeout', 'AlbumService', 'UserService', function ($scope, $location, $timeout, AlbumService, UserService) {
     var self = $scope;
 
+    self.greeting = "from ManageAlbumController";
+
+    self.dataFilesArray = [];
+
+
+    self.AddDataFiles = function (data) {
+        if (!data) {
+            return false;
+        }
+        for (var i = 0; i < data.length; i++) {
+            self.dataFilesArray.push(data[i].newName);
+        }
+        return true;
+    }
+
     self.UrlPartsObject = {
         userId: self.currentUserId,
         action: 'add'
@@ -22,6 +37,7 @@ socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$t
     self.updateAlbum = function (newAlbum) {
         newAlbum.created = null;
         newAlbum.modified = null;
+        newAlbum.picturesName = self.dataFilesArray;
         AlbumService.updateAlbum(newAlbum, function (result) {
         }, function () {
         })

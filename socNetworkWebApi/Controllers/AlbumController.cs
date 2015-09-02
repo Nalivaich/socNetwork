@@ -9,16 +9,20 @@ using Common.Interfaces;
 using Common.Services;
 using Common.DTO;
 using System.Web;
+using System.IO;
+using socNetworkWebApi.Environment.DataProvider;
 
 namespace socNetworkWebApi.Controllers
 {
     public class AlbumController : ApiController
     {
         private IAlbumService _albumSvc;
+        private IUserService _userSvc;
 
-        public AlbumController(IAlbumService albumSvc)
+        public AlbumController(IAlbumService albumSvc, IUserService userSvc)
         {
             _albumSvc = albumSvc;
+            _userSvc = userSvc;
         }
 
         [Route("api/albums")]
@@ -87,6 +91,56 @@ namespace socNetworkWebApi.Controllers
         [HttpPatch]
         public void ManageAlbum(AlbumDTO album)
         {
+            var names = album.picturesName.ToArray();
+            List<string> result = new List<string>();
+            UserDTO user = _userSvc.Get(album.userId);
+            string rootPath = HttpContext.Current.Request.MapPath("~/Temp/");
+            string userDirectoryPath = Path.Combine(rootPath, user.email);
+            if (Directory.Exists(userDirectoryPath))
+            {
+                var httpRequest = HttpContext.Current.Request;
+                if (names.Length > 0)
+                {
+                    //FilesUploadResult res = new FilesUploadResult { };
+                    foreach (string name in names)
+                    {
+
+                        var pp =  System.IO.Directory.GetFiles(userDirectoryPath + "/Standart/", name);
+                        /*var postedFile = httpRequest.Files[file];
+                        result.Add(Convert.ToString(Guid.NewGuid() + Path.GetExtension(postedFile.FileName)));
+                        var standartImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Standart/" + result.Last());
+                        var mediumImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Medium/" + result.Last());
+                        var smallImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Small/" + result.Last());
+                        postedFile.SaveAs(standartImagePath);
+                        PictureProvider.SaveMiniatureImage(standartImagePath, mediumImagePath, 200);
+                        PictureProvider.SaveMiniatureImage(standartImagePath, smallImagePath, 100);*/
+
+                        /*res.Files = new List<FileUploadResult>
+                        {
+                            new FileUploadResult {
+                                Name = postedFile.FileName,
+                                Size = postedFile.ContentLength,
+                                Url = "/temp/" + user.email + "/Standart/" + result.Last(),
+                                DeleteUrl = "http://test",
+                                DeleteType = "DELETE",
+                                ThumbnailUrl = "/temp/" + user.email + "/Medium/" + result.Last(),
+                                NewName = result.Last()
+                            }
+                        };*/
+
+                    }
+                    //return res;
+
+                }
+            }
+
+            else
+            {
+                throw new Exception();
+            }
+
+
+
             //string str = json.name;
             //JObject jObject = JObject.Parse((String)json);
             //_userSvc.Delete(id);

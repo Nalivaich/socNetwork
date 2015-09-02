@@ -66,3 +66,9 @@ D:\Applications\socNetwork\socNetwork\bin\Common.pdb
 D:\Applications\socNetwork\socNetwork\bin\EFDataProvider.pdb
 D:\Applications\socNetwork\socNetwork\bin\AutoMapper.dll
 D:\Applications\socNetwork\socNetwork\bin\AutoMapper.xml
+D:\Applications\socNetwork\socNetwork\bin\System.Net.Http.Formatting.dll
+D:\Applications\socNetwork\socNetwork\bin\System.Web.Http.dll
+D:\Applications\socNetwork\socNetwork\bin\System.Web.Http.WebHost.dll
+D:\Applications\socNetwork\socNetwork\bin\System.Net.Http.Formatting.xml
+D:\Applications\socNetwork\socNetwork\bin\System.Web.Http.xml
+D:\Applications\socNetwork\socNetwork\bin\System.Web.Http.WebHost.xml

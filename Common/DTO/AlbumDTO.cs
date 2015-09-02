@@ -15,5 +15,6 @@ namespace Common.DTO
         public Nullable<int> likes { get; set; }
         public bool @private { get; set; }
         public int userId { get; set; }
+        public IEnumerable<string> picturesName { get; set; }
     }
 }

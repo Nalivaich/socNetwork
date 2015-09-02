@@ -5,6 +5,7 @@
 socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', function ($scope, $http, $resource) {
     var self = $scope;
     self.headerBlock = '';
+    self.greeting = "from appController";
 
     self.templates =
         [ { name: 'template1.html', url: '../Static/noAutorizedHeader.html'},
