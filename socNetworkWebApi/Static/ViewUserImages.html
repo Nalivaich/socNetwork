@@ -1,0 +1,27 @@
+﻿<div ng-controller="ViewUserImagesController">
+    <div class="container col-sm-offset-2 col-sm-8 panel panel-info panelIndent">
+        <div class="row panel-heading">
+            <div class="col-sm-offset-3 col-sm-6 personalRoomHeaders personalRoomRows">
+                <h2>Here you can change or remove the selected album & add new pictures</h2>
+            </div>
+        </div>
+        <div class="row panel-body">
+            <div class="row personalRoomRows col-sm-12 col-md-12">
+
+                <ul class="myCursor">
+                    <li class="album-list inline-list panel panel-info text-success image-list " ng-repeat="picture in pictures" ng-click="open('lg', picture.id)">
+                        <p> Likes:  {{picture.likes}} </p>
+                        <img src="/Files/Medium/{{picture.id}}" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row panel-footer">
+            <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
+                <button type="button" class="btn btn-primary" value="Back" ui-sref="PersonalRoom">Back</button>
+                <button type="button" class="btn btn-primary" value="Home" ui-sref="index.Publications">Home</button>
+
+            </div>
+        </div>
+    </div>
+</div>

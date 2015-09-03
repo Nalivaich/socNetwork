@@ -18,11 +18,13 @@ namespace socNetworkWebApi.Controllers
     {
         private IAlbumService _albumSvc;
         private IUserService _userSvc;
+        private IPictureService _pictureSvc;
 
-        public AlbumController(IAlbumService albumSvc, IUserService userSvc)
+        public AlbumController(IAlbumService albumSvc, IUserService userSvc, IPictureService pictureSvc)
         {
             _albumSvc = albumSvc;
             _userSvc = userSvc;
+            _pictureSvc = pictureSvc;
         }
 
         [Route("api/albums")]
@@ -91,60 +93,68 @@ namespace socNetworkWebApi.Controllers
         [HttpPatch]
         public void ManageAlbum(AlbumDTO album)
         {
+            album.modified = DateTime.Now;
+            _albumSvc.Update(album);
             var names = album.picturesName.ToArray();
-            List<string> result = new List<string>();
             UserDTO user = _userSvc.Get(album.userId);
+
             string rootPath = HttpContext.Current.Request.MapPath("~/Temp/");
+            string tempDirectoryPath = Path.Combine(rootPath, user.email);
+
+            rootPath = HttpContext.Current.Request.MapPath("~/Pictures/");
             string userDirectoryPath = Path.Combine(rootPath, user.email);
-            if (Directory.Exists(userDirectoryPath))
+            if (!Directory.Exists(userDirectoryPath))
+            {
+                string standartImageDirectoryPath = Path.Combine(userDirectoryPath, "Standart");
+                string mediumImageDirectoryPath = Path.Combine(userDirectoryPath, "Medium");
+                string smallImageDirectoryPath = Path.Combine(userDirectoryPath, "Small");
+                Directory.CreateDirectory(userDirectoryPath);
+                Directory.CreateDirectory(standartImageDirectoryPath);
+                Directory.CreateDirectory(mediumImageDirectoryPath);
+                Directory.CreateDirectory(smallImageDirectoryPath);
+            }
+
+            if (Directory.Exists(tempDirectoryPath))
             {
                 var httpRequest = HttpContext.Current.Request;
                 if (names.Length > 0)
                 {
-                    //FilesUploadResult res = new FilesUploadResult { };
                     foreach (string name in names)
                     {
-
-                        var pp =  System.IO.Directory.GetFiles(userDirectoryPath + "/Standart/", name);
-                        /*var postedFile = httpRequest.Files[file];
-                        result.Add(Convert.ToString(Guid.NewGuid() + Path.GetExtension(postedFile.FileName)));
-                        var standartImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Standart/" + result.Last());
-                        var mediumImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Medium/" + result.Last());
-                        var smallImagePath = HttpContext.Current.Server.MapPath("~/temp/" + user.email + "/Small/" + result.Last());
-                        postedFile.SaveAs(standartImagePath);
-                        PictureProvider.SaveMiniatureImage(standartImagePath, mediumImagePath, 200);
-                        PictureProvider.SaveMiniatureImage(standartImagePath, smallImagePath, 100);*/
-
-                        /*res.Files = new List<FileUploadResult>
+                        try
                         {
-                            new FileUploadResult {
-                                Name = postedFile.FileName,
-                                Size = postedFile.ContentLength,
-                                Url = "/temp/" + user.email + "/Standart/" + result.Last(),
-                                DeleteUrl = "http://test",
-                                DeleteType = "DELETE",
-                                ThumbnailUrl = "/temp/" + user.email + "/Medium/" + result.Last(),
-                                NewName = result.Last()
+                            if (!File.Exists(tempDirectoryPath + "/Standart/" + name))
+                            {
+                                using (FileStream fs = File.Create(tempDirectoryPath + "/Standart/" + name)) { }
                             }
-                        };*/
-
+                            /*if (File.Exists(userDirectoryPath + "/Standart/" + name)) // Думаю можно не проверять, имена уникальны
+                                File.Delete(userDirectoryPath + "/Standart/" + name);
+                            */
+                            File.Move(tempDirectoryPath + "/Standart/" + name, userDirectoryPath + "/Standart/" + name);
+                            File.Move(tempDirectoryPath + "/Medium/" + name, userDirectoryPath + "/Medium/" + name);
+                            File.Move(tempDirectoryPath + "/Small/" + name, userDirectoryPath + "/Small/" + name);
+                        }
+                        catch (Exception e)
+                        {
+                            throw new Exception("file has not been moved",e.InnerException);
+                        }
+                        _pictureSvc.Create(new PictureDTO
+                        {
+                            urlStandart = Convert.ToString("Pictures/" + user.email + "/Standart/" + name),
+                            urlMedium = Convert.ToString("Pictures/" + user.email + "/Medium/" + name),
+                            urlSmall = Convert.ToString("Pictures/" + user.email + "/Small/" + name),
+                            albumId = album.id,
+                            userId = album.userId,
+                            likes = 0
+                        });
                     }
-                    //return res;
-
                 }
             }
-
             else
             {
                 throw new Exception();
             }
 
-
-
-            //string str = json.name;
-            //JObject jObject = JObject.Parse((String)json);
-            //_userSvc.Delete(id);
-            // we can change isRemoved flag simply & don`t remove user from DB
         }
 
         // PUT api/album/5

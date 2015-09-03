@@ -6,7 +6,7 @@ CREATE table users(id integer primary key not null identity (1, 1),
 				    email nvarchar(50) not null unique,
 					phoneNumber nvarchar(25) null,
 					address nvarchar(100)  null ,
-					avaUrl nvarchar(100) not null,
+					avaUrl nvarchar(300) not null,
 					isRemoved bit not null default 0,
 					created datetime not null default GetDate() );
 
@@ -36,9 +36,9 @@ CREATE table albums(id integer primary key not null identity (1, 1),
 							  foreign key (userId) references users (id));
 
 CREATE table pictures(id integer primary key not null identity (1, 1),
-				    urlStandart nvarchar(100) not null,
-					urlMedium nvarchar(100) not null,
-					urlSmall nvarchar(100) not null,
+				    urlStandart nvarchar(300) not null,
+					urlMedium nvarchar(300) not null,
+					urlSmall nvarchar(300) not null,
 					likes integer  null default 0,
 					postId integer null,
 				    albumId integer not null,

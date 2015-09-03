@@ -187,6 +187,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Environment\DataProvider\PictureProvider.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Content\app\controllers\searchUserController.js" />
     <Content Include="Content\app\controllers\userListController.js" />
     <Content Include="Content\app\controllers\viewAlbumController.js" />
+    <Content Include="Content\app\controllers\viewUserImagesController.js" />
     <Content Include="Content\app\css\animate.css" />
     <Content Include="Content\app\css\fromIS.css" />
     <Content Include="Content\app\css\PeronalRoom.css" />
@@ -2012,11 +2014,13 @@
     <Content Include="Static\albumsListDialog.html" />
     <Content Include="Static\roomList.html" />
     <Content Include="Static\SearchUsers.html" />
+    <Content Include="Static\showImageDialog.html" />
     <Content Include="Static\Upload.html" />
     <Content Include="Static\uploadImage.html" />
     <Content Include="Static\userAlbumsDialog.html" />
     <Content Include="Static\userList.html" />
     <Content Include="Static\ViewAlbum.html" />
+    <Content Include="Static\ViewUserImages.html" />
     <Content Include="Views\Common\Content.html" />
     <Content Include="Views\Common\ManageAlbum.html" />
     <Content Include="Views\Common\NewAlbum.html" />

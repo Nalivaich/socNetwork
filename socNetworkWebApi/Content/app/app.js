@@ -1,3 +1,4 @@
+/// <reference path="D:\Applications\socNetwork\socNetworkWebApi\Static/ViewUserImages.html" />
 
 /**
  * Created by vitali.nalivaika on 05.08.2015.
@@ -144,6 +145,19 @@ socNetworkModule.config(  function($stateProvider,$urlRouterProvider){
                 }
             }
         })
+        .state('ViewUserImages', {
+            url: "/ViewUserImages",
+            views: {
+                "contentView": {
+                    templateUrl: "../Static/ViewUserImages.html"
+                },
+                "viewB": {
+                    template: "route2.viewB"
+                }
+            }
+        })
+
+    
 });
 
 

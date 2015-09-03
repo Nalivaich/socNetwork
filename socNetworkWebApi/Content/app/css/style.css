@@ -78,3 +78,10 @@ body{
 .display-like-content{
     display:inline-block;
 }
+
+.inline-list{
+    display:inline-block;
+}
+.image-list{
+    margin: 5px 15px;
+}

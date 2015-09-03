@@ -50,10 +50,12 @@ namespace socNetworkWebApi.Controllers
     {
 
         private IUserService _userSvc;
+        private IPictureService _pictureSvc;
 
-        public UserController(IUserService userSvc)
+        public UserController(IUserService userSvc, IPictureService pictureSvc)
         {
             _userSvc = userSvc;
+            _pictureSvc = pictureSvc;
         }
 
         [Route("api/users")]
@@ -92,8 +94,17 @@ namespace socNetworkWebApi.Controllers
         [HttpGet]
         public IEnumerable<PictureDTO> GetPictures(int id)
         {
-            IEnumerable<PictureDTO> pictureList = _userSvc.GetUserPhotos(id);
+            string rootPath = HttpContext.Current.Request.MapPath("~/");
+            var pictureList = _userSvc.GetUserPhotos(id);
+            foreach(PictureDTO picture in pictureList)
+            {
+                picture.urlStandart = Path.Combine(rootPath, picture.urlStandart);
+                picture.urlMedium = Path.Combine(rootPath, picture.urlMedium);
+                picture.urlSmall = Path.Combine(rootPath, picture.urlSmall);
+            }
             return pictureList;
+            /*IEnumerable<PictureDTO> pictureList = _userSvc.GetUserPhotos(id);
+            return pictureList;*/
         }
 
         [Route("api/users/{id}/posts/{postId}")]
@@ -131,9 +142,7 @@ namespace socNetworkWebApi.Controllers
             // we can change isRemoved flag simply & don`t remove user from DB
 
         }
-
-
-
+ 
         [Route("api/users/{id}/pictures/add")]
         [HttpPost]
         public FilesUploadResult LoadPostPictures(int id)

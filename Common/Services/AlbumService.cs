@@ -77,7 +77,10 @@ namespace Common.Services
         }
         public void Update(AlbumDTO item)
         {
-           
+            Mapper.CreateMap<AlbumDTO, album>();
+
+            Database.Albums.Update(Mapper.Map<AlbumDTO, album>(item));
+            Database.Save();
         }
 
         public void Delete(int id)

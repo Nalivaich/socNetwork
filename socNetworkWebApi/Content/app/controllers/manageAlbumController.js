@@ -35,8 +35,8 @@ socNetworkModule.controller('ManageAlbumController', ['$scope', '$location', '$t
 
 
     self.updateAlbum = function (newAlbum) {
-        newAlbum.created = null;
-        newAlbum.modified = null;
+        //var value = new Date();
+        //newAlbum.modified  = value.getFullYear() + "-" + value.getMonth() + 1 + "-" + value.getDate() + " " + value.getHours() + ":" + value.getMinutes() + ":" + value.getSeconds();
         newAlbum.picturesName = self.dataFilesArray;
         AlbumService.updateAlbum(newAlbum, function (result) {
         }, function () {
