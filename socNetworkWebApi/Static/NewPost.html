@@ -8,7 +8,7 @@
         <div class="row panel-body">
             <div class="row personalRoomRows col-sm-6">
                 <label for="usr">Post Name:</label>
-                <input type="text" class="form-control" id="usr" placeholder="Post Name">
+                <input type="text" class="form-control" id="usr" placeholder="Post Name" ng-model="currentPost.name">
             </div>
 
             <div class="row col-sm-12 personalRoomRows">
@@ -20,7 +20,7 @@
         <div class="row panel-footer">
             <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
                 <button type="button" class="btn btn-info" value="Cansel" ui-sref="index.Publications" ng-click="rollbackChanges()">Cancel</button>
-                <button type="button" class="btn btn-info" value="Create" ng-click="create()">Create Post</button>
+                <button type="button" class="btn btn-info" value="Create" ng-click="create(currentPost)">Create Post</button>
             </div>
         </div>
     </div>

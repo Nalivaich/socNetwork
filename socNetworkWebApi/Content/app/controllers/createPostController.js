@@ -1,10 +1,24 @@
-﻿socNetworkModule.controller('CreatePostController', ['$scope', '$location', '$timeout', 'AlbumService', 'UserService', '$modal', function ($scope, $location, $timeout, AlbumService, UserService, $modal) {
+﻿socNetworkModule.controller('CreatePostController', ['$scope', '$location', '$timeout', 'PostService', 'UserService', '$modal', function ($scope, $location, $timeout, PostService, UserService, $modal) {
     var self = $scope;
+    self.dataFilesArray = [];
+    self.currentPost = {};
+
     self.newPost = {
         name: '',
         userId: 0,
         likes: 0
     }
+
+    self.AddDataFiles = function (data) {
+        if (!data) {
+            return false;
+        }
+        for (var i = 0; i < data.length; i++) {
+            self.dataFilesArray.push(data[i].newName);
+        }
+        return true;
+    }
+
     self.UrlPartsObject = {
         userId: self.currentUserId,
         action: 'add'
@@ -15,32 +29,15 @@
     self.Upload = self.templates[0];
 
 
-
-    /*self.create = function () {
-        self.newAlbum.userId = self.currentUserId;
-        AlbumService.createAlbum(self.newAlbum, function (result) {
-            var modalInstance = $modal.open({
-                animation: true,
-                templateUrl: '../Static/infoDialog.html',
-                scope: self,
-                size: 'md',
-                resolve: {
-                    items: function () {
-                        return $scope.items;
-                    }
-                }
-            });
-
-            self.cancel = function () {
-                modalInstance.dismiss('cancel');
-            };
+    self.create = function (newPost) {
+        newPost.picturesName = self.dataFilesArray;
+        newPost.userId = self.currentUserId;
+        newPost.likes = 0;
+        PostService.createPost(newPost, function (result) {
         }, function () {
         })
-    }*/
-
-    self.create = function () {
-
     }
+
 
     self.rollbackChanges = function () {
         UserService.rollbackChanges(self.currentUserId, function (result) {

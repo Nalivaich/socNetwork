@@ -29,9 +29,11 @@ namespace Common.Repositories
             return db.albums.Find(id);
         }
 
-        public void Create(album album)
+        public int Create(album album)
         {
             db.albums.Add(album);
+            db.SaveChanges();
+            return album.id;
         }
 
         public void Update(album album)

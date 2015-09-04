@@ -2,11 +2,11 @@
  * Created by vitali.nalivaika on 21.08.2015.
  */
 
-socNetworkModule.service('PictureService' ,[ function() {
+socNetworkModule.service('PictureService', ['$http', '$resource', function ($http, $resource) {
 
     var self = this;
     self.pictures = [];
-    self.src = $resource('api/picture/:id:cmd',
+    self.src = $resource('api/pictures/:id:cmd',
           { id: "@id", cmd: "@cmd" }, //parameters default
           {
               ListTodos: { method: "GET", params: {} },

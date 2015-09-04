@@ -18,7 +18,7 @@ namespace Common.Interfaces
         IEnumerable<PictureDTO> GetUserPhotos(int id);
         IEnumerable<RoleDTO> GetUserRoles(int id);
         int GetMaxId();
-        void Create(UserDTO item);
+        int Create(UserDTO item);
         void Update(UserDTO item);
         void Delete(int id);
         void Dispose();

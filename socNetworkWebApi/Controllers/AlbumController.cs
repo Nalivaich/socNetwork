@@ -51,6 +51,14 @@ namespace socNetworkWebApi.Controllers
             return commentList;
         }
 
+        [Route("api/albums/{id}/pictures")]
+        [HttpGet]
+        public IEnumerable<PictureDTO> GetPictures(int id)
+        {
+            IEnumerable<PictureDTO> picturesList = _albumSvc.GetPictures(id);
+            return picturesList;
+        }
+
         [Route("api/albums/{id}/pictures/add")]
         [HttpPost]
         public HttpResponseMessage AddPictures(int id)

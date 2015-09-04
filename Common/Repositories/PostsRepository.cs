@@ -29,9 +29,11 @@ namespace Common.Repositories
             return db.posts.Find(id);
         }
 
-        public void Create(post post)
+        public int Create(post post)
         {
             db.posts.Add(post);
+            db.SaveChanges();
+            return post.id;
         }
 
         public void Update(post post)

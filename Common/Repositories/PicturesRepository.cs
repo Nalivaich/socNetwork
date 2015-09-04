@@ -29,9 +29,10 @@ namespace Common.Repositories
             return db.pictures.Find(id);
         }
 
-        public void Create(picture picture)
+        public int Create(picture picture)
         {
             db.pictures.Add(picture);
+            return picture.id;
         }
 
         public void Update(picture picture)

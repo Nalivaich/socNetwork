@@ -85,3 +85,23 @@ body{
 .image-list{
     margin: 5px 15px;
 }
+
+.show-image-modal{
+    display:table;
+    text-align:center;
+}
+
+.view-post{
+    background-color:#D9EDF7;
+}
+
+.post-list{
+    margin-bottom:50px;
+}
+
+.block-list{
+    display:block;
+}
+.post-button{
+    margin-top:10px;
+}

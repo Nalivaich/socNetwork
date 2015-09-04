@@ -204,6 +204,7 @@
     <Content Include="Content\app\controllers\chatController.js" />
     <Content Include="Content\app\controllers\createAlbumController.js" />
     <Content Include="Content\app\controllers\createPostController.js" />
+    <Content Include="Content\app\controllers\currentPostController.js" />
     <Content Include="Content\app\controllers\fileDestroyController.js" />
     <Content Include="Content\app\controllers\fileUploadController.js" />
     <Content Include="Content\app\controllers\headerController.js" />
@@ -215,6 +216,7 @@
     <Content Include="Content\app\controllers\searchUserController.js" />
     <Content Include="Content\app\controllers\userListController.js" />
     <Content Include="Content\app\controllers\viewAlbumController.js" />
+    <Content Include="Content\app\controllers\viewPostsController.js" />
     <Content Include="Content\app\controllers\viewUserImagesController.js" />
     <Content Include="Content\app\css\animate.css" />
     <Content Include="Content\app\css\fromIS.css" />
@@ -223,7 +225,7 @@
     <Content Include="Content\app\css\SearchUsers.css" />
     <Content Include="Content\app\css\style.css" />
     <Content Include="Content\app\directives\chechValidate.js" />
-    <Content Include="Content\app\directives\showFullname.js" />
+    <Content Include="Content\app\directives\callFunction.js" />
     <Content Include="Content\app\directives\showRoom.js" />
     <Content Include="Content\app\filters\usersInRoomFilter.js" />
     <Content Include="Content\app\images\footerTexture.jpg" />

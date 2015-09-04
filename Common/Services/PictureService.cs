@@ -68,12 +68,13 @@ namespace Common.Services
             }).ToList();
         }
 
-        public void Create(PictureDTO item)
+        public int Create(PictureDTO item)
         {
             Mapper.CreateMap<PictureDTO, picture>();
 
-            Database.Pictures.Create(Mapper.Map<PictureDTO, picture>(item));
+            int result = Database.Pictures.Create(Mapper.Map<PictureDTO, picture>(item));
             Database.Save();
+            return result;
         }
         public void Update(PictureDTO item)
         {

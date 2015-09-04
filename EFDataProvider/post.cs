@@ -11,6 +11,7 @@ namespace EFDataProvider
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     
     public partial class post
     {
@@ -19,7 +20,7 @@ namespace EFDataProvider
             this.comments = new HashSet<comment>();
             this.pictures = new HashSet<picture>();
         }
-    
+
         public int id { get; set; }
         public string name { get; set; }
         public System.DateTime created { get; set; }

@@ -91,7 +91,12 @@ namespace socNetworkWebApi
                         "~/Content/app/controllers/createPostController.js",
                         "~/Content/app/controllers/fileUploadController.js",
                         "~/Content/app/controllers/fileDestroyController.js",
-                        "~/Content/app/controllers/viewUserImagesController.js"
+                        "~/Content/app/controllers/viewUserImagesController.js",
+                        "~/Content/app/controllers/viewPostsController.js",
+                        "~/Content/app/controllers/currentPostController.js",
+
+                        "~/Content/app/directives/callFunction.js"
+
                         ));
         }
 

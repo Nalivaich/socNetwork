@@ -14,5 +14,6 @@ namespace Common.DTO
         public Nullable<System.DateTime> modified { get; set; }
         public Nullable<int> likes { get; set; }
         public int userId { get; set; }
+        public IEnumerable<string> picturesName { get; set; }
     }
 }

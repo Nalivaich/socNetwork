@@ -57,8 +57,13 @@ socNetworkModule.service('AlbumService', ['$http', '$resource', function ($http,
         });
     }
 
+    self.getPictures = function (id, onSuccess, onError) {
+        self.albumGistsSrc.ListTodos({ id: id, gist: "pictures" }, function (result) {
+            onSuccess(result);
+        });
+    }
+
     self.createAlbum = function (newObj, onSuccess, onError) {
-        console.log(newObj);
         self.albumsSrc.CreateTodo(newObj, function (result) {
             onSuccess(result);
         });

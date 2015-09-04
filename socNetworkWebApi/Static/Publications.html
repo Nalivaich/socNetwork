@@ -1,4 +1,59 @@
+<div ng-controller="ViewPostsController">
+    <div class="container  col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-info panelIndent view-post">
+        <div class="row panel-heading">
+        </div>
+        <div class="row panel-body">
+            <div class="row personalRoomRows col-sm-12 col-md-12">
+                <ul class="myCursor">
+                    <li class="album-list panel panel-info text-success image-list post-list" ng-repeat="post in posts">
+                        <div class='text-primary'> 
+                            <p>Post: '{{post.name}}'</p>    
+                            <p>Created by: ""</p>    
+                            <p>Have '{{post.likes}}' Likes</p>
+                        </div>
+                        <p>  </p>
+                        <ul class="myCursor">
+                            <li class="album-list inline-block panel panel-info text-success image-list block-list" ng-controller="CurrentPostController">
+                                <div class="inline-block" ng-repeat="picture in pictures" ng-click="open('lg', picture.id)">
+                                    <img src="/Files/Medium/{{picture.id}}">
+                                </div>
 
-<div >
-    <span>In this page you will see all user`s publications with ng-repeate </span>
+                                <div class="row panel-footer">
+                                    <div class="post-commnts">
+                                        <ul ng-repeat="item in currentAlbumComments">
+                                            <li class="list-group panel-success link-list">
+                                                <span class="comment-content">{{GetSenderName(item.userId)}}  Say:</span>
+                                                <span class="comment-content" ng-bind="item.comment"> </span>
+                                                <hr class="colorgraph">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row col-sm-12 col-md-12 col-lg-12 col-xs-12 form-group">
+                                        <div class="like-block">
+                                            <span class="display-like-content text-danger">Like this post</span>
+                                            <button class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen display-like-content" data-reactid=".0.1.0.0.0.$1060107300852156957.2.2.0">Нравится</button>
+                                        </div>
+                                        <div>
+                                            <label for="comment">Comment:</label>
+                                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                                        </div>
+                                        
+                                        <div class="row col-sm-7 personalRoomRows">
+                                            <button type="button" class="btn btn-success send-button post-button" value="Back">Send Comment</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--<div class="row panel-footer">
+            <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
+                <button type="button" class="btn btn-primary" value="Back" ui-sref="PersonalRoom">Back</button>
+                <button type="button" class="btn btn-primary" value="Home" ui-sref="index.Publications">Home</button>
+            </div>
+        </div>-->
+    </div>
 </div>

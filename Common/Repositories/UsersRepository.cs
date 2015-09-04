@@ -30,9 +30,11 @@ namespace Common.Repositories
             return db.users.Find(id);
         }
 
-        public void Create(user user)
+        public int Create(user user)
         {
             db.users.Add(user);
+            db.SaveChanges();
+            return user.id;
         }
 
         public void Update(user user)

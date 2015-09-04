@@ -69,12 +69,34 @@ namespace Common.Services
             }).ToList();
         }
 
-        public void Create(PostDTO item)
+        public IEnumerable<PictureDTO> GetPictures(int postId)
+        {
+            var post = Database.Posts.Get(postId);
+            if (post == null)
+            {
+                throw new ValidationException("Post not found", "");
+            }
+
+            return post.pictures.Select(u => new PictureDTO
+            {
+                id = u.id,
+                urlSmall = u.urlSmall,
+                urlMedium = u.urlMedium,
+                urlStandart = u.urlStandart,
+                albumId = u.albumId,
+                likes = u.likes,
+                postId = u.postId,
+                userId = u.userId
+            }).ToList();
+        }
+
+        public int Create(PostDTO item)
         {
             Mapper.CreateMap<PostDTO, post>();
 
-            Database.Posts.Create(Mapper.Map<PostDTO, post>(item));
+            int result = Database.Posts.Create(Mapper.Map<PostDTO, post>(item));
             Database.Save();
+            return result;
         }
         public void Update(PostDTO item)
         {

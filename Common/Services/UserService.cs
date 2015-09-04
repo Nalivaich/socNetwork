@@ -133,12 +133,13 @@ namespace Common.Services
             return allId.Max();
         }
         
-        public void Create(UserDTO item)
+        public int Create(UserDTO item)
         {
             Mapper.CreateMap<UserDTO, user>();
  
-            Database.Users.Create(Mapper.Map<UserDTO, user>(item));
+            int result = Database.Users.Create(Mapper.Map<UserDTO, user>(item));
             Database.Save();
+            return result;
         }
         public void Update(UserDTO item)
         {

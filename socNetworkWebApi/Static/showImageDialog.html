@@ -1,35 +1,27 @@
-﻿<div class="modal-header">
-    <button type="button" class="close" aria-hidden="true" ng-click="cancel()">×</button>
-    <h4 class="modal-title text-primary">Choose one of the users</h4>
-</div>
-<div class="modal-body">
-    <p class="text-success">asdasdasd</p>
-    <div class="myCursor row panel-body">
-        <img src="/Files/Standart/{{currentPictureId}}" />
+﻿<div class="show-image-modal modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" ng-click="cancel()">×</button>
+        <h4 class="modal-title text-primary">Original Picture</h4>
     </div>
-</div>
-<div class="modal-footer">
-    <div class="post-commnts">
-        <ul ng-repeat="item in currentAlbumComments">
-            <li class="list-group panel-success link-list">
-                <span class="comment-content">{{GetSenderName(item.userId)}}  Say:</span>
-                <span class="comment-content" ng-bind="item.comment"> </span>
-                <hr class="colorgraph">
-            </li>
-        </ul>
-    </div>
-    <div class="row col-sm-12 col-md-12 col-lg-12 col-xs-12 form-group">
-        <div class="like-block">
-            <span class="display-like-content text-danger">Like this post</span>
-            <button class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen display-like-content" data-reactid=".0.1.0.0.0.$1060107300852156957.2.2.0">Нравится</button>
-        </div>
-        <div>
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+    <div class="modal-body">
+        <p class="text-success"></p>
+        <div class="myCursor row panel-body">
+            <img src="/Files/Standart/{{currentPictureId}}" />
         </div>
     </div>
-    <div class="row col-sm-7 personalRoomRows">
-        <button type="button" class="btn btn-danger" ng-click="cancel()">Close</button>
+    <div class="modal-footer">
+        <div class="post-commnts">
+            <ul ng-repeat="item in currentAlbumComments">
+                <li class="list-group panel-success link-list">
+                    <span class="comment-content">{{GetSenderName(item.userId)}}  Say:</span>
+                    <span class="comment-content" ng-bind="item.comment"> </span>
+                    <hr class="colorgraph">
+                </li>
+            </ul>
+        </div>
+        <div class="row col-sm-7 personalRoomRows">
+            <button type="button" class="btn btn-danger" ng-click="cancel()">Close</button>
+        </div>
+
     </div>
-    
 </div>
