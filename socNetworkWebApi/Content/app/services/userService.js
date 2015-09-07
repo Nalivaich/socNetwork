@@ -93,6 +93,14 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
         });
     }
 
+    self.logIn = function (object, onSuccess, onError) {
+        self.userSrc.CreateTodo(object, function (result) {
+            onSuccess(result);
+        }, function (result) {
+            onError(result);
+        })
+    }
+
     /*self.updateAlbum = function (object, onSuccess, onError) {
         console.log(object);
         self.userGistSrc.UpdateAlbum({ id: 2, gistId: 3, object: object, }, function (result) {

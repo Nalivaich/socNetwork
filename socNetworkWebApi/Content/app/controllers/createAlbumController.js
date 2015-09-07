@@ -42,4 +42,11 @@ socNetworkModule.controller('CreateAlbumController', ['$scope', '$location', '$t
         })
     }
 
+    $scope.validate = function (form) {
+        if (!form.$valid) {
+            return false;
+        }
+        return true;
+    }
+
 }]);

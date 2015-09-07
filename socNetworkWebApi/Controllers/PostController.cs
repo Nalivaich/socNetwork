@@ -10,6 +10,7 @@ using Common.Services;
 using Common.DTO;
 using System.IO;
 using System.Web;
+using System.Web.Security;
 
 namespace socNetworkWebApi.Controllers
 {
@@ -27,9 +28,9 @@ namespace socNetworkWebApi.Controllers
             _pictureSvc = pictureSvc;
         }
 
-
         [Route("api/posts")]
         [HttpGet]
+        [Authorize]
         public IEnumerable<PostDTO> GetAll()
         {
             IEnumerable<PostDTO> postList = _postSvc.GetAll();
@@ -100,9 +101,6 @@ namespace socNetworkWebApi.Controllers
                             {
                                 using (FileStream fs = File.Create(tempDirectoryPath + "/Standart/" + name)) { }
                             }
-                            /*if (File.Exists(userDirectoryPath + "/Standart/" + name)) // Думаю можно не проверять, имена уникальны
-                                File.Delete(userDirectoryPath + "/Standart/" + name);
-                            */
                             File.Move(tempDirectoryPath + "/Standart/" + name, userDirectoryPath + "/Standart/" + name);
                             File.Move(tempDirectoryPath + "/Medium/" + name, userDirectoryPath + "/Medium/" + name);
                             File.Move(tempDirectoryPath + "/Small/" + name, userDirectoryPath + "/Small/" + name);
@@ -128,7 +126,6 @@ namespace socNetworkWebApi.Controllers
                 throw new Exception();
             }
         }
-
 
         // PUT api/post/5
         public void Put(int id, [FromBody]string value)

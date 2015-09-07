@@ -8,6 +8,7 @@ socNetworkModule.controller('ViewPostsController', ['$scope', '$location', '$tim
     PostService.getAll(function (result) {
         self.posts = result;
     }, function () {
+        alert("No autorize");
     })
 
     self.setCurrentPostId = function (newValue) {

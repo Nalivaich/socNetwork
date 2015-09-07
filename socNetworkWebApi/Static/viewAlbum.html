@@ -6,7 +6,15 @@
             </div>
         </div>
         <div class="row panel-body">
-            Here you will can see all pictures in this album!
+            <div class="row personalRoomRows col-sm-12 col-md-12">
+
+                <ul class="myCursor">
+                    <li class="album-list inline-list panel panel-info text-success image-list " ng-repeat="picture in pictures" ng-click="open('lg', picture.id)">
+                        <p> Likes:  {{picture.likes}} </p>
+                        <img src="/Files/Medium/{{picture.id}}" />
+                    </li>
+                </ul>
+            </div>
         </div>
 
         

@@ -11,6 +11,8 @@ using Ninject.Parameters;
 using Common;
 using Common.Interfaces;
 using Common.Services;
+using System.Web.Security;
+using System.Security.Principal;
 
 namespace socNetworkWebApi
 {
@@ -35,6 +37,34 @@ namespace socNetworkWebApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        public void FormsAuthentication_OnAuthenticate(object sender, FormsAuthenticationEventArgs args)
+        {
+            if (FormsAuthentication.CookiesSupported)
+            {
+                if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+                {
+                    try
+                    {
+                        FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(
+                          Request.Cookies[FormsAuthentication.FormsCookieName].Value);
+
+                        args.User = new System.Security.Principal.GenericPrincipal(
+                          new FormsIdentity(ticket),
+                          new string[0]);
+                    }
+                    catch (Exception e)
+                    {
+                        // Decrypt method failed.
+                    }
+                }
+            }
+            else
+            {
+                throw new HttpException("Cookieless Forms Authentication is not " +
+                                        "supported for this application.");
+            }
         }
 
         public class MyDependencyResolver : IDependencyResolver

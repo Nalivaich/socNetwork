@@ -2023,17 +2023,6 @@
     <Content Include="Static\userList.html" />
     <Content Include="Static\ViewAlbum.html" />
     <Content Include="Static\ViewUserImages.html" />
-    <Content Include="Views\Common\Content.html" />
-    <Content Include="Views\Common\ManageAlbum.html" />
-    <Content Include="Views\Common\NewAlbum.html" />
-    <Content Include="Views\Common\NewPost.html" />
-    <Content Include="Views\Common\PersonalRoom.html" />
-    <Content Include="Views\Common\Publications.html" />
-    <Content Include="Views\Common\SearchUsers.html" />
-    <Content Include="Views\Common\Upload.html" />
-    <Content Include="Views\Common\LogIn.html" />
-    <Content Include="Views\Common\Registration.html" />
-    <Content Include="Views\Home\Index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

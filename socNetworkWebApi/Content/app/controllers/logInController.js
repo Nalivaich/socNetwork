@@ -6,12 +6,18 @@ socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout
     var self = $scope;
 
     var pp = $("#autorisation");
-
+    self.userInfo = {
+        name: "",
+        password: null
+    }
     self.signUp = function(object, form) {
         if(!form.$valid){
             return false;
         }
 
+
+
+        /*
         var elem = $('#autorisation');
         elem.removeClass('bounceInLeft');
         elem.addClass('bounceOutRight');
@@ -34,11 +40,22 @@ socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout
         }, function () {
             console.log('can\'t add user');
         });
+        */
     };
 
-    self.LogIn = function(index) {
-        self.changeHeaderTemplate(index);
+    self.LogIn = function (index, userInfo) {
+        UserService.logIn(userInfo, function (result) {
+            self.changeHeaderTemplate(index);
+        }, function (result) {
+            alert("error");
+        })
+    }
 
+    $scope.validate = function (form) {
+        if (!form.$valid) {
+            return false;
+        }
+        return true;
     }
 
 }]);

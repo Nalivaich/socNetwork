@@ -10,18 +10,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <div class="post-commnts">
-            <ul ng-repeat="item in currentAlbumComments">
-                <li class="list-group panel-success link-list">
-                    <span class="comment-content">{{GetSenderName(item.userId)}}  Say:</span>
-                    <span class="comment-content" ng-bind="item.comment"> </span>
-                    <hr class="colorgraph">
-                </li>
-            </ul>
-        </div>
         <div class="row col-sm-7 personalRoomRows">
             <button type="button" class="btn btn-danger" ng-click="cancel()">Close</button>
         </div>
-
     </div>
 </div>

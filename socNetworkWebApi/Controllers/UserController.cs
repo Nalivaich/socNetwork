@@ -19,6 +19,7 @@ using System.Web.Helpers;
 using ExtensionMethods;
 using Newtonsoft.Json;
 using System.Web.Http.Results;
+using System.Web.Security;
 
 namespace socNetworkWebApi.Controllers
 {
@@ -122,6 +123,37 @@ namespace socNetworkWebApi.Controllers
         [Route("api/users/{id}/pictures/{pictureId}")]
         public string GetPictureById(int id, int pictureId)
         {
+            return "";
+        }
+
+        [Route("api/users")]
+        [HttpPost]
+        public string LogIn( Login user)
+        {
+            if (ModelState.IsValid)
+            {
+                //UserManager UM = new UserManager();
+
+                UserDTO foundUser = _userSvc.FindUser(user); // add new method in UserRervice for comparing user`s name & password 
+
+                if (string.IsNullOrEmpty(foundUser.alias) || string.IsNullOrEmpty(foundUser.password))
+                {
+                    ModelState.AddModelError("", "The user login or password provided is incorrect.");
+                }
+                else
+                {
+                    if (user.password.Equals(foundUser.password))
+                    {
+                        FormsAuthentication.SetAuthCookie(user.name, false);
+                        //return RedirectToAction("Welcome", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "The password provided is incorrect.");
+                    }
+                }
+            }
+
             return "";
         }
 

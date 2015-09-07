@@ -13,8 +13,8 @@
     </div>
     <p class="block-header text-success">Please select an album to view: </p>
     <ul ng-repeat="album in selectedUserAlbums " class="myCursor ">
-        <li ui-sref="ViewAlbum" class="album-list panel panel-info text-success">
-            <p ng-click="choseAlbum(album.id)" class="alignClass content-list" ng-bind="album.name"></p>
+        <li ui-sref="ViewAlbum" class="album-list panel panel-info text-success" ng-click="choseAlbum(album.id)">
+            <p class="alignClass content-list" ng-bind="album.name"></p>
         </li>
     </ul>
 </div>

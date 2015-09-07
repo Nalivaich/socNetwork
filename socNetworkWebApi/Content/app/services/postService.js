@@ -41,6 +41,8 @@ socNetworkModule.service('PostService', ['$http', '$resource', function ($http, 
     self.getAll = function (onSuccess, onError) {
         self.postsSrc.ListTodos({}, function (result) {
             onSuccess(result);
+        }, function (result) {
+            onError(result);
         });
     }
 

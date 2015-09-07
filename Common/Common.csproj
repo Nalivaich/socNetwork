@@ -75,6 +75,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DTO\AlbumDTO.cs" />
     <Compile Include="DTO\CommentDTO.cs" />
+    <Compile Include="DTO\Login.cs" />
     <Compile Include="DTO\PictureDTO.cs" />
     <Compile Include="DTO\PostDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />

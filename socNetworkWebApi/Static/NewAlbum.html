@@ -1,27 +1,29 @@
 <div ng-controller="CreateAlbumController">
     <div class="container col-sm-offset-2 col-sm-8 panel panel-info panelIndent" >
-        <div class="row panel-heading">
-            <div class=" col-sm-offset-3 col-sm-6 personalRoomHeaders personalRoomRows " >
-                <h2>Here you can create a new album</h2>
-            </div>
-        </div>
-        <div class="row panel-body">
-            <div class="row personalRoomRows col-sm-6">
-                <label for="usr">Album Name:</label>
-                <input type="text" class="form-control" id="usr" placeholder="Album Name" ng-model="newAlbum.name">
-            </div>
-            <div class="row personalRoomRows col-sm-12">
-                <div class="checkbox">
-                    <label><input type="checkbox" value="" ng-model="newAlbum.private" ng-true-value="true" ng-false-value="false">Make a private album</label>
+        <form role="form" name="newAlbumForm">
+            <div class="row panel-heading">
+                <div class=" col-sm-offset-3 col-sm-6 personalRoomHeaders personalRoomRows ">
+                    <h2>Here you can create a new album</h2>
                 </div>
             </div>
-        </div>
-        <div class="row panel-footer">
-            <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
-                <button type="button" class="btn btn-primary" value="Back"  ui-sref="PersonalRoom">Back</button>
-                <button type="button" class="btn btn-primary" value="Home"  ui-sref="index.Publications">Home</button>
-                <button type="button" class="btn btn-success" value="Create" ng-click="create()">Create Album</button>
+            <div class="row panel-body">
+                <div class="row personalRoomRows col-sm-6">
+                    <label for="usr">Album Name:</label>
+                    <input type="text" class="form-control" id="usr" placeholder="Album Name" required ng-model="newAlbum.name">
+                </div>
+                <div class="row personalRoomRows col-sm-12">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="" ng-model="newAlbum.private" ng-true-value="true" ng-false-value="false">Make a private album</label>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row panel-footer">
+                <div class="row col-sm-offset-5 col-sm-7 personalRoomRows">
+                    <button type="button" class="btn btn-primary" value="Back" ui-sref="PersonalRoom">Back</button>
+                    <button type="button" class="btn btn-primary" value="Home" ui-sref="index.Publications">Home</button>
+                    <button type="button" class="btn btn-success" value="Create" ng-click="create()" ng-if="validate(newAlbumForm)">Create Album</button>
+                </div>
+            </div>
+        </form> 
     </div>
 </div>

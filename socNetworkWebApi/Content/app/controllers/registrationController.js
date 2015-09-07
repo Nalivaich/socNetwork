@@ -41,10 +41,8 @@ socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$
 
     $scope.validate = function (form) {
         if (!form.$valid) {
-            console.log(false);
             return false;
         }
-        console.log(true);
         return true;
     }
 }]);
