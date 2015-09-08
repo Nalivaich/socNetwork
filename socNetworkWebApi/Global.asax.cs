@@ -86,5 +86,44 @@ namespace socNetworkWebApi
             }
 
         }
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e) {
+        // Extract the forms authentication cookie
+        string cookieName = FormsAuthentication.FormsCookieName;
+        HttpCookie authCookie = Context.Request.Cookies[cookieName];
+        //if(authCookie.Name == "gigs")
+        
+        if(null == authCookie) {
+        // There is no authentication cookie.
+            return;
+        }
+        FormsAuthenticationTicket authTicket = null;
+        try {
+            authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+        } catch(Exception ex) {
+        // Log exception details (omitted for simplicity)
+            return;
+        }
+        if (null == authTicket) {
+        // Cookie failed to decrypt.
+            return;
+        }
+        // When the ticket was created, the UserData property was assigned
+        // a pipe delimited string of role names.
+            
+        string[] roles = new string[2];
+        roles[0] = "user";
+        // Create an Identity object
+        FormsIdentity id = new FormsIdentity( authTicket );
+        // This principal will flow throughout the request.
+        GenericPrincipal principal = new GenericPrincipal(id, roles);
+        // Attach the new principal object to the current HttpContext object
+        Context.User = principal;
+        }
+            
+        protected void Application_Error(Object sender, EventArgs e)
+        {
+            Response.Write("Error encountered.");
+        }
+
     }
 }

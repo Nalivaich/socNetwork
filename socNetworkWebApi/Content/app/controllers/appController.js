@@ -39,6 +39,7 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
     self.currentGist = '';
     self.currentAction = 'add';
     self.currentAlbum;
+    self.autorized = false;
 
     self.changeParams = function (object) {
         self.currentAction = object.action;

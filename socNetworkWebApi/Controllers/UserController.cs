@@ -128,33 +128,21 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users")]
         [HttpPost]
-        public string LogIn( Login user)
+        public HttpResponseMessage LogIn(Login user)
         {
             if (ModelState.IsValid)
             {
                 //UserManager UM = new UserManager();
 
-                UserDTO foundUser = _userSvc.FindUser(user); // add new method in UserRervice for comparing user`s name & password 
+                UserDTO foundUser = _userSvc.Find(user); // add new method in UserService for comparing user`s name & password 
 
-                if (string.IsNullOrEmpty(foundUser.alias) || string.IsNullOrEmpty(foundUser.password))
+                if (foundUser.id != 0)
                 {
-                    ModelState.AddModelError("", "The user login or password provided is incorrect.");
-                }
-                else
-                {
-                    if (user.password.Equals(foundUser.password))
-                    {
-                        FormsAuthentication.SetAuthCookie(user.name, false);
-                        //return RedirectToAction("Welcome", "Home");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "The password provided is incorrect.");
-                    }
+                    FormsAuthentication.SetAuthCookie(user.name, false);
+                    return Request.CreateResponse(HttpStatusCode.Created);
                 }
             }
-
-            return "";
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
         [Route("api/users/add")]
@@ -225,43 +213,11 @@ namespace socNetworkWebApi.Controllers
                         };
 
                 }
-                //return result;
                 return res;
-
-                //List<FileUploadResult> images = new List<FileUploadResult>{
-                //  new FileUploadResult{name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "" , deleteUrl = "",deleteType = ""}
-                //  };
-                //var jsonUser = images.ToJSON(); //= JsonConvert.SerializeObject(new FileUploadResult { name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "", deleteUrl = "", deleteType = "" });
-                ////return jsonUser;
-                ////return Json(new Responce { name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "", deleteUrl = "", deleteType = "" });
-
-                //return Request.CreateResponse(HttpStatusCode.Created, jsonUser);
-                //return images.ToJSON(); 
-                /*       {"files": [
-                              {
-                                "name": "picture1.jpg",
-                                "size": 902604,
-                                "url": "http:\/\/example.org\/files\/picture1.jpg",
-                                "thumbnailUrl": "http:\/\/example.org\/files\/thumbnail\/picture1.jpg",
-                                "deleteUrl": "http:\/\/example.org\/files\/picture1.jpg",
-                                "deleteType": "DELETE"
-                              },
-                              {
-                                "name": "picture2.jpg",
-                                "size": 841946,
-                                "url": "http:\/\/example.org\/files\/picture2.jpg",
-                                "thumbnailUrl": "http:\/\/example.org\/files\/thumbnail\/picture2.jpg",
-                                "deleteUrl": "http:\/\/example.org\/files\/picture2.jpg",
-                                "deleteType": "DELETE"
-                              }
-                            ]}*/
             }
             else
             {
                 throw new Exception();
-                //return Json(new Responce { name = "picture1.jpg", size = 902604, url = "Gurthie", thumbnailUrl = "", deleteUrl = "", deleteType = "" });
-                //return result;
-                //return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 

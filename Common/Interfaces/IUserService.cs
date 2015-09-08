@@ -19,6 +19,7 @@ namespace Common.Interfaces
         IEnumerable<RoleDTO> GetUserRoles(int id);
         int GetMaxId();
         int Create(UserDTO item);
+        UserDTO Find(Login userInfo);
         void Update(UserDTO item);
         void Delete(int id);
         void Dispose();

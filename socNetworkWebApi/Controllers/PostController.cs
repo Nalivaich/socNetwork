@@ -30,7 +30,6 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/posts")]
         [HttpGet]
-        [Authorize]
         public IEnumerable<PostDTO> GetAll()
         {
             IEnumerable<PostDTO> postList = _postSvc.GetAll();

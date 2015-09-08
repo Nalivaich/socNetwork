@@ -141,9 +141,35 @@ namespace Common.Services
             Database.Save();
             return result;
         }
+
+        public UserDTO Find(Login userInfo)
+        {
+            var DBUsers = Database.Users.GetAll();
+            IEnumerable<UserDTO> users =  DBUsers.Select(u => new UserDTO
+                {
+                    id = u.id,
+                    name = u.name,
+                    surName = u.surName,
+                    alias = u.alias,
+                    password = u.password,
+                    address = u.address,
+                    avaUrl = u.avaUrl,
+                    email = u.email,
+                    created = u.created,
+                    isRemoved = u.isRemoved,
+                    phoneNumber = u.phoneNumber
+                }).ToList().Where(u => u.password == userInfo.password && (u.alias == userInfo.name || u.email == userInfo.name));
+            if(users.ToArray().Length == 1)
+            {
+                return users.First();
+            }
+            return new UserDTO();
+        }
+
+
         public void Update(UserDTO item)
         {
-
+           
         }
         public void Delete(int id)
         {
