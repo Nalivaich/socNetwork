@@ -51,8 +51,9 @@ namespace Common.Services
         public int Create(CommentDTO item)
         {
             Mapper.CreateMap<CommentDTO, comment>();
-
-            int result = Database.Comments.Create(Mapper.Map<CommentDTO, comment>(item));
+            var DBresult = Mapper.Map<CommentDTO, comment>(item);
+            DBresult.comment1 = item.comment;
+            int result = Database.Comments.Create(DBresult);
             Database.Save();
             return result;
         }

@@ -145,7 +145,8 @@ namespace socNetworkWebApi.Controllers
         public UserDTO AddUser(UserDTO newUser)
         {
             newUser.created = DateTime.Now;
-            _userSvc.Create(newUser);
+            newUser.avaUrl = "#";
+            newUser.id =  _userSvc.Create(newUser);
             return newUser;
         }
 

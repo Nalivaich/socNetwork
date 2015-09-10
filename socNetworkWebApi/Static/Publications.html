@@ -20,10 +20,11 @@
 
                                 <div class="row panel-footer">
                                     <div class="post-commnts">
-                                        <ul ng-repeat="item in currentAlbumComments">
+                                        <ul ng-repeat="item in currentPostComments">
                                             <li class="list-group panel-success link-list">
                                                 <span class="comment-content">{{GetSenderName(item.userId)}}  Say:</span>
                                                 <span class="comment-content" ng-bind="item.comment"> </span>
+                                                <p class="text-success">Date: {{item.created}}</p>
                                                 <hr class="colorgraph">
                                             </li>
                                         </ul>
@@ -35,11 +36,11 @@
                                         </div>
                                         <div>
                                             <label for="comment">Comment:</label>
-                                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                                            <textarea class="form-control" rows="5" id="comment" ng-model="comment.comment"></textarea>
                                         </div>
                                         
                                         <div class="row col-sm-7 personalRoomRows">
-                                            <button type="button" class="btn btn-success send-button post-button" value="Back">Send Comment</button>
+                                            <button type="button" class="btn btn-success send-button post-button" value="Back" ng-click="addComment(comment)">Send Comment</button>
                                         </div>
                                     </div>
                                 </div>

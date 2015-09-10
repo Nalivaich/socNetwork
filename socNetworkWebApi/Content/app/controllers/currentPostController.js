@@ -1,10 +1,13 @@
-﻿socNetworkModule.controller('CurrentPostController', ['$scope', 'AlbumService', '$modal', 'PostService', function ($scope, AlbumService, $modal, PostService) {
+﻿socNetworkModule.controller('CurrentPostController', ['$scope', 'AlbumService', '$modal', 'PostService', 'CommentService', function ($scope, AlbumService, $modal, PostService, CommentService) {
     var self = $scope;
    // self.currentPostId;
     self.pictures = [];
-    self.currentAlbumComments;
+    self.currentPostComments;
     self.sayHello = function () {
         alert("hello");
+    }
+    self.comment = {
+        comment:""
     }
     PostService.getPictures(self.post.id, function (result) {
         self.pictures = result;
@@ -38,9 +41,26 @@
     };
 
     PostService.getComments(self.post.id, function (result) {
-        self.currentAlbumComments = result;
+        self.currentPostComments = result;
     }, function () {
     })
+
+    self.addComment = function (comment) {
+        if (self.autorized) {
+            comment.postId = self.post.id;
+            comment.userId = self.currentUser.id;
+            CommentService.createComment(comment, function (result) {
+                PostService.getComments(self.post.id, function (result) {
+                    self.currentPostComments = result;
+                    self.comment.comment = "";
+                });
+            }, function (result) {
+                alert("error") //show template
+            })
+            return;
+        }
+        alert("have no access")
+    }
 
     self.templates =
         [{ name: 'template1.html', url: 'app/templates/userList.html' },

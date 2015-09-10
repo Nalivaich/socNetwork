@@ -12,7 +12,7 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
       {
           ListTodos: { method: "GET", isArray: true },
           CreateTodo: { method: "POST", params: {action:"add"} },
-          UpdateTodo: { method: "PATCH", params: { /*...*/ } },
+          UpdateTodo: { method: "PATCH" },
           DeleteTodo: { method: "DELETE" },
       });
 
@@ -81,7 +81,7 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
         });
     }
 
-    self.add = function (object, onSuccess, onError) {
+    self.signUp = function (object, onSuccess, onError) {
         self.usersSrc.CreateTodo(object, function (result) {
             onSuccess(result);
         });
@@ -108,22 +108,5 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
             onError(result);
         })
     }
-
-
-
-    /*self.updateAlbum = function (object, onSuccess, onError) {
-        console.log(object);
-        self.userGistSrc.UpdateAlbum({ id: 2, gistId: 3, object: object, }, function (result) {
-            onSuccess(result);
-        });
-    }*/
-
-   /* self.addAlbum = function (object, onSuccess, onError) {
-        self.usersSrc.CreateTodo(object, function (result) {
-            onSuccess(result);
-        });
-    }*/
-
-
 
 }]);

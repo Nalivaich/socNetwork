@@ -22,10 +22,12 @@ socNetworkModule.controller('ViewAlbumController', ['$scope', '$location', '$tim
             comment.albumId = self.currentAlbum.id;
             comment.userId = self.currentUser.id;
             CommentService.createComment(comment, function (result) {
-                alert("success");
-
+                AlbumService.getComments(self.currentAlbumId, function (result) {
+                    self.currentAlbumComments = result;
+                    self.comment.comment = "";
+                });
             }, function (result) {
-                alert("error")
+                alert("error") //show template
             })
             return;
         }

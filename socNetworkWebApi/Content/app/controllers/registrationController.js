@@ -5,39 +5,23 @@
 socNetworkModule.controller('RegistrationController', ['$scope', '$location', '$timeout', 'UserService', function ($scope, $location, $timeout, UserService) {
     var self = $scope;
     self.newUser = {firstName:'', surName: '', pseudonym: '', email: '', password: '', confirmPassword: ''};
-    self.validForm = false;
 
     self.signUp = function (object, form, index) {
         if (!form.$valid) {
             return false;
         }
-        
-        self.validForm = true;
-
-        UserService.add({
-            name: object.firstName,
-            surName: object.surName,
-            alias: object.pseudonym,
-            password: object.password,
-            email: object.email,
-            phoneNumber: 0,
-            address: '',
-            avaUrl: "#",
-            isRemoved: 0,
-            modified: 0
-        }, function (newObject) {
-            /*var newUser = UserModel(newObject);
-            self.addNewUser(newUser);
-            self.SetCurrentUserId(newUser.id);
-            self.SetAuthorizationFlag(true);
+        object.address = "not indicated";
+        UserService.signUp(object, function (result) {
+            console.log(result);
             self.changeHeaderTemplate(index);
-            return true;*/
-            self.validForm = false;
-        }, function () {
-            console.log('can\'t add user');
-        });
+            self.ChangeAutorizedFlag(true);
+            self.changeCurrentUserId(result.id);
+            self.changeCurrentUser(result);
+            $state.go("index.Publications");
+        }, function (result) {
+            alert("Wrong name or password")
+        })
     };
-
 
     $scope.validate = function (form) {
         if (!form.$valid) {
