@@ -20,7 +20,7 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
       { id: "@id"}, //parameters default
       {
           GetTodo: { method: "GET" },
-          CreateTodo: { method: "POST", isArray: true },
+          CreateTodo: { method: "POST"},
           UpdateTodo: { method: "PATCH", params: { /*...*/ } },
           DeleteTodo: { method: "DELETE" },
           ResetTodos: { method: "GET" }
@@ -100,6 +100,16 @@ socNetworkModule.service('UserService', ['$http', '$resource', function ($http, 
             onError(result);
         })
     }
+
+    self.logOut = function (onSuccess, onError) {
+        self.usersSrc.DeleteTodo(function (result) {
+            onSuccess(result);
+        }, function (result) {
+            onError(result);
+        })
+    }
+
+
 
     /*self.updateAlbum = function (object, onSuccess, onError) {
         console.log(object);

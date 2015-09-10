@@ -1,11 +1,11 @@
+<div ng-controller="ContentController">
+    <div class="row secondaryMenu">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a ui-sref=".Publications">Publications</a></li>
+            <li role="presentation"><a ui-sref=".SearchUsers">Searching</a></li>
+            <li role="presentation"><a ng-click="redirection()" class="link-list">Upload photo</a></li>
+        </ul>
+    </div>
 
-<div class="row secondaryMenu">
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a ui-sref=".Publications">Publications</a></li>
-        <li role="presentation"><a ui-sref=".SearchUsers">Searching</a></li>
-        <li role="presentation"><a ui-sref=".NewPost" ng-click="changeParams({gist:'post', action:'add'})">Upload photo</a></li>
-    </ul>
+    <div ui-view ng-animate="'view'"></div>
 </div>
-
-<div ui-view ng-animate="'view'"></div>
-

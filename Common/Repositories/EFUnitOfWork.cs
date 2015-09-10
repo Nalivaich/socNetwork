@@ -17,6 +17,7 @@ namespace Common.Repositories
         private PostRepository postRepository;
         private AlbumsRepository albumRepository;
         private PicturesRepository pictureRepository;
+        private CommentsRepository commentRepository;
 
         public EFUnitOfWork()
         {
@@ -58,6 +59,16 @@ namespace Common.Repositories
                 if (pictureRepository == null)
                     pictureRepository = new PicturesRepository(db);
                 return pictureRepository;
+            }
+        }
+
+        public IRepository<comment> Comments
+        {
+            get
+            {
+                if (commentRepository == null)
+                    commentRepository = new CommentsRepository(db);
+                return commentRepository;
             }
         }
 

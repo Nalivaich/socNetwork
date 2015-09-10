@@ -29,6 +29,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums")]
         [HttpGet]
+        [Authorize]
         public IEnumerable<AlbumDTO> GetAll()
         {
             IEnumerable<AlbumDTO> albumList = _albumSvc.GetAll();
@@ -37,6 +38,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public AlbumDTO GetById(int id)
         {
             AlbumDTO album = _albumSvc.Get(id);
@@ -45,6 +47,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/{id}/comments")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<CommentDTO> GetComments(int id)
         {
             IEnumerable<CommentDTO> commentList = _albumSvc.GetComments(id);
@@ -53,6 +56,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/{id}/pictures")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<PictureDTO> GetPictures(int id)
         {
             IEnumerable<PictureDTO> picturesList = _albumSvc.GetPictures(id);
@@ -61,6 +65,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/{id}/pictures/add")]
         [HttpPost]
+        [Authorize]
         public HttpResponseMessage AddPictures(int id)
         {
             var httpRequest = HttpContext.Current.Request;
@@ -71,26 +76,19 @@ namespace socNetworkWebApi.Controllers
                     var postedFile = httpRequest.Files[file];
                     var filePath = HttpContext.Current.Server.MapPath("~/DownloadResource/" + postedFile.FileName);
                     postedFile.SaveAs(filePath);
-                    // NOTE: To store in memory use postedFile.InputStream
                 }
-
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             else
             {
-                //HttpContext.Current.Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden; //or make this
-                /*
-                HttpContext.Current.Response.Status = "403 Forbidden";
-                HttpContext.Current.Response.StatusCode = 403;
-                HttpContext.Current.ApplicationInstance.CompleteRequest();
-                */
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 
         [Route("api/albums/add")]
         [HttpPost]
-        public void GetComments(AlbumDTO newObj)
+        [Authorize]
+        public void CreateAlbum(AlbumDTO newObj)
         {
             newObj.created = DateTime.Now;
             newObj.modified = DateTime.Now;
@@ -99,6 +97,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/manage")]
         [HttpPatch]
+        [Authorize]
         public void ManageAlbum(AlbumDTO album)
         {
             album.modified = DateTime.Now;
@@ -135,9 +134,6 @@ namespace socNetworkWebApi.Controllers
                             {
                                 using (FileStream fs = File.Create(tempDirectoryPath + "/Standart/" + name)) { }
                             }
-                            /*if (File.Exists(userDirectoryPath + "/Standart/" + name)) // Думаю можно не проверять, имена уникальны
-                                File.Delete(userDirectoryPath + "/Standart/" + name);
-                            */
                             File.Move(tempDirectoryPath + "/Standart/" + name, userDirectoryPath + "/Standart/" + name);
                             File.Move(tempDirectoryPath + "/Medium/" + name, userDirectoryPath + "/Medium/" + name);
                             File.Move(tempDirectoryPath + "/Small/" + name, userDirectoryPath + "/Small/" + name);
@@ -172,6 +168,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/update")]
         [HttpPatch]
+        [Authorize]
         public void DeleteAlbum(AlbumDTO newObj)
         {
             // change not nullable fields only
@@ -180,6 +177,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/albums/delete/{id}")]
         [HttpDelete]
+        [Authorize]
         public void PutAlbum(int id)
         {
             _albumSvc.Delete(id);

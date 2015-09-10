@@ -26,6 +26,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/pictures")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<PictureDTO> GetAll()
         {
             IEnumerable<PictureDTO> picturetList = _pictureSvc.GetAll();
@@ -35,6 +36,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/pictures/{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public PictureDTO GetById(int id)
         {
             PictureDTO picture = _pictureSvc.Get(id);
@@ -43,6 +45,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/pictures/{id}/comments")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<CommentDTO> GetComments(int id)
         {
             IEnumerable<CommentDTO> pictureList = _pictureSvc.GetComments(id);
@@ -52,7 +55,8 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/pictures/add")]
         [HttpPost]
-        public HttpResponseMessage PutPicture()
+        [Authorize]
+        public HttpResponseMessage AddPicture()
         {
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count > 0)

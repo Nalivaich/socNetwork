@@ -17,14 +17,12 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
      };
 
 
-    self.currentUser = { name: '', password: '' };
 
-    self.currentUserId = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!! change value, default 0 , = current user id
+    self.currentUserId;
     self.usersRepository = [];
     self.roomsRepository = [];
     self.messagesRepository = [];
-    self.currentUser = {name:'', password: ''};
-    self.currentUser = {};
+    self.currentUser;
     self.currentUserName = 'Guest';
     self.currentUserPassword = '';
     self.currentMessage = '';
@@ -40,6 +38,10 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
     self.currentAction = 'add';
     self.currentAlbum;
     self.autorized = false;
+
+    self.ChangeAutorizedFlag = function (newValue) {
+        self.autorized = newValue;
+    }
 
     self.changeParams = function (object) {
         self.currentAction = object.action;
@@ -63,6 +65,9 @@ socNetworkModule.controller('AppController', ['$scope', "$http", '$resource', fu
 
     self.changeCurrentUserId = function (newValue) {
         self.currentUserId = newValue;
+    };
+    self.changeCurrentUser = function (user) {
+        self.currentUser = user;
     };
 
     

@@ -1,8 +1,11 @@
 ﻿
-socNetworkModule.controller('ViewAlbumController', ['$scope', '$location', '$timeout', 'UserService', 'AlbumService', '$modal', function ($scope, $location, $timeout, UserService, AlbumService, $modal) {
+socNetworkModule.controller('ViewAlbumController', ['$scope', '$location', '$timeout', 'UserService', 'AlbumService', '$modal', 'CommentService', function ($scope, $location, $timeout, UserService, AlbumService, $modal, CommentService) {
     var self = $scope;
     self.currentAlbum;
     self.pictures = [];
+    self.comment = {
+        comment: ""
+    }
     self.currentAlbumComments;
     AlbumService.getById(self.currentAlbumId, function (result) {
         self.currentAlbum = result;
@@ -13,6 +16,21 @@ socNetworkModule.controller('ViewAlbumController', ['$scope', '$location', '$tim
         self.currentAlbumComments = result;
     }, function () {
     })
+
+    self.addComment = function (comment) {
+        if (self.autorized) {
+            comment.albumId = self.currentAlbum.id;
+            comment.userId = self.currentUser.id;
+            CommentService.createComment(comment, function (result) {
+                alert("success");
+
+            }, function (result) {
+                alert("error")
+            })
+            return;
+        }
+        alert("have no access")
+    }
 
     AlbumService.getPictures(self.currentAlbumId, function (result) {
         self.pictures = result;

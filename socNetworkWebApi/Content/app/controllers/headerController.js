@@ -2,23 +2,19 @@
  * Created by vitali.nalivaika on 18.08.2015.
  */
 
-socNetworkModule.controller('HeaderController', ['$scope', function($scope) {
+socNetworkModule.controller('HeaderController', ['$scope', 'UserService', '$state', function ($scope, UserService, $state) {
     var self = $scope;
 
-    /*self.templates =
-        [ { name: 'template1.html', url: 'app/templates/noAutorizedHeader.html'},
-            { name: 'template2.html', url: 'app/templates/AutorizedHeader.html'} ];
-
-    self.SetHeaderBlock($scope.templates[0]);
-
-
-    /*self.changeHeaderTemplate = function() {
-        SetHeaderBlock($scope.templates[1]);
-    }*/
-
-    self.LogOut = function(index) {
-        self.changeHeaderTemplate(index);
-
+    self.LogOut = function (index) {
+        UserService.logOut( function (result) {
+            self.changeHeaderTemplate(index);
+            self.ChangeAutorizedFlag(false);
+            self.changeCurrentUserId(0);
+            self.changeCurrentUser({});
+            $state.go("index.Publications");
+        }, function (result) {
+            alert("Something wrong")
+        })
     }
 
 }]);

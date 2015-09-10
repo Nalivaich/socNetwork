@@ -13,6 +13,7 @@ namespace Common.Interfaces
         IRepository<post> Posts { get; }
         IRepository<album> Albums { get; }
         IRepository<picture> Pictures { get; }
+        IRepository<comment> Comments { get; }
         void Save();
     }
 }

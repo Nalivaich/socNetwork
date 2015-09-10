@@ -20,6 +20,7 @@ namespace socNetworkWebApi
             kernel.Bind<IPostService>().To<PostService>();
             kernel.Bind<IAlbumService>().To<AlbumService>();
             kernel.Bind<IPictureService>().To<PictureService>();
+            kernel.Bind<ICommentService>().To<CommentService>();
 
             config.DependencyResolver = new MyDependencyResolver(kernel);
 

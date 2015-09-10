@@ -1,12 +1,12 @@
-<div class="col-sm-offset-4 col-sm-5 ">
+<div class="col-sm-9 ">
     <ul class="">
-        <li class="header-list">
-            Welcome: {{UserName}}
+        <li class="header-list col-sm-3">
+            Welcome: {{currentUser.alias}}
         </li>
-        <li class="link-list header-list">
+        <li class="link-list header-list col-sm-3">
             <a ui-sref="PersonalRoom">Personal Room</a>
         </li>
-        <li class="link-list header-list">
+        <li class="link-list header-list col-sm-3">
             <a ng-click="LogOut(0)" ui-sref="index.Publications">LogOut</a>
         </li>
     </ul>

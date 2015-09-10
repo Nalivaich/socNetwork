@@ -20,33 +20,10 @@ using ExtensionMethods;
 using Newtonsoft.Json;
 using System.Web.Http.Results;
 using System.Web.Security;
+using socNetworkWebApi.Models;
 
 namespace socNetworkWebApi.Controllers
 {
-    public class FilesUploadResult
-    {
-        [JsonProperty("files")]
-        public List<FileUploadResult> Files { get; set; }
-    }
-
-    [JsonObject]
-    public class FileUploadResult
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        [JsonProperty("newName")]
-        public string NewName { get; set; }
-        [JsonProperty("size")]
-        public int Size { get; set; }
-        [JsonProperty("url")]
-        public string Url { get; set; }
-        [JsonProperty("thumbnailUrl")]
-        public string ThumbnailUrl { get; set; }
-        [JsonProperty("deleteUrl")]
-        public string DeleteUrl { get; set; }
-        [JsonProperty("deleteType")]
-        public string DeleteType { get; set; }
-    }
     public class UserController : ApiController
     {
 
@@ -61,6 +38,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<UserDTO> GetAll()
         {
             IEnumerable<UserDTO> userList = _userSvc.GetAll();
@@ -69,6 +47,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public UserDTO GetById(int id)
         {
             UserDTO user = _userSvc.Get(id);
@@ -77,6 +56,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/posts")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<PostDTO> GetPosts(int id)
         {
             IEnumerable<PostDTO> userList = _userSvc.GetUserPosts(id);
@@ -85,6 +65,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/albums")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<AlbumDTO> GetAlbums(int id)
         {
             IEnumerable<AlbumDTO> albumList = _userSvc.GetUserAlbums(id);
@@ -93,7 +74,8 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/pictures")]
         [HttpGet]
-        public IEnumerable<PictureDTO> GetPictures(int id)
+        [Authorize]
+        public IEnumerable<PictureDTO> GetPicturesByUserId(int id)
         {
             string rootPath = HttpContext.Current.Request.MapPath("~/");
             var pictureList = _userSvc.GetUserPhotos(id);
@@ -104,50 +86,63 @@ namespace socNetworkWebApi.Controllers
                 picture.urlSmall = Path.Combine(rootPath, picture.urlSmall);
             }
             return pictureList;
-            /*IEnumerable<PictureDTO> pictureList = _userSvc.GetUserPhotos(id);
-            return pictureList;*/
         }
 
         [Route("api/users/{id}/posts/{postId}")]
+        [HttpGet]
+        [Authorize]
         public string GetPostById(int id, int postId)
         {
             return "";
         }
 
         [Route("api/users/{id}/albums{albumId}")]
+        [HttpGet]
+        [Authorize]
         public string GetAlbumById(int id, int albumId)
         {
             return "";
         }
 
+        [HttpGet]
+        [Authorize]
         [Route("api/users/{id}/pictures/{pictureId}")]
         public string GetPictureById(int id, int pictureId)
         {
             return "";
         }
 
+
         [Route("api/users")]
         [HttpPost]
+        [AllowAnonymous]
         public HttpResponseMessage LogIn(Login user)
         {
             if (ModelState.IsValid)
             {
-                //UserManager UM = new UserManager();
-
-                UserDTO foundUser = _userSvc.Find(user); // add new method in UserService for comparing user`s name & password 
-
+                UserDTO foundUser = _userSvc.Find(user); 
                 if (foundUser.id != 0)
                 {
                     FormsAuthentication.SetAuthCookie(user.name, false);
-                    return Request.CreateResponse(HttpStatusCode.Created);
+                    return Request.CreateResponse(HttpStatusCode.Created, foundUser);
                 }
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
+        [Route("api/users")]
+        [HttpDelete]
+        [Authorize]
+        public HttpResponseMessage LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
         [Route("api/users/add")]
         [HttpPost]
-        public UserDTO Add(UserDTO newUser)
+        [AllowAnonymous]
+        public UserDTO AddUser(UserDTO newUser)
         {
             newUser.created = DateTime.Now;
             _userSvc.Create(newUser);
@@ -156,7 +151,8 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/delete/{id}")]
         [HttpPost]
-        public void Add(int id)
+        [Authorize]
+        public void DeleteUser(int id)
         {
             _userSvc.Delete(id);
             // we can change isRemoved flag simply & don`t remove user from DB
@@ -165,6 +161,7 @@ namespace socNetworkWebApi.Controllers
  
         [Route("api/users/{id}/pictures/add")]
         [HttpPost]
+        [Authorize]
         public FilesUploadResult LoadPostPictures(int id)
         {
             List<string> result = new List<string>();
@@ -173,7 +170,6 @@ namespace socNetworkWebApi.Controllers
             string userDirectoryPath = Path.Combine(rootPath, user.email);
             if (!Directory.Exists(userDirectoryPath))
             {
-
                 string standartImageDirectoryPath = Path.Combine(userDirectoryPath, "Standart");
                 string mediumImageDirectoryPath = Path.Combine(userDirectoryPath, "Medium");
                 string smallImageDirectoryPath = Path.Combine(userDirectoryPath, "Small");
@@ -211,7 +207,6 @@ namespace socNetworkWebApi.Controllers
                                 NewName = result.Last()
                             }
                         };
-
                 }
                 return res;
             }
@@ -223,6 +218,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/pictures/rollback")]
         [HttpDelete]
+        [Authorize]
         public HttpResponseMessage DeleteTemporaryFolders(int id)
         {
             UserDTO user = _userSvc.Get(id);
@@ -244,7 +240,8 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/posts/{postId}/pictures/add")]
         [HttpPost]
-        public void LoadAlbumPictures(int id, int postId)
+        [Authorize]
+        public void LoadPostPictures(int id, int postId)
         {
             //_userSvc.Delete(id);
             // we can change isRemoved flag simply & don`t remove user from DB
@@ -253,7 +250,8 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/albums/{albumId}/manage")]
         [HttpPatch]
-        public void CreatePost(int id, int albumId, Object json)
+        [Authorize]
+        public void ManagingAlbum(int id, int albumId, Object json)
         {
             //string str = json.name;
             //JObject jObject = JObject.Parse((String)json);
@@ -263,26 +261,12 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/users/{id}/posts/create")]
         [HttpPatch]
-        public void ManagingAlbum(int id, int postId)
+        [Authorize]
+        public void CreatePost(int id, int postId)
         {
             //_userSvc.Delete(id);
             // we can change isRemoved flag simply & don`t remove user from DB
         }
-        /*[HttpPost]
-        public string users(int id, [FromBody] userTable obj)
-        {
-            return "sdf";
-        }*/
-
-        /*public Object PostSec(int id)
-        {
-        }*/
-
-
-        // POST api/user
-        /*public void Post([FromBody]string value)
-        {
-        }*/
         [HttpPut]
         // PUT api/user/5
         public void Put(int id, [FromBody]string value)

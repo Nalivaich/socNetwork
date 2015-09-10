@@ -14,39 +14,15 @@ socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout
         if(!form.$valid){
             return false;
         }
-
-
-
-        /*
-        var elem = $('#autorisation');
-        elem.removeClass('bounceInLeft');
-        elem.addClass('bounceOutRight');
-        self.SetCurrentUserName(object.name);
-        self.SetCurrentUserPass(object.password);
-        self.SetAuthorizationFlag(true);
-        $timeout(function() {
-            $location.path('/greeting');
-        }, 900);
-
-        UserService.add({
-            name: self.currentUserName,
-            password: self.currentUserPassword
-        }, function (newObject) {
-            var newUser = UserModel(newObject);
-            self.addNewUser(newUser);
-            self.SetCurrentUserId(newUser.id);
-            self.SetAuthorizationFlag(true);
-            return true;
-        }, function () {
-            console.log('can\'t add user');
-        });
-        */
     };
 
     self.LogIn = function (index, userInfo) {
         UserService.logIn(userInfo, function (result) {
             self.changeHeaderTemplate(index);
-            self.autorized = true;
+            self.ChangeAutorizedFlag(true);
+            self.changeCurrentUserId(result.id);
+            self.changeCurrentUser(result);
+            $state.go("index.Publications");
         }, function (result) {
             alert("Wrong name or password")
         })
@@ -65,7 +41,6 @@ socNetworkModule.controller('LogInController', ['$scope', '$location', '$timeout
         }
         $state.go("index.Publications");
         return "index.Publications"
-
     }
     
 

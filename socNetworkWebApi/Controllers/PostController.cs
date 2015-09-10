@@ -30,6 +30,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/posts")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<PostDTO> GetAll()
         {
             IEnumerable<PostDTO> postList = _postSvc.GetAll();
@@ -38,6 +39,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/posts/{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public PostDTO GetById(int id)
         {
             PostDTO post = _postSvc.Get(id);
@@ -46,6 +48,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/posts/{id}/pictures")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<PictureDTO> GetPictures(int id)
         {
             IEnumerable<PictureDTO> picturesList = _postSvc.GetPictures(id);
@@ -54,6 +57,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/posts/{id}/comments")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<CommentDTO> GetComments(int id)
         {
             IEnumerable<CommentDTO> commentList = _postSvc.GetComments(id);
@@ -62,6 +66,7 @@ namespace socNetworkWebApi.Controllers
 
         [Route("api/posts/add")]
         [HttpPost]
+        [Authorize]
         public void CreatePost(PostDTO post)
         {
             post.created = DateTime.Now;

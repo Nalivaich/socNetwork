@@ -35,12 +35,12 @@
                 </div>
                 <div>
                     <label for="comment">Comment:</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" ng-model="comment.comment"></textarea>
                 </div>
             </div>
             
             <div class="row col-sm-7 personalRoomRows">
-                <button type="button" class="btn btn-success send-button" value="Back">Send Comment</button>
+                <button type="button" class="btn btn-success send-button" ng-click="addComment(comment)" value="Back">Send Comment</button>
                 <button type="button" class="btn btn-primary col-sm-offset-5" value="Back" ui-sref="index.SearchUsers">Back</button>
                 <button type="button" class="btn btn-primary" value="Home" ui-sref="index.Publications">Home</button>
             </div>

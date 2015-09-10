@@ -184,6 +184,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -195,6 +196,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FilesUploadResult.cs" />
+    <Compile Include="Models\FileUploadResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +205,7 @@
     <Content Include="Content\app\app.js" />
     <Content Include="Content\app\controllers\appController.js" />
     <Content Include="Content\app\controllers\chatController.js" />
+    <Content Include="Content\app\controllers\contentController.js" />
     <Content Include="Content\app\controllers\createAlbumController.js" />
     <Content Include="Content\app\controllers\createPostController.js" />
     <Content Include="Content\app\controllers\currentPostController.js" />
@@ -246,6 +250,7 @@
     <Content Include="Content\app\models\roomModel.js" />
     <Content Include="Content\app\models\userModel.js" />
     <Content Include="Content\app\services\albumService.js" />
+    <Content Include="Content\app\services\commentService.js" />
     <Content Include="Content\app\services\pictureService.js" />
     <Content Include="Content\app\services\postService.js" />
     <Content Include="Content\app\services\userService.js" />
@@ -2010,6 +2015,7 @@
     <Content Include="Static\NewAlbum.html" />
     <Content Include="Static\NewPost.html" />
     <Content Include="Static\noAutorizedHeader.html" />
+    <Content Include="Static\noAutorizedDialog.html" />
     <Content Include="Static\PersonalRoom.html" />
     <Content Include="Static\Publications.html" />
     <Content Include="Static\Registration.html" />
@@ -2054,7 +2060,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Pictures\" />
     <Folder Include="Temp\" />
     <Folder Include="Views\Sign\" />
