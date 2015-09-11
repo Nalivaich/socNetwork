@@ -32,9 +32,9 @@ namespace Common.Services
             {
                 throw new ValidationException("User not found", "");
             }
-            Mapper.CreateMap<user, UserDTO>();
+            Mapper.CreateMap<User, UserDTO>();
 
-            return Mapper.Map<user, UserDTO>(user);
+            return Mapper.Map<User, UserDTO>(user);
         }
 
         public IEnumerable<UserDTO> GetAll()
@@ -45,9 +45,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Users not found", "");
             }
-            Mapper.CreateMap<user, UserDTO>();
+            Mapper.CreateMap<User, UserDTO>();
 
-            return Mapper.Map<IEnumerable<user>, List<UserDTO>>(DBUsers);
+            return Mapper.Map<IEnumerable<User>, List<UserDTO>>(DBUsers);
         }
         public IEnumerable<PostDTO> GetUserPosts(int userId)
         {
@@ -58,14 +58,14 @@ namespace Common.Services
                 throw new ValidationException("User not found", "");
             }
 
-            return user.posts.Select(u => new PostDTO
+            return user.Posts.Select(u => new PostDTO
             {
-                id = u.id,
-                name = u.name,
-                created = u.created,
-                modified = u.modified,
-                likes = u.likes,
-                userId = u.userId
+                id = u.Id,
+                name = u.Name,
+                created = u.Created,
+                modified = u.Modified,
+                likes = u.Likes,
+                userId = u.UserId
             }).ToList();
                 
         }
@@ -78,15 +78,15 @@ namespace Common.Services
                 throw new ValidationException("User not found", "");
             }
 
-            return user.albums.Select(u => new AlbumDTO
+            return user.Albums.Select(u => new AlbumDTO
             {
-                id = u.id,
-                name = u.name,
-                created = u.created,
-                modified = u.modified,
-                likes = u.likes,
-                @private = u.@private,
-                userId = u.userId
+                id = u.Id,
+                name = u.Name,
+                created = u.Created,
+                modified = u.Modified,
+                likes = u.Likes,
+                @private = u.Private,
+                userId = u.UserId
             }).ToList();
         }
         public IEnumerable<PictureDTO> GetUserPhotos(int userId)
@@ -98,16 +98,16 @@ namespace Common.Services
                 throw new ValidationException("User not found", "");
             }
 
-            return user.pictures.Select(u => new PictureDTO
+            return user.Pictures.Select(u => new PictureDTO
             {
-                id = u.id,
-                urlStandart = u.urlStandart,
-                urlMedium = u.urlMedium,
-                urlSmall = u.urlSmall,
-                likes = u.likes,
-                postId = u.postId,
-                albumId = u.albumId,
-                userId = u.userId
+                id = u.Id,
+                urlStandart = u.UrlStandart,
+                urlMedium = u.UrlMedium,
+                urlSmall = u.UrlSmall,
+                likes = u.Likes,
+                postId = u.PostId,
+                albumId = u.AlbumId,
+                userId = u.UserId
             }).ToList();
         }
         public IEnumerable<RoleDTO> GetUserRoles(int userId)
@@ -119,25 +119,25 @@ namespace Common.Services
                 throw new ValidationException("User not found", "");
             }
 
-            return user.userRoles.Select(u => new RoleDTO
+            return user.UserRoles.Select(u => new RoleDTO
             {
-                roleName = u.roleName,
-                id = u.userId
+                roleName = u.RoleName,
+                id = u.UserId
             }).ToList().Where(u => u.id == userId);
         }
 
         public int GetMaxId()
         {
             var DBUsers = Database.Users.GetAll();
-            var allId = DBUsers.Select(u => u.id).ToList();
+            var allId = DBUsers.Select(u => u.Id).ToList();
             return allId.Max();
         }
         
         public int Create(UserDTO item)
         {
-            Mapper.CreateMap<UserDTO, user>();
+            Mapper.CreateMap<UserDTO, User>();
  
-            int result = Database.Users.Create(Mapper.Map<UserDTO, user>(item));
+            int result = Database.Users.Create(Mapper.Map<UserDTO, User>(item)).Id;
             Database.Save();
             return result;
         }
@@ -147,17 +147,17 @@ namespace Common.Services
             var DBUsers = Database.Users.GetAll();
             IEnumerable<UserDTO> users =  DBUsers.Select(u => new UserDTO
                 {
-                    id = u.id,
-                    name = u.name,
-                    surName = u.surName,
-                    alias = u.alias,
-                    password = u.password,
-                    address = u.address,
-                    avaUrl = u.avaUrl,
-                    email = u.email,
-                    created = u.created,
-                    isRemoved = u.isRemoved,
-                    phoneNumber = u.phoneNumber
+                    id = u.Id,
+                    name = u.Name,
+                    surName = u.SurName,
+                    alias = u.Alias,
+                    password = u.Password,
+                    address = u.Address,
+                    avaUrl = u.AvaUrl,
+                    email = u.Email,
+                    created = u.Created,
+                    isRemoved = u.IsRemoved,
+                    phoneNumber = u.PhoneNumber
                 }).ToList().Where(u => u.password == userInfo.password && (u.alias == userInfo.name || u.email == userInfo.name));
             if(users.ToArray().Length == 1)
             {

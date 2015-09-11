@@ -11,7 +11,7 @@
                 <ul class="myCursor">
                     <li class="album-list inline-list panel panel-info text-success image-list " ng-repeat="picture in pictures" ng-click="open('lg', picture.id)">
                         <p> Likes:  {{picture.likes}} </p>
-                        <img src="/Files/Medium/{{picture.id}}" />
+                        <img ng-src="/Files/Medium/{{picture.id}}" />
                     </li>
                 </ul>
             </div>

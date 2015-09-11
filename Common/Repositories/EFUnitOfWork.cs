@@ -13,61 +13,61 @@ namespace Common.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private socNetworkEntities db;
-        private UserRepository userRepository;
-        private PostRepository postRepository;
-        private AlbumsRepository albumRepository;
-        private PicturesRepository pictureRepository;
-        private CommentsRepository commentRepository;
+        private IRepository<User> userRepository;
+        private IRepository<Post> postRepository;
+        private IRepository<Album> albumRepository;
+        private IRepository<Picture> pictureRepository;
+        private IRepository<Comment> commentRepository;
 
         public EFUnitOfWork()
         {
             db = new socNetworkEntities();
         }
-        public IRepository<user> Users
+        public IRepository<User> Users
         {
             get
             {
                 if (userRepository == null)
-                    userRepository = new UserRepository(db);
+                    userRepository = new BaseRepository<socNetworkEntities, User>(db, n => n.Users);
                 return userRepository;
             }
         }
 
-        public IRepository<post> Posts
+        public IRepository<Post> Posts
         {
             get
             {
                 if (postRepository == null)
-                    postRepository = new PostRepository(db);
+                    postRepository = new BaseRepository<socNetworkEntities, Post>(db, n => n.Posts); ;
                 return postRepository;
             }
         }
 
-        public IRepository<album> Albums
+        public IRepository<Album> Albums
         {
             get
             {
                 if (albumRepository == null)
-                    albumRepository = new AlbumsRepository(db);
+                    albumRepository = new BaseRepository<socNetworkEntities, Album>(db, n => n.Albums); ;
                 return albumRepository;
             }
         }
-        public IRepository<picture> Pictures
+        public IRepository<Picture> Pictures
         {
             get
             {
                 if (pictureRepository == null)
-                    pictureRepository = new PicturesRepository(db);
+                    pictureRepository = new BaseRepository<socNetworkEntities, Picture>(db, n => n.Pictures); ;
                 return pictureRepository;
             }
         }
 
-        public IRepository<comment> Comments
+        public IRepository<Comment> Comments
         {
             get
             {
                 if (commentRepository == null)
-                    commentRepository = new CommentsRepository(db);
+                    commentRepository = new BaseRepository<socNetworkEntities, Comment>(db, n => n.Comments); ;
                 return commentRepository;
             }
         }

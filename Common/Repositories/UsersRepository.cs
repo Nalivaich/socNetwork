@@ -11,7 +11,7 @@ using Common.EF;
 namespace Common.Repositories
 {
 
-    public class UserRepository : IRepository<user>
+    public class UserRepository : IRepository<User>
     {
         private socNetworkEntities db;
 
@@ -20,38 +20,38 @@ namespace Common.Repositories
             this.db = context;
         }
 
-        public IEnumerable<user> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return db.users;
+            return db.Users;
         }
 
-        public user Get(int id)
+        public User Get(int id)
         {
-            return db.users.Find(id);
+            return db.Users.Find(id);
         }
 
-        public int Create(user user)
+        public User Create(User user)
         {
-            db.users.Add(user);
+            db.Users.Add(user);
             db.SaveChanges();
-            return user.id;
+            return user;
         }
 
-        public void Update(user user)
+        public void Update(User user)
         {
             db.Entry(user).State = EntityState.Modified;
         }
 
-        public IEnumerable<user> Find(Func<user, Boolean> predicate)
+        public IEnumerable<User> Find(Func<User, Boolean> predicate)
         {
-            return db.users.Where(predicate).ToList();
+            return db.Users.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            user user = db.users.Find(id);
+            User user = db.Users.Find(id);
             if (user != null)
-                db.users.Remove(user);
+                db.Users.Remove(user);
         }
     }
 }

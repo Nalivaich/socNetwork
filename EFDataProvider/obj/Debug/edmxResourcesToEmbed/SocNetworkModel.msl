@@ -1,63 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="socNetworkModelStoreContainer" CdmEntityContainer="socNetworkEntities">
-    <EntitySetMapping Name="albums">
-      <EntityTypeMapping TypeName="socNetworkModel.album">
+    <EntitySetMapping Name="Albums">
+      <EntityTypeMapping TypeName="socNetworkModel.Album">
         <MappingFragment StoreEntitySet="albums">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="created" ColumnName="created" />
-          <ScalarProperty Name="modified" ColumnName="modified" />
-          <ScalarProperty Name="likes" ColumnName="likes" />
-          <ScalarProperty Name="private" ColumnName="private" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Created" ColumnName="created" />
+          <ScalarProperty Name="Modified" ColumnName="modified" />
+          <ScalarProperty Name="Likes" ColumnName="likes" />
+          <ScalarProperty Name="Private" ColumnName="private" />
+          <ScalarProperty Name="UserId" ColumnName="userId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="comments">
-      <EntityTypeMapping TypeName="socNetworkModel.comment">
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="socNetworkModel.Comment">
         <MappingFragment StoreEntitySet="comments">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="comment1" ColumnName="comment" />
-          <ScalarProperty Name="created" ColumnName="created" />
-          <ScalarProperty Name="modified" ColumnName="modified" />
-          <ScalarProperty Name="postId" ColumnName="postId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-          <ScalarProperty Name="pictureId" ColumnName="pictureId" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Value" ColumnName="comment" />
+          <ScalarProperty Name="Created" ColumnName="created" />
+          <ScalarProperty Name="Modified" ColumnName="modified" />
+          <ScalarProperty Name="PostId" ColumnName="postId" />
+          <ScalarProperty Name="AlbumId" ColumnName="albumId" />
+          <ScalarProperty Name="PictureId" ColumnName="pictureId" />
+          <ScalarProperty Name="UserId" ColumnName="userId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="pictures">
-      <EntityTypeMapping TypeName="socNetworkModel.picture">
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="socNetworkModel.Picture">
         <MappingFragment StoreEntitySet="pictures">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="urlStandart" ColumnName="urlStandart" />
-          <ScalarProperty Name="urlMedium" ColumnName="urlMedium" />
-          <ScalarProperty Name="urlSmall" ColumnName="urlSmall" />
-          <ScalarProperty Name="likes" ColumnName="likes" />
-          <ScalarProperty Name="postId" ColumnName="postId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="UrlStandart" ColumnName="urlStandart" />
+          <ScalarProperty Name="UrlMedium" ColumnName="urlMedium" />
+          <ScalarProperty Name="UrlSmall" ColumnName="urlSmall" />
+          <ScalarProperty Name="Likes" ColumnName="likes" />
+          <ScalarProperty Name="PostId" ColumnName="postId" />
+          <ScalarProperty Name="AlbumId" ColumnName="albumId" />
+          <ScalarProperty Name="UserId" ColumnName="userId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="posts">
-      <EntityTypeMapping TypeName="socNetworkModel.post">
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="socNetworkModel.Post">
         <MappingFragment StoreEntitySet="posts">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="created" ColumnName="created" />
-          <ScalarProperty Name="modified" ColumnName="modified" />
-          <ScalarProperty Name="likes" ColumnName="likes" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Created" ColumnName="created" />
+          <ScalarProperty Name="Modified" ColumnName="modified" />
+          <ScalarProperty Name="Likes" ColumnName="likes" />
+          <ScalarProperty Name="UserId" ColumnName="userId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="roles">
-      <EntityTypeMapping TypeName="socNetworkModel.role">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="socNetworkModel.Role">
         <MappingFragment StoreEntitySet="roles">
-          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="RoleName" ColumnName="roleName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -72,29 +72,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="userRoles">
-      <EntityTypeMapping TypeName="socNetworkModel.userRole">
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="socNetworkModel.UserRole">
         <MappingFragment StoreEntitySet="userRole">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="roleName" ColumnName="roleName" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="RoleName" ColumnName="roleName" />
+          <ScalarProperty Name="UserId" ColumnName="userId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="socNetworkModel.user">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="socNetworkModel.User">
         <MappingFragment StoreEntitySet="users">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="surName" ColumnName="surName" />
-          <ScalarProperty Name="alias" ColumnName="alias" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="avaUrl" ColumnName="avaUrl" />
-          <ScalarProperty Name="isRemoved" ColumnName="isRemoved" />
-          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="SurName" ColumnName="surName" />
+          <ScalarProperty Name="Alias" ColumnName="alias" />
+          <ScalarProperty Name="Password" ColumnName="password" />
+          <ScalarProperty Name="Email" ColumnName="email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="address" />
+          <ScalarProperty Name="AvaUrl" ColumnName="avaUrl" />
+          <ScalarProperty Name="IsRemoved" ColumnName="isRemoved" />
+          <ScalarProperty Name="Created" ColumnName="created" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

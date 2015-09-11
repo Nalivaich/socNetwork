@@ -12,20 +12,20 @@ namespace EFDataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class comment
+    public partial class Comment
     {
-        public int id { get; set; }
-        public string comment1 { get; set; }
-        public System.DateTime created { get; set; }
-        public Nullable<System.DateTime> modified { get; set; }
-        public Nullable<int> postId { get; set; }
-        public Nullable<int> albumId { get; set; }
-        public Nullable<int> pictureId { get; set; }
-        public int userId { get; set; }
+        public int Id { get; set; }
+        public string Value { get; set; }
+        public System.DateTime Created { get; set; }
+        public Nullable<System.DateTime> Modified { get; set; }
+        public Nullable<int> PostId { get; set; }
+        public Nullable<int> AlbumId { get; set; }
+        public Nullable<int> PictureId { get; set; }
+        public int UserId { get; set; }
     
-        public virtual album album { get; set; }
-        public virtual picture picture { get; set; }
-        public virtual post post { get; set; }
-        public virtual user user { get; set; }
+        public virtual Album Album { get; set; }
+        public virtual Picture Picture { get; set; }
+        public virtual Post Post { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -12,24 +12,24 @@ namespace EFDataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class album
+    public partial class Album
     {
-        public album()
+        public Album()
         {
-            this.comments = new HashSet<comment>();
-            this.pictures = new HashSet<picture>();
+            this.Comments = new HashSet<Comment>();
+            this.Pictures = new HashSet<Picture>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public System.DateTime created { get; set; }
-        public Nullable<System.DateTime> modified { get; set; }
-        public Nullable<int> likes { get; set; }
-        public bool @private { get; set; }
-        public int userId { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public System.DateTime Created { get; set; }
+        public Nullable<System.DateTime> Modified { get; set; }
+        public Nullable<int> Likes { get; set; }
+        public bool Private { get; set; }
+        public int UserId { get; set; }
     
-        public virtual user user { get; set; }
-        public virtual ICollection<comment> comments { get; set; }
-        public virtual ICollection<picture> pictures { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Picture> Pictures { get; set; }
     }
 }

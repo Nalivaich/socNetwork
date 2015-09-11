@@ -31,9 +31,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Post not found", "");
             }
-            Mapper.CreateMap<post, PostDTO>();
+            Mapper.CreateMap<Post, PostDTO>();
 
-            return Mapper.Map<post, PostDTO>(post);
+            return Mapper.Map<Post, PostDTO>(post);
         }
 
         public IEnumerable<PostDTO> GetAll()
@@ -43,9 +43,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Post not found", "");
             }
-            Mapper.CreateMap<post, PostDTO>();
+            Mapper.CreateMap<Post, PostDTO>();
 
-            return Mapper.Map<IEnumerable<post>, List<PostDTO>>(DBPosts);
+            return Mapper.Map<IEnumerable<Post>, List<PostDTO>>(DBPosts);
         }
 
         public IEnumerable<CommentDTO> GetComments(int postId)
@@ -56,17 +56,22 @@ namespace Common.Services
                 throw new ValidationException("Post not found", "");
             }
 
-            return post.comments.Select(u => new CommentDTO
+            return post.Comments.Select(u => Map(u)).ToList();
+        }
+
+        private static CommentDTO Map(Comment u)
+        {
+            return new CommentDTO
             {
-                id = u.id,
-                comment = u.comment1,
-                created = u.created,
-                modified = u.modified,
-                postId = u.postId,
-                pictureId = u.pictureId,
-                albumId = u.albumId,
-                userId = u.userId
-            }).ToList();
+                id = u.Id,
+                comment = u.Value,
+                created = u.Created,
+                modified = u.Modified,
+                postId = u.PostId,
+                pictureId = u.PictureId,
+                albumId = u.AlbumId,
+                userId = u.UserId
+            };
         }
 
         public IEnumerable<PictureDTO> GetPictures(int postId)
@@ -77,24 +82,29 @@ namespace Common.Services
                 throw new ValidationException("Post not found", "");
             }
 
-            return post.pictures.Select(u => new PictureDTO
+            return post.Pictures.Select(Map).ToList();
+        }
+
+        private static PictureDTO Map(Picture u)
+        {
+            return new PictureDTO
             {
-                id = u.id,
-                urlSmall = u.urlSmall,
-                urlMedium = u.urlMedium,
-                urlStandart = u.urlStandart,
-                albumId = u.albumId,
-                likes = u.likes,
-                postId = u.postId,
-                userId = u.userId
-            }).ToList();
+                id = u.Id,
+                urlSmall = u.UrlSmall,
+                urlMedium = u.UrlMedium,
+                urlStandart = u.UrlStandart,
+                albumId = u.AlbumId,
+                likes = u.Likes,
+                postId = u.PostId,
+                userId = u.UserId
+            };
         }
 
         public int Create(PostDTO item)
         {
-            Mapper.CreateMap<PostDTO, post>();
+            Mapper.CreateMap<PostDTO, Post>();
 
-            int result = Database.Posts.Create(Mapper.Map<PostDTO, post>(item));
+            int result = Database.Posts.Create(Mapper.Map<PostDTO, Post>(item)).Id;
             Database.Save();
             return result;
         }

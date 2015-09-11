@@ -12,33 +12,33 @@ namespace EFDataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class User
     {
-        public user()
+        public User()
         {
-            this.albums = new HashSet<album>();
-            this.comments = new HashSet<comment>();
-            this.pictures = new HashSet<picture>();
-            this.posts = new HashSet<post>();
-            this.userRoles = new HashSet<userRole>();
+            this.Albums = new HashSet<Album>();
+            this.Comments = new HashSet<Comment>();
+            this.Pictures = new HashSet<Picture>();
+            this.Posts = new HashSet<Post>();
+            this.UserRoles = new HashSet<UserRole>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public string surName { get; set; }
-        public string alias { get; set; }
-        public string password { get; set; }
-        public string email { get; set; }
-        public string phoneNumber { get; set; }
-        public string address { get; set; }
-        public string avaUrl { get; set; }
-        public bool isRemoved { get; set; }
-        public System.DateTime created { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string SurName { get; set; }
+        public string Alias { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string AvaUrl { get; set; }
+        public bool IsRemoved { get; set; }
+        public System.DateTime Created { get; set; }
     
-        public virtual ICollection<album> albums { get; set; }
-        public virtual ICollection<comment> comments { get; set; }
-        public virtual ICollection<picture> pictures { get; set; }
-        public virtual ICollection<post> posts { get; set; }
-        public virtual ICollection<userRole> userRoles { get; set; }
+        public virtual ICollection<Album> Albums { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Picture> Pictures { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

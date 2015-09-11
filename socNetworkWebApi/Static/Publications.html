@@ -15,7 +15,7 @@
                         <ul class="myCursor">
                             <li class="album-list inline-block panel panel-info text-success image-list block-list" ng-controller="CurrentPostController">
                                 <div class="inline-block" ng-repeat="picture in pictures" ng-click="open('lg', picture.id)">
-                                    <img src="/Files/Medium/{{picture.id}}">
+                                    <img ng-src="/Files/Medium/{{picture.id}}">
                                 </div>
 
                                 <div class="row panel-footer">

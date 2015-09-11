@@ -9,11 +9,11 @@ namespace Common.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<user> Users { get; }
-        IRepository<post> Posts { get; }
-        IRepository<album> Albums { get; }
-        IRepository<picture> Pictures { get; }
-        IRepository<comment> Comments { get; }
+        IRepository<User> Users { get; }
+        IRepository<Post> Posts { get; }
+        IRepository<Album> Albums { get; }
+        IRepository<Picture> Pictures { get; }
+        IRepository<Comment> Comments { get; }
         void Save();
     }
 }

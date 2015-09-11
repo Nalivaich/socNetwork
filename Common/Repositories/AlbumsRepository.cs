@@ -10,47 +10,17 @@ using Common.EF;
 
 namespace Common.Repositories
 {
-    public class AlbumsRepository : IRepository<album>
+    public class AlbumsRepository : BaseRepository<socNetworkEntities, Album>
     {
-        private socNetworkEntities db;
-
         public AlbumsRepository(socNetworkEntities context)
+            : base(context, GetDbSet)
         {
-            this.db = context;
+
         }
 
-        public IEnumerable<album> GetAll()
+        public static DbSet<Album> GetDbSet(socNetworkEntities context)
         {
-            return db.albums;
-        }
-
-        public album Get(int id)
-        {
-            return db.albums.Find(id);
-        }
-
-        public int Create(album album)
-        {
-            db.albums.Add(album);
-            db.SaveChanges();
-            return album.id;
-        }
-
-        public void Update(album album)
-        {
-            db.Entry(album).State = EntityState.Modified;
-        }
-
-        public IEnumerable<album> Find(Func<album, Boolean> predicate)
-        {
-            return db.albums.Where(predicate).ToList();
-        }
-
-        public void Delete(int id)
-        {
-            album album = db.albums.Find(id);
-            if (album != null)
-                db.albums.Remove(album);
+            return context.Albums;
         }
     }
 }

@@ -29,11 +29,13 @@ namespace socNetworkWebApi.Controllers
 
         private IUserService _userSvc;
         private IPictureService _pictureSvc;
-
-        public UserController(IUserService userSvc, IPictureService pictureSvc)
+        private IAlbumService _albumSvc;
+ 
+        public UserController(IUserService userSvc, IPictureService pictureSvc, IAlbumService albumSvc)
         {
             _userSvc = userSvc;
             _pictureSvc = pictureSvc;
+            _albumSvc = albumSvc;
         }
 
         [Route("api/users")]
@@ -147,6 +149,14 @@ namespace socNetworkWebApi.Controllers
             newUser.created = DateTime.Now;
             newUser.avaUrl = "#";
             newUser.id =  _userSvc.Create(newUser);
+            _albumSvc.Create(new AlbumDTO
+            {
+                name = "DefaultAlbum",
+                created = DateTime.Now,
+                @private = true,
+                userId = newUser.id,
+                likes = 0
+            });
             return newUser;
         }
 

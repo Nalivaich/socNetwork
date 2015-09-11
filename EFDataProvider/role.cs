@@ -12,15 +12,15 @@ namespace EFDataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class role
+    public partial class Role
     {
-        public role()
+        public Role()
         {
-            this.userRoles = new HashSet<userRole>();
+            this.UserRoles = new HashSet<UserRole>();
         }
     
-        public string roleName { get; set; }
+        public string RoleName { get; set; }
     
-        public virtual ICollection<userRole> userRoles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

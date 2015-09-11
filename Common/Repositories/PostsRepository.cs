@@ -10,7 +10,7 @@ using Common.EF;
 
 namespace Common.Repositories
 {
-    public class PostRepository : IRepository<post>
+    public class PostRepository : IRepository<Post>
     {
         private socNetworkEntities db;
 
@@ -19,38 +19,38 @@ namespace Common.Repositories
             this.db = context;
         }
 
-        public IEnumerable<post> GetAll()
+        public IEnumerable<Post> GetAll()
         {
-            return db.posts;
+            return db.Posts;
         }
 
-        public post Get(int id)
+        public Post Get(int id)
         {
-            return db.posts.Find(id);
+            return db.Posts.Find(id);
         }
 
-        public int Create(post post)
+        public Post Create(Post post)
         {
-            db.posts.Add(post);
+            db.Posts.Add(post);
             db.SaveChanges();
-            return post.id;
+            return post;
         }
 
-        public void Update(post post)
+        public void Update(Post post)
         {
             db.Entry(post).State = EntityState.Modified;
         }
 
-        public IEnumerable<post> Find(Func<post, Boolean> predicate)
+        public IEnumerable<Post> Find(Func<Post, Boolean> predicate)
         {
-            return db.posts.Where(predicate).ToList();
+            return db.Posts.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            post post = db.posts.Find(id);
+            Post post = db.Posts.Find(id);
             if (post != null)
-                db.posts.Remove(post);
+                db.Posts.Remove(post);
         }
     }
 }

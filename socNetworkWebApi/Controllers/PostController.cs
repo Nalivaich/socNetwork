@@ -20,12 +20,14 @@ namespace socNetworkWebApi.Controllers
         private IPostService  _postSvc;
         private IUserService _userSvc;
         private IPictureService _pictureSvc;
+        private IAlbumService _albumSvc;
 
-        public PostController(IPostService postSvc, IUserService userSvc, IPictureService pictureSvc)
+        public PostController(IPostService postSvc, IUserService userSvc, IPictureService pictureSvc, IAlbumService albumSvc)
         {
             _postSvc = postSvc;
             _userSvc = userSvc;
             _pictureSvc = pictureSvc;
+            _albumSvc = albumSvc;
         }
 
         [Route("api/posts")]
@@ -113,6 +115,9 @@ namespace socNetworkWebApi.Controllers
                         {
                             throw new Exception("file has not been moved", e.InnerException);
                         }
+
+                        IEnumerable<AlbumDTO> albums = _userSvc.GetUserAlbums(post.userId);
+
                         _pictureSvc.Create(new PictureDTO
                         {
                             urlStandart = Convert.ToString("Pictures/" + user.email + "/Standart/" + name),
@@ -120,7 +125,8 @@ namespace socNetworkWebApi.Controllers
                             urlSmall = Convert.ToString("Pictures/" + user.email + "/Small/" + name),
                             postId = newPostId,
                             userId = post.userId,
-                            likes = 0
+                            likes = 0,
+                            albumId = albums.First().id
                         });
                     }
                 }

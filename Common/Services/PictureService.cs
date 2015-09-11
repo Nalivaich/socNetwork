@@ -30,9 +30,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Image not found", "");
             }
-            Mapper.CreateMap<picture, PictureDTO>();
+            Mapper.CreateMap<Picture, PictureDTO>();
 
-            return Mapper.Map<picture, PictureDTO>(picture);
+            return Mapper.Map<Picture, PictureDTO>(picture);
         }
 
         public IEnumerable<PictureDTO> GetAll()
@@ -42,9 +42,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Image not found", "");
             }
-            Mapper.CreateMap<picture, PictureDTO>();
+            Mapper.CreateMap<Picture, PictureDTO>();
 
-            return Mapper.Map<IEnumerable<picture>, List<PictureDTO>>(DBPicture);
+            return Mapper.Map<IEnumerable<Picture>, List<PictureDTO>>(DBPicture);
         }
 
         public IEnumerable<CommentDTO> GetComments(int pictureId)
@@ -55,24 +55,24 @@ namespace Common.Services
                 throw new ValidationException("Image not found", "");
             }
 
-            return picture.comments.Select(u => new CommentDTO
+            return picture.Comments.Select(u => new CommentDTO
             {
-                id = u.id,
-                comment = u.comment1,
-                created = u.created,
-                modified = u.modified,
-                postId = u.postId,
-                pictureId = u.pictureId,
-                albumId = u.albumId,
-                userId = u.userId
+                id = u.Id,
+                comment = u.Value,
+                created = u.Created,
+                modified = u.Modified,
+                postId = u.PostId,
+                pictureId = u.PictureId,
+                albumId = u.AlbumId,
+                userId = u.UserId
             }).ToList();
         }
 
         public int Create(PictureDTO item)
         {
-            Mapper.CreateMap<PictureDTO, picture>();
+            Mapper.CreateMap<PictureDTO, Picture>();
 
-            int result = Database.Pictures.Create(Mapper.Map<PictureDTO, picture>(item));
+            int result = Database.Pictures.Create(Mapper.Map<PictureDTO, Picture>(item)).Id;
             Database.Save();
             return result;
         }

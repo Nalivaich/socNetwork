@@ -11,8 +11,8 @@ namespace Common.EF
 {
    /* class SocNetworcContext: DbContext
     {
-        public DbSet<user> Users { get; set; }
-        public DbSet<post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<album> Albums { get; set; }
         public DbSet<picture> Pictures { get; set; }
 

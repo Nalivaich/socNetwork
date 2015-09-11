@@ -11,7 +11,7 @@ using Common.EF;
 
 namespace Common.Repositories
 {
-    class CommentsRepository : IRepository<comment>
+    class CommentsRepository : IRepository<Comment>
     {
          private socNetworkEntities db;
 
@@ -20,38 +20,38 @@ namespace Common.Repositories
             this.db = context;
         }
 
-        public IEnumerable<comment> GetAll()
+        public IEnumerable<Comment> GetAll()
         {
-            return db.comments;
+            return db.Comments;
         }
 
-        public comment Get(int id)
+        public Comment Get(int id)
         {
-            return db.comments.Find(id);
+            return db.Comments.Find(id);
         }
 
-        public int Create(comment comment)
+        public Comment Create(Comment comment)
         {
-            db.comments.Add(comment);
+            db.Comments.Add(comment);
             db.SaveChanges();
-            return comment.id;
+            return comment;
         }
 
-        public void Update(comment comment)
+        public void Update(Comment comment)
         {
             db.Entry(comment).State = EntityState.Modified;
         }
 
-        public IEnumerable<comment> Find(Func<comment, Boolean> predicate)
+        public IEnumerable<Comment> Find(Func<Comment, Boolean> predicate)
         {
-            return db.comments.Where(predicate).ToList();
+            return db.Comments.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            comment comment = db.comments.Find(id);
+            Comment comment = db.Comments.Find(id);
             if (comment != null)
-                db.comments.Remove(comment);
+                db.Comments.Remove(comment);
         }
     }
 }

@@ -31,9 +31,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Comment not found", "");
             }
-            Mapper.CreateMap<comment, CommentDTO>();
+            Mapper.CreateMap<Comment, CommentDTO>();
 
-            return Mapper.Map<comment, CommentDTO>(comment);
+            return Mapper.Map<Comment, CommentDTO>(comment);
         }
 
         public IEnumerable<CommentDTO> GetAll()
@@ -43,25 +43,25 @@ namespace Common.Services
             {
                 throw new ValidationException("Album not found", "");
             }
-            Mapper.CreateMap<comment, CommentDTO>();
+            Mapper.CreateMap<Comment, CommentDTO>();
 
-            return Mapper.Map<IEnumerable<comment>, List<CommentDTO>>(DBComment);
+            return Mapper.Map<IEnumerable<Comment>, List<CommentDTO>>(DBComment);
         }
         
         public int Create(CommentDTO item)
         {
-            Mapper.CreateMap<CommentDTO, comment>();
-            var DBresult = Mapper.Map<CommentDTO, comment>(item);
-            DBresult.comment1 = item.comment;
-            int result = Database.Comments.Create(DBresult);
+            Mapper.CreateMap<CommentDTO, Comment>();
+            var DBresult = Mapper.Map<CommentDTO, Comment>(item);
+            DBresult.Value = item.comment;
+            int result = Database.Comments.Create(DBresult).Id;
             Database.Save();
             return result;
         }
         public void Update(CommentDTO item)
         {
-            Mapper.CreateMap<CommentDTO, comment>();
+            Mapper.CreateMap<CommentDTO, Comment>();
 
-            Database.Comments.Update(Mapper.Map<CommentDTO, comment>(item));
+            Database.Comments.Update(Mapper.Map<CommentDTO, Comment>(item));
             Database.Save();
         }
 

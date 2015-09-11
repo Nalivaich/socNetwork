@@ -24,10 +24,10 @@ namespace TestConsole
                 Console.Write(item.comment);
             }
             var array = pp.Users.GetAll();
-            Console.WriteLine(pp.Posts.Get(2).name);
+            Console.WriteLine(pp.Posts.Get(2).Name);
             foreach (var item in array)
             {
-                Console.WriteLine(item.name);
+                Console.WriteLine(item.Name);
             }
             Console.ReadLine();
 

@@ -285,75 +285,75 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="socNetworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="album">
+        <EntityType Name="Album">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="modified" Type="DateTime" Precision="3" />
-          <Property Name="likes" Type="Int32" />
-          <Property Name="private" Type="Boolean" Nullable="false" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK__albums__userId__5CD6CB2B" FromRole="albums" ToRole="users" />
-          <NavigationProperty Name="comments" Relationship="Self.FK__comments__albumI__68487DD7" FromRole="albums" ToRole="comments" />
-          <NavigationProperty Name="pictures" Relationship="Self.FK__pictures__albumI__619B8048" FromRole="albums" ToRole="pictures" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="Likes" Type="Int32" />
+          <Property Name="Private" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__albums__userId__5CD6CB2B" FromRole="albums" ToRole="users" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__comments__albumI__68487DD7" FromRole="albums" ToRole="comments" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK__pictures__albumI__619B8048" FromRole="albums" ToRole="pictures" />
         </EntityType>
-        <EntityType Name="comment">
+        <EntityType Name="Comment">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="comment1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="modified" Type="DateTime" Precision="3" />
-          <Property Name="postId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" />
-          <Property Name="pictureId" Type="Int32" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="album" Relationship="Self.FK__comments__albumI__68487DD7" FromRole="comments" ToRole="albums" />
-          <NavigationProperty Name="picture" Relationship="Self.FK__comments__pictur__693CA210" FromRole="comments" ToRole="pictures" />
-          <NavigationProperty Name="post" Relationship="Self.FK__comments__postId__6754599E" FromRole="comments" ToRole="posts" />
-          <NavigationProperty Name="user" Relationship="Self.FK__comments__userId__6A30C649" FromRole="comments" ToRole="users" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="PostId" Type="Int32" />
+          <Property Name="AlbumId" Type="Int32" />
+          <Property Name="PictureId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="Self.FK__comments__albumI__68487DD7" FromRole="comments" ToRole="albums" />
+          <NavigationProperty Name="Picture" Relationship="Self.FK__comments__pictur__693CA210" FromRole="comments" ToRole="pictures" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__comments__postId__6754599E" FromRole="comments" ToRole="posts" />
+          <NavigationProperty Name="User" Relationship="Self.FK__comments__userId__6A30C649" FromRole="comments" ToRole="users" />
         </EntityType>
-        <EntityType Name="picture">
+        <EntityType Name="Picture">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="urlStandart" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="urlMedium" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="urlSmall" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="likes" Type="Int32" />
-          <Property Name="postId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" Nullable="false" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="album" Relationship="Self.FK__pictures__albumI__619B8048" FromRole="pictures" ToRole="albums" />
-          <NavigationProperty Name="comments" Relationship="Self.FK__comments__pictur__693CA210" FromRole="pictures" ToRole="comments" />
-          <NavigationProperty Name="post" Relationship="Self.FK__pictures__postId__60A75C0F" FromRole="pictures" ToRole="posts" />
-          <NavigationProperty Name="user" Relationship="Self.FK__pictures__userId__628FA481" FromRole="pictures" ToRole="users" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrlStandart" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UrlMedium" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UrlSmall" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Likes" Type="Int32" />
+          <Property Name="PostId" Type="Int32" />
+          <Property Name="AlbumId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="Self.FK__pictures__albumI__619B8048" FromRole="pictures" ToRole="albums" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__comments__pictur__693CA210" FromRole="pictures" ToRole="comments" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__pictures__postId__60A75C0F" FromRole="pictures" ToRole="posts" />
+          <NavigationProperty Name="User" Relationship="Self.FK__pictures__userId__628FA481" FromRole="pictures" ToRole="users" />
         </EntityType>
-        <EntityType Name="post">
+        <EntityType Name="Post">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="modified" Type="DateTime" Precision="3" />
-          <Property Name="likes" Type="Int32" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="comments" Relationship="Self.FK__comments__postId__6754599E" FromRole="posts" ToRole="comments" />
-          <NavigationProperty Name="pictures" Relationship="Self.FK__pictures__postId__60A75C0F" FromRole="posts" ToRole="pictures" />
-          <NavigationProperty Name="user" Relationship="Self.FK__posts__userId__571DF1D5" FromRole="posts" ToRole="users" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="Likes" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__comments__postId__6754599E" FromRole="posts" ToRole="comments" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK__pictures__postId__60A75C0F" FromRole="posts" ToRole="pictures" />
+          <NavigationProperty Name="User" Relationship="Self.FK__posts__userId__571DF1D5" FromRole="posts" ToRole="users" />
         </EntityType>
-        <EntityType Name="role">
+        <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="roleName" />
+            <PropertyRef Name="RoleName" />
           </Key>
-          <Property Name="roleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="userRoles" Relationship="Self.FK__userRole__roleNa__5165187F" FromRole="roles" ToRole="userRole" />
+          <Property Name="RoleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__userRole__roleNa__5165187F" FromRole="roles" ToRole="userRole" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -365,221 +365,221 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="userRole">
+        <EntityType Name="UserRole">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="roleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="role" Relationship="Self.FK__userRole__roleNa__5165187F" FromRole="userRole" ToRole="roles" />
-          <NavigationProperty Name="user" Relationship="Self.FK__userRole__userId__5070F446" FromRole="userRole" ToRole="users" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__userRole__roleNa__5165187F" FromRole="userRole" ToRole="roles" />
+          <NavigationProperty Name="User" Relationship="Self.FK__userRole__userId__5070F446" FromRole="userRole" ToRole="users" />
         </EntityType>
-        <EntityType Name="user">
+        <EntityType Name="User">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="surName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="alias" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="phoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="avaUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="isRemoved" Type="Boolean" Nullable="false" />
-          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="albums" Relationship="Self.FK__albums__userId__5CD6CB2B" FromRole="users" ToRole="albums" />
-          <NavigationProperty Name="comments" Relationship="Self.FK__comments__userId__6A30C649" FromRole="users" ToRole="comments" />
-          <NavigationProperty Name="pictures" Relationship="Self.FK__pictures__userId__628FA481" FromRole="users" ToRole="pictures" />
-          <NavigationProperty Name="posts" Relationship="Self.FK__posts__userId__571DF1D5" FromRole="users" ToRole="posts" />
-          <NavigationProperty Name="userRoles" Relationship="Self.FK__userRole__userId__5070F446" FromRole="users" ToRole="userRole" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AvaUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsRemoved" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Albums" Relationship="Self.FK__albums__userId__5CD6CB2B" FromRole="users" ToRole="albums" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__comments__userId__6A30C649" FromRole="users" ToRole="comments" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK__pictures__userId__628FA481" FromRole="users" ToRole="pictures" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK__posts__userId__571DF1D5" FromRole="users" ToRole="posts" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__userRole__userId__5070F446" FromRole="users" ToRole="userRole" />
         </EntityType>
         <Association Name="FK__albums__userId__5CD6CB2B">
-          <End Role="users" Type="Self.user" Multiplicity="1" />
-          <End Role="albums" Type="Self.album" Multiplicity="*" />
+          <End Role="users" Type="socNetworkModel.User" Multiplicity="1" />
+          <End Role="albums" Type="socNetworkModel.Album" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="albums">
-              <PropertyRef Name="userId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__comments__albumI__68487DD7">
-          <End Role="albums" Type="Self.album" Multiplicity="0..1" />
-          <End Role="comments" Type="Self.comment" Multiplicity="*" />
+          <End Role="albums" Type="socNetworkModel.Album" Multiplicity="0..1" />
+          <End Role="comments" Type="socNetworkModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="albums">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments">
-              <PropertyRef Name="albumId" />
+              <PropertyRef Name="AlbumId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__pictures__albumI__619B8048">
-          <End Role="albums" Type="Self.album" Multiplicity="1" />
-          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
+          <End Role="albums" Type="socNetworkModel.Album" Multiplicity="1" />
+          <End Role="pictures" Type="socNetworkModel.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="albums">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="pictures">
-              <PropertyRef Name="albumId" />
+              <PropertyRef Name="AlbumId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__comments__pictur__693CA210">
-          <End Role="pictures" Type="Self.picture" Multiplicity="0..1" />
-          <End Role="comments" Type="Self.comment" Multiplicity="*" />
+          <End Role="pictures" Type="socNetworkModel.Picture" Multiplicity="0..1" />
+          <End Role="comments" Type="socNetworkModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pictures">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments">
-              <PropertyRef Name="pictureId" />
+              <PropertyRef Name="PictureId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__comments__postId__6754599E">
-          <End Role="posts" Type="Self.post" Multiplicity="0..1" />
-          <End Role="comments" Type="Self.comment" Multiplicity="*" />
+          <End Role="posts" Type="socNetworkModel.Post" Multiplicity="0..1" />
+          <End Role="comments" Type="socNetworkModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="posts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments">
-              <PropertyRef Name="postId" />
+              <PropertyRef Name="PostId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__comments__userId__6A30C649">
-          <End Role="users" Type="Self.user" Multiplicity="1" />
-          <End Role="comments" Type="Self.comment" Multiplicity="*" />
+          <End Role="users" Type="socNetworkModel.User" Multiplicity="1" />
+          <End Role="comments" Type="socNetworkModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments">
-              <PropertyRef Name="userId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__pictures__postId__60A75C0F">
-          <End Role="posts" Type="Self.post" Multiplicity="0..1" />
-          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
+          <End Role="posts" Type="socNetworkModel.Post" Multiplicity="0..1" />
+          <End Role="pictures" Type="socNetworkModel.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="posts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="pictures">
-              <PropertyRef Name="postId" />
+              <PropertyRef Name="PostId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__pictures__userId__628FA481">
-          <End Role="users" Type="Self.user" Multiplicity="1" />
-          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
+          <End Role="users" Type="socNetworkModel.User" Multiplicity="1" />
+          <End Role="pictures" Type="socNetworkModel.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="pictures">
-              <PropertyRef Name="userId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__posts__userId__571DF1D5">
-          <End Role="users" Type="Self.user" Multiplicity="1" />
-          <End Role="posts" Type="Self.post" Multiplicity="*" />
+          <End Role="users" Type="socNetworkModel.User" Multiplicity="1" />
+          <End Role="posts" Type="socNetworkModel.Post" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="posts">
-              <PropertyRef Name="userId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__userRole__roleNa__5165187F">
-          <End Role="roles" Type="Self.role" Multiplicity="1" />
-          <End Role="userRole" Type="Self.userRole" Multiplicity="*" />
+          <End Role="roles" Type="socNetworkModel.Role" Multiplicity="1" />
+          <End Role="userRole" Type="socNetworkModel.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
-              <PropertyRef Name="roleName" />
+              <PropertyRef Name="RoleName" />
             </Principal>
             <Dependent Role="userRole">
-              <PropertyRef Name="roleName" />
+              <PropertyRef Name="RoleName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__userRole__userId__5070F446">
-          <End Role="users" Type="Self.user" Multiplicity="1" />
-          <End Role="userRole" Type="Self.userRole" Multiplicity="*" />
+          <End Role="users" Type="socNetworkModel.User" Multiplicity="1" />
+          <End Role="userRole" Type="socNetworkModel.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="userRole">
-              <PropertyRef Name="userId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="socNetworkEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="albums" EntityType="Self.album" />
-          <EntitySet Name="comments" EntityType="Self.comment" />
-          <EntitySet Name="pictures" EntityType="Self.picture" />
-          <EntitySet Name="posts" EntityType="Self.post" />
-          <EntitySet Name="roles" EntityType="Self.role" />
+          <EntitySet Name="Albums" EntityType="socNetworkModel.Album" />
+          <EntitySet Name="Comments" EntityType="socNetworkModel.Comment" />
+          <EntitySet Name="Pictures" EntityType="socNetworkModel.Picture" />
+          <EntitySet Name="Posts" EntityType="socNetworkModel.Post" />
+          <EntitySet Name="Roles" EntityType="socNetworkModel.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="userRoles" EntityType="Self.userRole" />
-          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="UserRoles" EntityType="socNetworkModel.UserRole" />
+          <EntitySet Name="Users" EntityType="socNetworkModel.User" />
           <AssociationSet Name="FK__albums__userId__5CD6CB2B" Association="Self.FK__albums__userId__5CD6CB2B">
-            <End Role="users" EntitySet="users" />
-            <End Role="albums" EntitySet="albums" />
+            <End Role="users" EntitySet="Users" />
+            <End Role="albums" EntitySet="Albums" />
           </AssociationSet>
           <AssociationSet Name="FK__comments__albumI__68487DD7" Association="Self.FK__comments__albumI__68487DD7">
-            <End Role="albums" EntitySet="albums" />
-            <End Role="comments" EntitySet="comments" />
+            <End Role="albums" EntitySet="Albums" />
+            <End Role="comments" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK__pictures__albumI__619B8048" Association="Self.FK__pictures__albumI__619B8048">
-            <End Role="albums" EntitySet="albums" />
-            <End Role="pictures" EntitySet="pictures" />
+            <End Role="albums" EntitySet="Albums" />
+            <End Role="pictures" EntitySet="Pictures" />
           </AssociationSet>
           <AssociationSet Name="FK__comments__pictur__693CA210" Association="Self.FK__comments__pictur__693CA210">
-            <End Role="pictures" EntitySet="pictures" />
-            <End Role="comments" EntitySet="comments" />
+            <End Role="pictures" EntitySet="Pictures" />
+            <End Role="comments" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK__comments__postId__6754599E" Association="Self.FK__comments__postId__6754599E">
-            <End Role="posts" EntitySet="posts" />
-            <End Role="comments" EntitySet="comments" />
+            <End Role="posts" EntitySet="Posts" />
+            <End Role="comments" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK__comments__userId__6A30C649" Association="Self.FK__comments__userId__6A30C649">
-            <End Role="users" EntitySet="users" />
-            <End Role="comments" EntitySet="comments" />
+            <End Role="users" EntitySet="Users" />
+            <End Role="comments" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK__pictures__postId__60A75C0F" Association="Self.FK__pictures__postId__60A75C0F">
-            <End Role="posts" EntitySet="posts" />
-            <End Role="pictures" EntitySet="pictures" />
+            <End Role="posts" EntitySet="Posts" />
+            <End Role="pictures" EntitySet="Pictures" />
           </AssociationSet>
           <AssociationSet Name="FK__pictures__userId__628FA481" Association="Self.FK__pictures__userId__628FA481">
-            <End Role="users" EntitySet="users" />
-            <End Role="pictures" EntitySet="pictures" />
+            <End Role="users" EntitySet="Users" />
+            <End Role="pictures" EntitySet="Pictures" />
           </AssociationSet>
           <AssociationSet Name="FK__posts__userId__571DF1D5" Association="Self.FK__posts__userId__571DF1D5">
-            <End Role="users" EntitySet="users" />
-            <End Role="posts" EntitySet="posts" />
+            <End Role="users" EntitySet="Users" />
+            <End Role="posts" EntitySet="Posts" />
           </AssociationSet>
           <AssociationSet Name="FK__userRole__roleNa__5165187F" Association="Self.FK__userRole__roleNa__5165187F">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="userRole" EntitySet="userRoles" />
+            <End Role="roles" EntitySet="Roles" />
+            <End Role="userRole" EntitySet="UserRoles" />
           </AssociationSet>
           <AssociationSet Name="FK__userRole__userId__5070F446" Association="Self.FK__userRole__userId__5070F446">
-            <End Role="users" EntitySet="users" />
-            <End Role="userRole" EntitySet="userRoles" />
+            <End Role="users" EntitySet="Users" />
+            <End Role="userRole" EntitySet="UserRoles" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -588,63 +588,63 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="socNetworkModelStoreContainer" CdmEntityContainer="socNetworkEntities">
-          <EntitySetMapping Name="albums">
-            <EntityTypeMapping TypeName="socNetworkModel.album">
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="socNetworkModel.Album">
               <MappingFragment StoreEntitySet="albums">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="created" ColumnName="created" />
-                <ScalarProperty Name="modified" ColumnName="modified" />
-                <ScalarProperty Name="likes" ColumnName="likes" />
-                <ScalarProperty Name="private" ColumnName="private" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Created" ColumnName="created" />
+                <ScalarProperty Name="Modified" ColumnName="modified" />
+                <ScalarProperty Name="Likes" ColumnName="likes" />
+                <ScalarProperty Name="Private" ColumnName="private" />
+                <ScalarProperty Name="UserId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="comments">
-            <EntityTypeMapping TypeName="socNetworkModel.comment">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="socNetworkModel.Comment">
               <MappingFragment StoreEntitySet="comments">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="comment1" ColumnName="comment" />
-                <ScalarProperty Name="created" ColumnName="created" />
-                <ScalarProperty Name="modified" ColumnName="modified" />
-                <ScalarProperty Name="postId" ColumnName="postId" />
-                <ScalarProperty Name="albumId" ColumnName="albumId" />
-                <ScalarProperty Name="pictureId" ColumnName="pictureId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Value" ColumnName="comment" />
+                <ScalarProperty Name="Created" ColumnName="created" />
+                <ScalarProperty Name="Modified" ColumnName="modified" />
+                <ScalarProperty Name="PostId" ColumnName="postId" />
+                <ScalarProperty Name="AlbumId" ColumnName="albumId" />
+                <ScalarProperty Name="PictureId" ColumnName="pictureId" />
+                <ScalarProperty Name="UserId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="pictures">
-            <EntityTypeMapping TypeName="socNetworkModel.picture">
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="socNetworkModel.Picture">
               <MappingFragment StoreEntitySet="pictures">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="urlStandart" ColumnName="urlStandart" />
-                <ScalarProperty Name="urlMedium" ColumnName="urlMedium" />
-                <ScalarProperty Name="urlSmall" ColumnName="urlSmall" />
-                <ScalarProperty Name="likes" ColumnName="likes" />
-                <ScalarProperty Name="postId" ColumnName="postId" />
-                <ScalarProperty Name="albumId" ColumnName="albumId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="UrlStandart" ColumnName="urlStandart" />
+                <ScalarProperty Name="UrlMedium" ColumnName="urlMedium" />
+                <ScalarProperty Name="UrlSmall" ColumnName="urlSmall" />
+                <ScalarProperty Name="Likes" ColumnName="likes" />
+                <ScalarProperty Name="PostId" ColumnName="postId" />
+                <ScalarProperty Name="AlbumId" ColumnName="albumId" />
+                <ScalarProperty Name="UserId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="posts">
-            <EntityTypeMapping TypeName="socNetworkModel.post">
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="socNetworkModel.Post">
               <MappingFragment StoreEntitySet="posts">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="created" ColumnName="created" />
-                <ScalarProperty Name="modified" ColumnName="modified" />
-                <ScalarProperty Name="likes" ColumnName="likes" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Created" ColumnName="created" />
+                <ScalarProperty Name="Modified" ColumnName="modified" />
+                <ScalarProperty Name="Likes" ColumnName="likes" />
+                <ScalarProperty Name="UserId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="socNetworkModel.role">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="socNetworkModel.Role">
               <MappingFragment StoreEntitySet="roles">
-                <ScalarProperty Name="roleName" ColumnName="roleName" />
+                <ScalarProperty Name="RoleName" ColumnName="roleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -659,29 +659,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="userRoles">
-            <EntityTypeMapping TypeName="socNetworkModel.userRole">
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="socNetworkModel.UserRole">
               <MappingFragment StoreEntitySet="userRole">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="roleName" ColumnName="roleName" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="RoleName" ColumnName="roleName" />
+                <ScalarProperty Name="UserId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="socNetworkModel.user">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="socNetworkModel.User">
               <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surName" ColumnName="surName" />
-                <ScalarProperty Name="alias" ColumnName="alias" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="avaUrl" ColumnName="avaUrl" />
-                <ScalarProperty Name="isRemoved" ColumnName="isRemoved" />
-                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="SurName" ColumnName="surName" />
+                <ScalarProperty Name="Alias" ColumnName="alias" />
+                <ScalarProperty Name="Password" ColumnName="password" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="AvaUrl" ColumnName="avaUrl" />
+                <ScalarProperty Name="IsRemoved" ColumnName="isRemoved" />
+                <ScalarProperty Name="Created" ColumnName="created" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

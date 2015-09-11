@@ -12,25 +12,25 @@ namespace EFDataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class picture
+    public partial class Picture
     {
-        public picture()
+        public Picture()
         {
-            this.comments = new HashSet<comment>();
+            this.Comments = new HashSet<Comment>();
         }
     
-        public int id { get; set; }
-        public string urlStandart { get; set; }
-        public string urlMedium { get; set; }
-        public string urlSmall { get; set; }
-        public Nullable<int> likes { get; set; }
-        public Nullable<int> postId { get; set; }
-        public int albumId { get; set; }
-        public int userId { get; set; }
+        public int Id { get; set; }
+        public string UrlStandart { get; set; }
+        public string UrlMedium { get; set; }
+        public string UrlSmall { get; set; }
+        public Nullable<int> Likes { get; set; }
+        public Nullable<int> PostId { get; set; }
+        public int AlbumId { get; set; }
+        public int UserId { get; set; }
     
-        public virtual album album { get; set; }
-        public virtual ICollection<comment> comments { get; set; }
-        public virtual post post { get; set; }
-        public virtual user user { get; set; }
+        public virtual Album Album { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual Post Post { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -30,9 +30,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Album not found", "");
             }
-            Mapper.CreateMap<album, AlbumDTO>();
+            Mapper.CreateMap<Album, AlbumDTO>();
 
-            return Mapper.Map<album, AlbumDTO>(album);
+            return Mapper.Map<Album, AlbumDTO>(album);
         }
 
         public IEnumerable<AlbumDTO> GetAll()
@@ -42,9 +42,9 @@ namespace Common.Services
             {
                 throw new ValidationException("Album not found", "");
             }
-            Mapper.CreateMap<album, AlbumDTO>();
+            Mapper.CreateMap<Album, AlbumDTO>();
 
-            return Mapper.Map<IEnumerable<album>, List<AlbumDTO>>(DBAlbum);
+            return Mapper.Map<IEnumerable<Album>, List<AlbumDTO>>(DBAlbum);
         }
 
         public IEnumerable<CommentDTO> GetComments(int albumId)
@@ -55,16 +55,16 @@ namespace Common.Services
                 throw new ValidationException("Album not found", "");
             }
 
-            return album.comments.Select(u => new CommentDTO
+            return album.Comments.Select(u => new CommentDTO
             {
-                id = u.id,
-                comment = u.comment1,
-                created = u.created,
-                modified = u.modified,
-                postId = u.postId,
-                pictureId = u.pictureId,
-                albumId = u.albumId,
-                userId = u.userId
+                id = u.Id,
+                comment = u.Value,
+                created = u.Created,
+                modified = u.Modified,
+                postId = u.PostId,
+                pictureId = u.PictureId,
+                albumId = u.AlbumId,
+                userId = u.UserId
             }).ToList();
         }
 
@@ -76,33 +76,33 @@ namespace Common.Services
                 throw new ValidationException("Album not found", "");
             }
 
-            return album.pictures.Select(u => new PictureDTO
+            return album.Pictures.Select(u => new PictureDTO
             {
-                id = u.id,
-                albumId = u.albumId,
-                likes = u.likes,
-                urlStandart = u.urlStandart,
-                urlMedium = u.urlMedium,
-                urlSmall = u.urlSmall,
-                postId = u.postId,
-                userId = u.userId
+                id = u.Id,
+                albumId = u.AlbumId,
+                likes = u.Likes,
+                urlStandart = u.UrlStandart,
+                urlMedium = u.UrlMedium,
+                urlSmall = u.UrlSmall,
+                postId = u.PostId,
+                userId = u.UserId
             }).ToList();
         }
         
 
         public int Create(AlbumDTO item)
         {
-            Mapper.CreateMap<AlbumDTO, album>();
+            Mapper.CreateMap<AlbumDTO, Album>();
 
-            int result = Database.Albums.Create(Mapper.Map<AlbumDTO, album>(item));
+            int result = Database.Albums.Create(Mapper.Map<AlbumDTO, Album>(item)).Id;
             Database.Save();
             return result;
         }
         public void Update(AlbumDTO item)
         {
-            Mapper.CreateMap<AlbumDTO, album>();
+            Mapper.CreateMap<AlbumDTO, Album>();
 
-            Database.Albums.Update(Mapper.Map<AlbumDTO, album>(item));
+            Database.Albums.Update(Mapper.Map<AlbumDTO, Album>(item));
             Database.Save();
         }
 

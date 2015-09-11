@@ -12,13 +12,13 @@ namespace EFDataProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class userRole
+    public partial class UserRole
     {
-        public int id { get; set; }
-        public string roleName { get; set; }
-        public int userId { get; set; }
+        public int Id { get; set; }
+        public string RoleName { get; set; }
+        public int UserId { get; set; }
     
-        public virtual role role { get; set; }
-        public virtual user user { get; set; }
+        public virtual Role Role { get; set; }
+        public virtual User User { get; set; }
     }
 }
